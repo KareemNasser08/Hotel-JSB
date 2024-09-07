@@ -1,0 +1,16 @@
+@import 'Pages/auth.scss';
+@import 'Pages/fonts.scss';
+
+
+* {
+    box-sizing: border-box;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
