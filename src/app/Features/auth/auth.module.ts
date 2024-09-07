@@ -7,6 +7,7 @@ import { SignInComponent } from './Components/sign-in/sign-in.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { ForgetPasswordComponent } from './Components/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { SharedModule } from 'primeng/api';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    SharedModule
   ]
 })
 export class AuthModule { }
