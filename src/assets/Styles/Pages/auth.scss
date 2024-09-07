@@ -1,11 +1,15 @@
-.bg-signup {
-    background-image: url(../../Images/signUp.png);
-}
+.auth {
+    min-height: 100vh;
+    overflow-y: auto;
+    height: 100%;
 
-.bg-signin {
-    background-image: url(../../Images/login.png);
-}
+    .image-layout {
+        max-height: 100vh;
 
-.bg-reset-forget {
-    background-image: url(../../images/forget-reset.png);
+        img {
+            max-height: inherit;
+            width: 100%;
+        }
+    }
+
 }
