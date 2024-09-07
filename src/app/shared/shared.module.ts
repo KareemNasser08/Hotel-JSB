@@ -6,7 +6,9 @@ import { SharedComponent } from './shared.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { FooterComponent } from './Components/footer/footer.component';
-
+import { InputTextModule } from 'primeng/inputtext';
+import { CheckboxModule } from 'primeng/checkbox';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,17 @@ import { FooterComponent } from './Components/footer/footer.component';
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    InputTextModule,
+    CheckboxModule,
+    RadioButtonModule
+  ],
+  exports:[
+    CommonModule,
+    SharedRoutingModule,
+    InputTextModule,
+    CheckboxModule,
+    RadioButtonModule
   ]
 })
 export class SharedModule { }
