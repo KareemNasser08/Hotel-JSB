@@ -10,6 +10,14 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { DividerModule } from 'primeng/divider';
+import { RadioButtonModule } from 'primeng/radiobutton';
+
 @NgModule({
   declarations: [
     SharedComponent,
@@ -21,15 +29,29 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
-    RadioButtonModule,
+
     CheckboxModule,
+    RadioButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    DividerModule
 
   ],
   exports: [
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
+    CheckboxModule,
     RadioButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    DividerModule
     CheckboxModule,
 
   ]

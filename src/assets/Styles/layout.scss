@@ -1,6 +1,23 @@
 @import 'Pages/auth.scss';
 @import 'Pages/fonts.scss';
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import '../Styles/Pages/btn.scss';
+@import "../Styles/Pages/txt-bg.scss";
+
+
+// --------------------
+
+* {
+    box-sizing: border-box;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
 @import 'Pages/primeng.scss';
+
 
 body {
     margin: 0;
