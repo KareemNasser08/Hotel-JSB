@@ -7,7 +7,6 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 
-
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -17,7 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { DividerModule } from 'primeng/divider';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [
@@ -30,6 +29,7 @@ import { DividerModule } from 'primeng/divider';
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
+
     CheckboxModule,
     RadioButtonModule,
     MatFormFieldModule,
@@ -38,6 +38,7 @@ import { DividerModule } from 'primeng/divider';
     ReactiveFormsModule,
     MatButtonModule,
     DividerModule
+
   ],
   exports: [
     CommonModule,
@@ -51,6 +52,8 @@ import { DividerModule } from 'primeng/divider';
     ReactiveFormsModule,
     MatButtonModule,
     DividerModule
+    CheckboxModule,
+
   ]
 })
 export class SharedModule { }
