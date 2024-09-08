@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { GlobalInterceptor } from './Core/Interceptors/Global/global.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 
 
     { provide: HTTP_INTERCEPTORS, useClass: NgxSpinnerModule, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: GlobalInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
