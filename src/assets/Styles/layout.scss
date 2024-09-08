@@ -1,14 +1,6 @@
 @import 'Pages/auth.scss';
 @import 'Pages/fonts.scss';
-
-
-* {
-    box-sizing: border-box;
-}
-
-.pointer {
-    cursor: pointer;
-}
+@import 'Pages/primeng.scss';
 
 body {
     margin: 0;
