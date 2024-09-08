@@ -16,7 +16,6 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { DividerModule } from 'primeng/divider';
-import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [
@@ -52,7 +51,6 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     ReactiveFormsModule,
     MatButtonModule,
     DividerModule
-    CheckboxModule,
 
   ]
 })

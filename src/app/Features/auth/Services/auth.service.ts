@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private _HttpClient: HttpClient) {
 
-    this.onGetUserData();
+    // this.onGetUserData();
 
   }
 
