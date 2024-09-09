@@ -1,0 +1,21 @@
+section {
+    max-height: 100vh;
+
+    .col-md-6 {
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    div.image-layout {
+        max-height: 100vh;
+
+        img {
+            max-height: inherit;
+        }
+    }
+
+    .form-container {
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+    }
+}

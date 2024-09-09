@@ -1,50 +1,84 @@
-<section class="auth">
+<section>
     <div class="container-fluid">
-        <div class="row h-100">
-            <div class="col-md-6">
-                <div class="p-2">
-                    <span>
-                        <img src="../../../../../assets/Images/Staycation.png" alt="">
-                    </span>
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="p-3">
+                    <img src="./assets/Images/Staycation.png" alt="">
                 </div>
-                <div class=" bg-body-secondary mt-4 px-5">
-                    <div>
-                        <h3 class="fw-bold">Sign up</h3>
-                        <small class="m-0 d-block">
+                <div class="form-container mx-auto p-5" [formGroup]="signUpForm" (ngSubmit)="onSignUp(signUpForm)">
+                    <div class="my-2">
+                        <h3 class="fs-3 fw-bold">Sign up</h3>
+                        <p class="fw-semibold">
                             If you already have an account register
-                        </small>
-                        <small class="d-block">
-
-                            You can <a class="text-danger" routerLink="/auth/signin">Login here !</a>
-
-                        </small>
+                        </p>
+                        <p class="fw-semibold"> You can <a class="text-danger text-decoration-none" routerLink="/auth/signin">Login here!</a>
+                        </p>
                     </div>
-                    <div class="mt-4">
-                        <form>
-                            <div class="p-inputgroup">
-                                <span class="p-inputgroup-addon">
-                                    <i class="pi pi-user"></i>
-                                </span>
-                                <input pInputText placeholder="Username" />
+                    <form class="my-3">
+                        <div class="d-flex justify-content-center">
+                            <ngx-dropzone (change)="onSelect($event)">
+                              <ngx-dropzone-label class="main-color">
+                                <i class="pi pi-camera"></i>
+                            </ngx-dropzone-label>
+                              <ngx-dropzone-image-preview
+                                ngProjectAs="ngx-dropzone-preview"
+                                *ngFor="let f of files"
+                                [file]="f"
+                                [removable]="true"
+                                (removed)="onRemove(f)"
+                              >
+                                <ngx-dropzone-label> </ngx-dropzone-label>
+                              </ngx-dropzone-image-preview>
+                            </ngx-dropzone>
+                          </div>
+                        <div class="row m-0">
+                            <div class="col-md-12">
+                                <label class="fs-6 fw-semibold">User Name</label>
+                                <div class="my-1">
+                                    <input formControlName="userName" class="bg-body-tertiary w-100" pInputText placeholder="Username" placeholder="Please type here ..." />
+                                </div>
                             </div>
-                            <div class="p-inputgroup">
-                                <span class="p-inputgroup-addon">$</span>
-                                <input type="text" pInputText placeholder="Price" />
-                                <span class="p-inputgroup-addon">.00</span>
+                            <div class="col-md-6 my-1">
+                                <label class="fs-6 fw-semibold">Phone Number</label>
+                                <div class="my-1">
+                                    <input formControlName="phoneNumber" class="bg-body-tertiary w-100" pInputText placeholder="Username" placeholder="Please type here ..." />
+                                </div>
                             </div>
-                            <div class="p-inputgroup">
-                                <span class="p-inputgroup-addon">www</span>
-                                <input type="text" pInputText placeholder="Website" />
+                            <div class="col-md-6 my-1">
+                                <label class="fs-6 fw-semibold">Country</label>
+                                <div class="my-1">
+                                    <input formControlName="country" class="bg-body-tertiary w-100" pInputText placeholder="Username" placeholder="Please type here ..." />
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-md-12 my-1">
+                                <label class="fs-6 fw-semibold">Email Address</label>
+                                <div class="my-1">
+                                    <input formControlName="email" class="bg-body-tertiary w-100" pInputText type="email" placeholder="Username" placeholder="Please type here ..." />
+                                </div>
+                            </div>
+                            <div class="col-md-6 my-1">
+                                <label class="fs-6 fw-semibold">Password</label>
+                                <div class="my-1">
+                                    <p-password formControlName="password" class="bg-body-tertiary w-100" placeholder="Please type here ..." [toggleMask]="true"></p-password>
+                                </div>
+                            </div>
+                            <div class="col-md-6 my-1">
+                                <label class="fs-6 fw-semibold">Confirm Password</label>
+                                <div class="my-1">
+                                    <p-password formControlName="confirmPassword" class="bg-body-tertiary w-100" placeholder="Please type here ..." [toggleMask]="true"></p-password>
+                                </div>
+                            </div>
+                            <div class="col-md-9 my-1 mx-auto">
+                                <button pButton pRipple label="Submit" class="w-100"></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="image-layout">
-                    <img src="../../../../../assets/Images/signup.png">
+                <div class="image-layout d-flex justify-content-center p-3">
+                    <img src="../../../../../assets/Images/signup.png" class="img-fluid">
                 </div>
-
             </div>
         </div>
     </div>

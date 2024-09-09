@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
+
 import { LoaderInterceptor } from './Core/Interceptors/Loader/loader.interceptor';
 import { GlobalInterceptor } from './Core/Interceptors/Global/global.interceptor';
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
@@ -32,16 +33,11 @@ import {
 
   ],
   providers: [
-
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: GlobalInterceptor,
-      multi: true
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true
+    },
     },
     {
       provide: 'SocialAuthServiceConfig',
@@ -65,6 +61,9 @@ import {
         }
       } as SocialAuthServiceConfig,
     }
+      useClass: GlobalInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })
