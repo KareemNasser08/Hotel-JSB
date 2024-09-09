@@ -6,7 +6,7 @@
                     <img src="./assets/Images/Staycation.png" alt="">
                 </div>
                 <div class="d-flex justify-content-center align-items-center mt-sm-5">
-                    <div class="card border-0 d-flex justify-content-center align-items-center ">
+                    <div class="card w-100 border-0 d-flex justify-content-center align-items-center ">
                         <header class="me-auto">
                             <h3 class="fw-bold fs-4 mb-4">Sign in</h3>
                             <p class="h5">If you don’t have an account register</p>
@@ -18,7 +18,9 @@
                         <div>
                             <form class="example-form" [formGroup]="signInForm" (ngSubmit)="signIn(signInForm)">
                                 <div class="row">
-                                    <mat-label class="mt-3 second-txt">Email Address</mat-label>
+
+                                    <!-- form field by angular material -->
+                                    <!-- <mat-label class="mt-3 second-txt">Email Address</mat-label>
                                     <mat-form-field class="example-full-width w-75 mt-2">
                                         <input type="email" matInput formControlName="email"
                                             [errorStateMatcher]="matcher" placeholder="Enter your email">
@@ -35,7 +37,7 @@
                                         <input type="password" matInput formControlName="password"
                                             [type]="hide ? 'password' : 'text'" [errorStateMatcher]="matcher"
                                             placeholder="Enter your password">
-                                        <button mat-icon-button matSuffix (click)="hide = !hide"
+                                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
                                             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                         </button>
@@ -46,31 +48,73 @@
                                             Password should be 6-20 characters long and include at least one special
                                             character
                                         </mat-error>
-                                    </mat-form-field>
-                                    <!-- <div class="p-inputgroup w-75">
-                                        <span class="p-inputgroup-addon">
-                                            <i class="pi pi-user"></i>
-                                        </span>
-                                        <input pInputText placeholder="Username" />
-                                    </div> -->
+                                    </mat-form-field> -->
+
+                                    <!-- ================================================================= -->
+                                    <!-- form field by primeNg -->
+                                    <div class="mt-4">
+
+                                        <label for="email">Email address</label>
+                                        <input type="text" pInputText formControlName="email" class="d-block w-100 mt-2"
+                                            name="email" placeholder="Enter your email" />
+
+                                        <small class="block p-error" *ngIf="email.invalid &&
+                                                 (email.dirty || email.touched)">
+                                            <div *ngIf="email.errors?.['required']">Email is required</div>
+                                            <div *ngIf="email.errors?.['email']">please enter a valid email!</div>
+
+                                        </small>
+
+                                    </div>
+                                    <div class="mt-4">
+
+                                        <label for="password">password</label>
+                                        <input type="password" pInputText formControlName="password"
+                                            class="d-block w-100 mt-2" name="password"
+                                            placeholder="Enter your password" />
+
+                                        <small class="block p-error" *ngIf="password.invalid &&
+                                                (password.dirty || password.touched)">
+                                            <div *ngIf="password.errors?.['required']">password is required</div>
+                                            <div *ngIf="password.errors?.['pattern']">
+                                                Password should be 6-20
+                                                character long
+                                            </div>
+                                        </small>
+
+                                    </div>
                                 </div>
 
-                                <div class="links w-75">
+                                <div class="links mt-3 w-100">
                                     <a type="button" class="ms-auto mb-3" routerLink="/auth/forgetPassword">
                                         Forget password?
                                     </a>
                                 </div>
-                                <button type="submit" mat-button class="w-75 main-btn text-white">login</button>
+                                <button type="submit" mat-button class="w-100 main-btn text-white"
+                                    [disabled]="signInForm.invalid">login</button>
+                                <!-- <p-button type="submit" label="SIGN IN" class="w-100 text-white"></p-button> -->
                             </form>
 
-                            <div class="w-75 my-4">
+                            <div class="w-100 my-4">
                                 <p-divider layout="horizontal" styleClass="flex md:hidden"
                                     [align]="'center'"><b>OR</b></p-divider>
                             </div>
 
-                            <div class="w-75 text-center fs-2">
-                                <i class="fa-brands fa-google-plus mx-3" style="color: #3f51b5;"></i>
-                                <i class="fa-brands fa-facebook mx-3" style="color: #3f51b5;"></i>
+                            <div class="w-100 text-center fs-2">
+
+
+                                <a type="button" href="#" class="mx-3" (click)="signInWithGoogle()">
+                                    <span class="">
+                                        <img src="./assets/Images/icons8-google.svg" alt="">
+                                    </span>
+                                </a>
+
+                                <a type="button" href="#" class="mx-3" (click)="signInWithFB()">
+                                    <span class="">
+                                        <img src="./assets/Images/icons8-facebook.svg" alt="">
+                                    </span>
+                                </a>
+
                             </div>
 
                         </div>

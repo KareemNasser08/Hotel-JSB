@@ -9,7 +9,9 @@ export const adminGuard: CanActivateFn = (route, state) => {
 
   let _AuthService = inject(AuthService);
 
-  if (localStorage.getItem('eToken') !== null && localStorage.getItem('userRole') == 'user') {
+  if (localStorage.getItem('eToken') !== null
+    &&
+    localStorage.getItem('userRole') === 'admin') {
 
     return true;
 

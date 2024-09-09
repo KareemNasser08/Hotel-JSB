@@ -22,7 +22,6 @@ import { ButtonModule } from 'primeng/button';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastModule } from 'primeng/toast';
 
-
 @NgModule({
   declarations: [
     SharedComponent,
@@ -46,7 +45,6 @@ import { ToastModule } from 'primeng/toast';
     CardModule,
     PasswordModule,
     ButtonModule,
-    ToastModule,
 
   ],
   exports: [
@@ -61,12 +59,14 @@ import { ToastModule } from 'primeng/toast';
     ReactiveFormsModule,
     MatButtonModule,
     DividerModule,
+    PasswordModule,
+    CardModule,
+    ButtonModule
     CardModule,
     PasswordModule,
     ButtonModule,
     NgxDropzoneModule,
     ToastModule,
-    
   ]
 })
 export class SharedModule { }
