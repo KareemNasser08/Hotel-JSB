@@ -16,7 +16,9 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { DividerModule } from 'primeng/divider';
-import { RadioButtonModule } from 'primeng/radiobutton';
+import { PasswordModule } from 'primeng/password';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,10 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    DividerModule
+    DividerModule,
+    PasswordModule,
+    CardModule,
+    ButtonModule
 
   ],
   exports: [
@@ -51,8 +56,11 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    DividerModule
-    CheckboxModule,
+    DividerModule,
+    PasswordModule,
+    CardModule,
+    ButtonModule
+
 
   ]
 })
