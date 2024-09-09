@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { DividerModule } from 'primeng/divider';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DividerModule } from 'primeng/divider';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    DividerModule
+    DividerModule,
+    ButtonModule
 
   ],
   exports: [
@@ -50,7 +52,8 @@ import { DividerModule } from 'primeng/divider';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    DividerModule
+    DividerModule,
+    ButtonModule
 
   ]
 })
