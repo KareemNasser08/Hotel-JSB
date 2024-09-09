@@ -4,7 +4,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-ReactiveFormsModule
+
+
 
 
 @Component({
@@ -15,7 +16,10 @@ ReactiveFormsModule
 export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
-
+    // this.authService.authState.subscribe((user: SocialUser) => {
+    //   this.user = user;
+    //   console.log(user);
+    // });
   }
 
   constructor(
@@ -23,11 +27,11 @@ export class SignInComponent implements OnInit {
     private _Router: Router,
     private _Toastr: ToastrService,
 
+
   ) { }
   // declerations
   hide = true;
   matcher = new ErrorStateMatcher();
-
 
 
   // signInForm
@@ -43,7 +47,21 @@ export class SignInComponent implements OnInit {
       null,
       [Validators.required,
       Validators.pattern(/^[a-zA-Z0-9@_]{6,20}$/)])
+
+
   });
+
+
+  // getters
+
+  get email() {
+    return this.signInForm.controls['email'];
+  }
+
+  get password() {
+    return this.signInForm.controls['password'];
+  }
+
 
 
 
@@ -54,9 +72,12 @@ export class SignInComponent implements OnInit {
 
       next: (resp) => {
 
-        console.log(resp);
+        // console.log(resp);
+        let Btoken = resp.data.token;
 
-        localStorage.setItem('eToken', resp.token);
+        let eToken = Btoken.replace(/^Bearer\s+/, '');
+
+        localStorage.setItem('eToken', eToken);
 
         this._AuthService.onGetUserData();
 
@@ -65,15 +86,12 @@ export class SignInComponent implements OnInit {
       },
       error: (err) => {
 
-        console.log(err);
-
         this._Toastr.error(err.message, 'error');
-
 
       },
       complete: () => {
 
-        this._Router.navigate(['/dashboard/home']);
+        this._Router.navigate(['/dashboard/Users']);
 
       }
     })
@@ -81,3 +99,4 @@ export class SignInComponent implements OnInit {
 
 
 }
+
