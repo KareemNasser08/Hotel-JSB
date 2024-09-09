@@ -10,14 +10,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
-
   constructor(
     private _Spinner: NgxSpinnerService,
-
   ) { }
-
+  
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this._Spinner.show()
+    this._Spinner.show();
     return next.handle(request).pipe(finalize(() => {
       this._Spinner.hide()
     }));

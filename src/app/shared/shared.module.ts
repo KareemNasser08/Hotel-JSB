@@ -61,9 +61,6 @@ import { ToastModule } from 'primeng/toast';
     DividerModule,
     PasswordModule,
     CardModule,
-    ButtonModule
-    CardModule,
-    PasswordModule,
     ButtonModule,
     NgxDropzoneModule,
     ToastModule,

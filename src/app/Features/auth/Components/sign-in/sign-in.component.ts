@@ -4,9 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
-import { GoogleLoginProvider } from "@abacritt/angularx-social-login";
-import { FacebookLoginProvider } from "@abacritt/angularx-social-login";
+
 
 
 
@@ -28,13 +26,12 @@ export class SignInComponent implements OnInit {
     private _AuthService: AuthService,
     private _Router: Router,
     private _Toastr: ToastrService,
-    private authService: SocialAuthService
+
 
   ) { }
   // declerations
   hide = true;
   matcher = new ErrorStateMatcher();
-  user: SocialUser | null = null;
 
 
   // signInForm
@@ -100,16 +97,6 @@ export class SignInComponent implements OnInit {
     })
   }
 
-  // sigin with social 
-
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-
-
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
 
 }
 

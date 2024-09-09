@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -31,18 +32,22 @@ export class SignUpComponent {
     this._authService.signUp(formData).subscribe({
       next:(res)=>{
         console.log(res);
-        this.toastr.success("Let's Sign In!",'Successfully Registerd');
       },
       error:(err)=>{
         console.log(err);
       },
       complete:()=>{
         console.log('completed req!');
+        this.toastr.success("Let's Sign In!",'Successfully Registerd');
+        this._Router.navigate(['/auth/signin']);
       },
     })
   }
 
-  constructor(private _authService: AuthService,private toastr:ToastrService) { }
+  constructor(
+    private _authService: AuthService,
+    private toastr:ToastrService,
+    private _Router:Router) { }
   
   // Photo
 
