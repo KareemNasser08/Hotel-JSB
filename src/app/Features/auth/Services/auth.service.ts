@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IsignIn } from '../interfaces/auth';
 import { jwtDecode } from 'jwt-decode';
+import { FormGroup } from '@angular/forms';
+import { ResetPasswordRequest } from '../interfaces/reset-password-request';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +27,19 @@ export class AuthService {
 
   onSignIn(sigInForm: IsignIn): Observable<any> {
 
+
+  onCheckEmail(email: string): Observable<string> {
+    return this._HttpClient.post<string>('Users/Reset/Request', email); // fix end points 
+  }
+  onResetPassword(form: ResetPasswordRequest): Observable<ResetPasswordRequest> {
+    return this._HttpClient.post<ResetPasswordRequest>('Users/Reset', form);   // fix end points 
+  }
+
+
+  onGetUserData() {
+
     return this._HttpClient.post(`portal/users/login`, sigInForm);
+
 
   }
   onGetUserData() {
@@ -46,8 +60,9 @@ export class AuthService {
       this.role = localStorage.getItem("userRole");
     }
   }
-
+}
   signUp( data: FormData): Observable<any> {
     return this._HttpClient.post(`admin/users`, data)
   }
 }
+

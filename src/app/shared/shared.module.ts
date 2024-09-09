@@ -16,11 +16,14 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { DividerModule } from 'primeng/divider';
+
+
 import { CardModule } from 'primeng/card';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastModule } from 'primeng/toast';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +49,7 @@ import { ToastModule } from 'primeng/toast';
     PasswordModule,
     ButtonModule,
 
+
   ],
   exports: [
     CommonModule,
@@ -59,6 +63,7 @@ import { ToastModule } from 'primeng/toast';
     ReactiveFormsModule,
     MatButtonModule,
     DividerModule,
+
     PasswordModule,
     CardModule,
     ButtonModule,
