@@ -1,0 +1,12 @@
+[33m470db70[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msignIn[m[33m, [m[1;31morigin/signIn[m[33m)[m signInChanges
+[33m676be63[m[33m ([m[1;32mrecovered-changes[m[33m)[m signIn
+[33m24386eb[m Merge branch 'main' into signIn
+[33mbd9a609[m signIn
+[33m524644b[m fix primeicons, images name
+[33mc56b469[m fix signup routing, fix signup component, fix primeNg v16
+[33mb72bdf8[m prime ng installation
+[33mf98c9ea[m updates styles
+[33m173d12d[m update structure (auth routing)
+[33m4551ba6[m 'assets - (images, styles)'
+[33m7b37cf2[m structure project
+[33m9ecef86[m initial commit
