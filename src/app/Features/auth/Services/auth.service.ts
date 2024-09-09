@@ -10,47 +10,34 @@ import { jwtDecode } from 'jwt-decode';
 export class AuthService {
 
   constructor(private _HttpClient: HttpClient) {
-
     // this.onGetUserData();
-
   }
 
   // declerations
   role: string | any = '';
-
-
   onSignIn(sigInForm: IsignIn): Observable<any> {
     return this._HttpClient.post(`admin/users/login`, sigInForm);
   }
-
   onGetUserData() {
-
     let decodedToken: any = localStorage.getItem('eToken');
     let encodedToken: any = jwtDecode(decodedToken);
-
     localStorage.setItem("userId", encodedToken._id);
     localStorage.setItem('userName', encodedToken.userName);
     localStorage.setItem("userRole", encodedToken.role);
-
     this.onGetUserRole();
-
-
   }
-
-
-
   onGetUserRole() {
-
     if (
       localStorage.getItem('eToken') !== null
       &&
       localStorage.getItem("userRole") !== null
-
     ) {
-
       this.role = localStorage.getItem("userRole");
-
     }
+  }
+
+  signUp( data: FormData): Observable<any> {
+    return this._HttpClient.post(`admin/users`, data)
   }
 
 

@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { GlobalInterceptor } from './Core/Interceptors/Global/global.interceptor';
+import { LoaderInterceptor } from './Core/Interceptors/Loader/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,16 @@ import { GlobalInterceptor } from './Core/Interceptors/Global/global.interceptor
 
   ],
   providers: [
-
-
-    { provide: HTTP_INTERCEPTORS, useClass: NgxSpinnerModule, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: GlobalInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlobalInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })
