@@ -29,7 +29,7 @@ export class ForgetPasswordComponent implements OnInit {
 
 
 
-  // signInForm
+  // Forget Password Form
   forgetPassForm: FormGroup = new FormGroup({
 
     email: new FormControl(
@@ -38,7 +38,11 @@ export class ForgetPasswordComponent implements OnInit {
       Validators.email])
   });
 
+// getters 
 
+get email() {
+  return this.forgetPassForm.controls['email'];
+}
 
   // Verfiy email Func
   Verify():void {
@@ -64,7 +68,7 @@ export class ForgetPasswordComponent implements OnInit {
           },
           complete: () => {
     
-            this._Router.navigateByUrl('/auth/reset-password');
+            this._Router.navigateByUrl('/auth/resetPassword');
             // this._Router.navigate(['/dashboard/home']);
     
           }
