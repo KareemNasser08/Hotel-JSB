@@ -69,6 +69,8 @@ import { ToastModule } from 'primeng/toast';
     ButtonModule,
     NgxDropzoneModule,
     ToastModule,
+    SidebarComponent,
+    NavbarComponent
   ]
 })
 export class SharedModule { }

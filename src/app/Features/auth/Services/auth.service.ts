@@ -53,7 +53,5 @@ export class AuthService {
   onResetPassword(form: ResetPasswordRequest): Observable<ResetPasswordRequest> {
     return this._HttpClient.post<ResetPasswordRequest>(`portal/users/reset-password`, form);   // fix end points 
   }
-  // forgetPassword(data: FormGroup):Observable<any>{
-  //   return this._HttpClient.post(`portal/users/forgot-password`,data);
-  // }
+
 }
