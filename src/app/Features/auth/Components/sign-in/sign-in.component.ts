@@ -66,7 +66,6 @@ export class SignInComponent implements OnInit {
       },
       complete: () => {
         this._Router.navigate(['/dashboard/home']);
-        this._Router.navigate(['/dashboard']);
       }
     })
   }

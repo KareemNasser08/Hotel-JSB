@@ -1,22 +1,31 @@
-.sidebar-container {
-    height: 100vh;
-    max-height: 100vh;
-
-    overflow-y: auto;
-    background-color: var(--main-color);
-
-    .sidebar-title {
+.side-bar {
+    min-height: 100vh;
+    height: 100%;
+  
+    .menu {
+      .item {
+        color: whitesmoke;
         display: flex;
         align-items: center;
-        margin: 10px;
+        gap: 20px;
         text-decoration: none;
-        padding: 15px;
-        border-radius: 10px;
-        background-color: rgba(115, 89, 230, 0.925);
-        // opacity: 0.8;
-
-        .sidebar-title:hover {
-            background-color: white;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+  
+        &:hover {
+          background-color: var(--second-color);
+          color: white;
+          text-decoration: none !important;
         }
+      }
+  
+      .active {
+        background-color: var(--second-color);
+        color: white;
+      }
     }
-}
+  
+
+  }
