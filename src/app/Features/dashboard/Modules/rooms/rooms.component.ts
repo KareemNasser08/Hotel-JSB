@@ -9,32 +9,31 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss']
 })
-export class RoomsComponent implements OnInit{
+export class RoomsComponent implements OnInit {
   // headArray = ['roomNumber','price', 'capacity', 'discount', 'facilities'];
   // gridData:any;
 
 
-  tableData:any;
+  tableData: any;
 
   constructor(
-    private _RoomsService:RoomsService,
+    private _RoomsService: RoomsService,
 
-  ){}
+  ) { }
   ngOnInit(): void {
     this.onGetAllRooms();
   }
 
-  onGetAllRooms(){
+  onGetAllRooms() {
     let params = {
-      page:1,
-      size:10000
+      page: 1,
+      size: 10000
     }
     this._RoomsService.getAllRooms(params).subscribe({
-      next: (res)=>{
+      next: (res) => {
         console.log(res);
-        this.tableData=res.data.rooms;
+        this.tableData = res.data.rooms;
         console.log(this.tableData);
-        
       }
     })
   }

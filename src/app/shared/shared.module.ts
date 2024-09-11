@@ -40,6 +40,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { SharedTableComponent } from './Components/shared-table/shared-table.component';
 import { TableModule } from 'primeng/table';
 import { MenuModule } from 'primeng/menu';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { MenuModule } from 'primeng/menu';
     TableModule,
 
     MultiSelectModule,
-    MenuModule
+    MenuModule,
+    TagModule
 
   ],
   exports: [
@@ -115,7 +117,8 @@ import { MenuModule } from 'primeng/menu';
     NavbarComponent,
     MultiSelectModule,
     TableModule,
-    MenuModule
+    MenuModule,
+    TagModule
 
 
   ]

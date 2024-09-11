@@ -22,7 +22,7 @@
                         <th>Discount</th>
                         <th>Capacity</th>
                         <th>Facilities</th>
-                        <!-- <th style="width:25%">Actions</th> -->
+                        <th>Actions</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-tableData>
@@ -31,12 +31,30 @@
                         <td>{{ tableData.price }}</td>
                         <td>{{ tableData.capacity }}</td>
                         <td>{{ tableData.discount }}</td>
-                        <td>
-                            <ng-container *ngFor="let item of tableData.facilities">
-                                <span>{{item.name}}</span>
+                        <td style="max-width: 30px;">
+                            <ng-container *ngFor="let item of tableData.facilities; let i = index; let isLast = last">
+                                <div class="mt-1">
+                                    <p-tag [value]="item.name"></p-tag>
+                                    <span *ngIf="!isLast"> | </span>
+                                </div>
                             </ng-container>
                         </td>
-                        <!-- <td>{{ tableData.facilities }}</td> -->
+                        <td>
+                            <button mat-icon-button [matMenuTriggerFor]="menu" class="btn">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item [routerLink]="['view', tableData._id]">
+                                    <mat-icon>visibility</mat-icon>
+                                    <span>View Details</span>
+                                </button>
+                                <button mat-menu-item [routerLink]="['edit', tableData._id]">
+                                    <mat-icon>edit</mat-icon>
+                                    <span>Edit</span>
+                                </button>
+                               
+                            </mat-menu>
+                        </td>
                     </tr>
                 </ng-template>
             </p-table>

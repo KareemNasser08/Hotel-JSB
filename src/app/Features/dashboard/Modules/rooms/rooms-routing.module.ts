@@ -6,8 +6,9 @@ import { AddEditRoomComponent } from './components/add-edit-room/add-edit-room.c
 
 const routes: Routes = [
   { path: '', component: RoomsComponent },
-  { path: "RoomDetails/:id", component: ViewRoomComponent },
+  { path: "view/:id", component: ViewRoomComponent },
   { path: 'add-edit-room', component: AddEditRoomComponent },
+  { path: 'edit/:id', component: AddEditRoomComponent },
 ];
 
 @NgModule({
