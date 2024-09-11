@@ -11,7 +11,12 @@
 
     <div class="mt-2">
         <div class="card">
-            <p-table [value]="tableData" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+            
+            <p-table 
+                [value]="tableData" 
+                [paginator]="true" 
+                [rows]="5" 
+                [showCurrentPageReport]="true"
                 [tableStyle]="{ 'min-width': '50rem' }"
                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                 [rowsPerPageOptions]="[5, 10, 25, 50]">
@@ -40,8 +45,8 @@
                             </ng-container>
                         </td>
                         <td>
-                            <button mat-icon-button [matMenuTriggerFor]="menu" class="btn">
-                                <mat-icon>more_vert</mat-icon>
+                            <button [matMenuTriggerFor]="menu" class="btn">
+                                <i class="pi pi-ellipsis-v" style="font-size: 1rem"></i>
                             </button>
                             <mat-menu #menu="matMenu">
                                 <button mat-menu-item [routerLink]="['view', tableData._id]">
@@ -52,7 +57,7 @@
                                     <mat-icon>edit</mat-icon>
                                     <span>Edit</span>
                                 </button>
-                               
+
                             </mat-menu>
                         </td>
                     </tr>
