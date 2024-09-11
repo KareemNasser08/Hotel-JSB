@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class UsersComponent {
 
+  constructor(private _Router: Router,){
+    
+  }
+
+  gorooms(){
+    this._Router.navigate(['/dashboard/Rooms/add-edit-room']);
+  }
+  
 }

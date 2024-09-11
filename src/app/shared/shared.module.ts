@@ -21,6 +21,7 @@ import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastModule } from 'primeng/toast';
 
@@ -48,6 +49,8 @@ import { ToastModule } from 'primeng/toast';
     CardModule,
     PasswordModule,
     ButtonModule,
+    MultiSelectModule
+
 
 
   ],
@@ -69,6 +72,7 @@ import { ToastModule } from 'primeng/toast';
     ButtonModule,
     NgxDropzoneModule,
     ToastModule,
+    MultiSelectModule
   ]
 })
 export class SharedModule { }

@@ -26,7 +26,8 @@ resetPassForm = new FormGroup({
     [MatchPasswordValidator('password', 'confirmPassword')]
   );
 
-  constructor(    private _AuthService: AuthService,
+  constructor(    
+    private _AuthService: AuthService,
     private _Router: Router,
     private _Toastr: ToastrService,) {}
 
@@ -36,7 +37,7 @@ resetPassForm = new FormGroup({
     }
   
     get seed() {
-      return this.resetPassForm.controls['password'];
+      return this.resetPassForm.controls['seed'];
     }
 
     get password() {
@@ -44,7 +45,7 @@ resetPassForm = new FormGroup({
     }
   
     get confirmPassword() {
-      return this.resetPassForm.controls['password'];
+      return this.resetPassForm.controls['confirmPassword'];
     }
   
   
@@ -57,8 +58,19 @@ resetPassword(): void {
         .onResetPassword(this.resetPassForm.value as ResetPasswordRequest)
         .subscribe({
           next: () => {
-            this._Router.navigateByUrl('/auth/login');
+            this._Toastr.success('Password changed succssefully !!', 'Please login');
+          }, error: (err) => {
+
+            console.log(err);
+    
+            this._Toastr.error(err.message, 'error');
+    
+    
           },
+          complete: () => {
+            this._Router.navigateByUrl('/auth/signin');
+          }
+
         });
     }
   }
