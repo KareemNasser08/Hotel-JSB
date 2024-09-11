@@ -16,6 +16,7 @@ export class SignInComponent implements OnInit {
     //   this.user = user;
     //   console.log(user);
     // });
+  }
   
   constructor(
     private _AuthService: AuthService,

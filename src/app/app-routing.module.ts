@@ -1,4 +1,3 @@
-import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { adminGuard } from './Core/Guards/Admin/admin.guard';

@@ -19,6 +19,7 @@ export class AuthService {
 
   // declerations
   role: string | any = '';
+  
   onCheckEmail(email: string): Observable<any> {
     return this._HttpClient.post(`portal/users/forgot-password`, email); // fix end points 
   }

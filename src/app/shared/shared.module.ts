@@ -40,8 +40,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgImageSliderModule } from 'ng-image-slider';
 
 import { MultiSelectModule } from 'primeng/multiselect';
-import { NgxDropzoneModule } from 'ngx-dropzone';
-import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -76,19 +74,18 @@ import { ToastModule } from 'primeng/toast';
     MatDialogModule,
     MatDividerModule,
     NgImageSliderModule,
-    MatMenuModule
+    MatMenuModule,
 
 
     MultiSelectModule
 
   ],
   exports: [
-
-
+    //Components
     NavbarComponent,
     SidebarComponent,
     DeleteComponent,
-
+    // 
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
@@ -111,12 +108,10 @@ import { ToastModule } from 'primeng/toast';
     MatDialogModule,
     MatDividerModule,
     NgImageSliderModule,
-    MatMenuModule
-
+    MatMenuModule,
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent,
     MultiSelectModule
-
 
   ]
 })
