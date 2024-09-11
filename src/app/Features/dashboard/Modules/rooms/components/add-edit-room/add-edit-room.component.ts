@@ -290,7 +290,7 @@ constructor(
   }
 
   navigateToRoomsList(): void {
-    this._Router.navigate(['/dashboard/manager/projects/list']);
+    this._Router.navigate(['/dashboard/Rooms']);
   }
 }
 
