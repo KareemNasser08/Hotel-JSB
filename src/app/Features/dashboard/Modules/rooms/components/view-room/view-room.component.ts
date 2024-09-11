@@ -3,7 +3,7 @@ import { RoomsService } from '../../services/rooms.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { IData, IRoom } from '../../interfaces/rooms';
+import { IRoom } from '../../interfaces/rooms';
 
 @Component({
   selector: 'app-view-room',
@@ -71,28 +71,18 @@ export class ViewRoomComponent implements OnInit {
 
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {
       0: {
         items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
       }
     },
     nav: true
   }
+
 }
-
-
