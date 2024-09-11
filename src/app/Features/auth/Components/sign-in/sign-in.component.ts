@@ -91,7 +91,7 @@ export class SignInComponent implements OnInit {
       },
       complete: () => {
 
-        this._Router.navigate(['/dashboard/Users']);
+        this._Router.navigate(['/dashboard']);
 
       }
     })

@@ -1,13 +1,12 @@
-
-
-:root{
-    --main-color:#3252DF;
-    --second-color:#7B88A3;
+:root {
+    --main-color: #3252DF;
+    --second-color: #7B88A3;
 }
+
 .main-txt {
-    color: #3252DF;
+    color: var(--main-color);
 }
 
 .second-txt {
-    color: #7B88A3;
+    color: var(--second-color);
 }

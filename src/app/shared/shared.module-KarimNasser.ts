@@ -16,12 +16,6 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { DividerModule } from 'primeng/divider';
-import { CardModule } from 'primeng/card';
-import { PasswordModule } from 'primeng/password';
-import { ButtonModule } from 'primeng/button';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { NgxDropzoneModule } from 'ngx-dropzone';
-import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -34,7 +28,7 @@ import { ToastModule } from 'primeng/toast';
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
-    NgxDropzoneModule,
+
     CheckboxModule,
     RadioButtonModule,
     MatFormFieldModule,
@@ -42,11 +36,8 @@ import { ToastModule } from 'primeng/toast';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    DividerModule,
-    CardModule,
-    PasswordModule,
-    ButtonModule,
-    MultiSelectModule
+    DividerModule
+
   ],
   exports: [
     CommonModule,
@@ -59,16 +50,7 @@ import { ToastModule } from 'primeng/toast';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    DividerModule,
-
-    PasswordModule,
-    CardModule,
-    ButtonModule,
-    NgxDropzoneModule,
-    ToastModule,
-    SidebarComponent,
-    NavbarComponent
-    MultiSelectModule
+    DividerModule
 
   ]
 })

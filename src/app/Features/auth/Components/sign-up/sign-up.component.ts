@@ -39,7 +39,7 @@ export class SignUpComponent {
       complete:()=>{
         console.log('completed req!');
         this.toastr.success("Let's Sign In!",'Successfully Registerd');
-        this._Router.navigate(['/auth/signin']);
+        this._Router.navigate(['/dashboard']);
       },
     })
   }
