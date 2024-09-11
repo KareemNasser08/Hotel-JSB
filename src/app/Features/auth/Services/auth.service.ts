@@ -29,6 +29,7 @@ export class AuthService {
 
   onGetUserData() {
     let token: any = localStorage.getItem('eToken');
+    console.log(token)
     let encodedToken: any = jwtDecode(token);
 
     localStorage.setItem("userId", encodedToken._id);
@@ -50,6 +51,7 @@ export class AuthService {
   signUp(data: FormData): Observable<any> {
     return this._HttpClient.post(`admin/users`, data)
   }
+  
   onResetPassword(form: ResetPasswordRequest): Observable<ResetPasswordRequest> {
     return this._HttpClient.post<ResetPasswordRequest>(`portal/users/reset-password`, form);   // fix end points 
   }
