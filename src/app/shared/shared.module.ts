@@ -32,15 +32,14 @@ import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
-
-
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastModule } from 'primeng/toast';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgImageSliderModule } from 'ng-image-slider';
-
 import { MultiSelectModule } from 'primeng/multiselect';
-
+import { SharedTableComponent } from './Components/shared-table/shared-table.component';
+import { TableModule } from 'primeng/table';
+import { MenuModule } from 'primeng/menu';
 
 @NgModule({
   declarations: [
@@ -48,7 +47,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    DeleteComponent
+    DeleteComponent,
+    SharedTableComponent
   ],
   imports: [
 
@@ -75,9 +75,10 @@ import { MultiSelectModule } from 'primeng/multiselect';
     MatDividerModule,
     NgImageSliderModule,
     MatMenuModule,
+    TableModule,
 
-
-    MultiSelectModule
+    MultiSelectModule,
+    MenuModule
 
   ],
   exports: [
@@ -85,7 +86,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     NavbarComponent,
     SidebarComponent,
     DeleteComponent,
-    // 
+    SharedTableComponent,
+
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
@@ -111,7 +113,10 @@ import { MultiSelectModule } from 'primeng/multiselect';
     MatMenuModule,
     SidebarComponent,
     NavbarComponent,
-    MultiSelectModule
+    MultiSelectModule,
+    TableModule,
+    MenuModule
+
 
   ]
 })

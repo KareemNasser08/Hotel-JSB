@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/Features/auth/Services/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
   isAuthenticated = false;
@@ -37,6 +37,6 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('userName');
     this.isAuthenticated = false;
     this.role = null;
-    this._Router.navigate(['/landing'])
+    this._Router.navigate(['/auth'])
   }
 }

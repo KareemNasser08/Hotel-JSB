@@ -1,1 +1,45 @@
-<p>rooms works!</p>
+<section class="mt-3">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <h3 class="m-0 fw-semibold fs-4">Rooms Table Details</h3>
+            <p class="m-0 fs-6 fw-normal">You can check all details</p>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" routerLink="add-edit-room">Add new room</button>
+        </div>
+    </div>
+
+    <div class="mt-2">
+        <div class="card">
+            <p-table [value]="tableData" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[5, 10, 25, 50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Room Number</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>Capacity</th>
+                        <th>Facilities</th>
+                        <!-- <th style="width:25%">Actions</th> -->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-tableData>
+                    <tr>
+                        <td>{{ tableData.roomNumber }}</td>
+                        <td>{{ tableData.price }}</td>
+                        <td>{{ tableData.capacity }}</td>
+                        <td>{{ tableData.discount }}</td>
+                        <td>
+                            <ng-container *ngFor="let item of tableData.facilities">
+                                <span>{{item.name}}</span>
+                            </ng-container>
+                        </td>
+                        <!-- <td>{{ tableData.facilities }}</td> -->
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</section>
