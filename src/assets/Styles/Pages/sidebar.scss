@@ -1,7 +1,22 @@
-.sidebar-container{
+.sidebar-container {
     height: 100vh;
     max-height: 100vh;
 
     overflow-y: auto;
     background-color: var(--main-color);
+
+    .sidebar-title {
+        display: flex;
+        align-items: center;
+        margin: 10px;
+        text-decoration: none;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: rgba(115, 89, 230, 0.925);
+        // opacity: 0.8;
+
+        .sidebar-title:hover {
+            background-color: white;
+        }
+    }
 }
