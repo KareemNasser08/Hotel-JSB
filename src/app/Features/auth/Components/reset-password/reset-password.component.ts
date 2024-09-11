@@ -21,14 +21,34 @@ resetPassForm = new FormGroup({
   email: new FormControl('', [Validators.required, Validators.email]),
   seed:new FormControl('',Validators.required),
   password:new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9@_]{6,20}$/)]),
-  confirmpassword:new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9@_]{6,20}$/)]),
+  confirmPassword:new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9@_]{6,20}$/)]),
   },
-    [MatchPasswordValidator('password', 'confirmpassword')]
+    [MatchPasswordValidator('password', 'confirmPassword')]
   );
 
-  constructor(    private _AuthService: AuthService,
+  constructor(    
+    private _AuthService: AuthService,
     private _Router: Router,
     private _Toastr: ToastrService,) {}
+
+
+    get email() {
+      return this.resetPassForm.controls['email'];
+    }
+  
+    get seed() {
+      return this.resetPassForm.controls['seed'];
+    }
+
+    get password() {
+      return this.resetPassForm.controls['password'];
+    }
+  
+    get confirmPassword() {
+      return this.resetPassForm.controls['confirmPassword'];
+    }
+  
+  
 
 resetPassword(): void {
     this.resetPassForm.markAllAsTouched();
@@ -38,8 +58,19 @@ resetPassword(): void {
         .onResetPassword(this.resetPassForm.value as ResetPasswordRequest)
         .subscribe({
           next: () => {
-            this._Router.navigateByUrl('/auth/login');
+            this._Toastr.success('Password changed succssefully !!', 'Please login');
+          }, error: (err) => {
+
+            console.log(err);
+    
+            this._Toastr.error(err.message, 'error');
+    
+    
           },
+          complete: () => {
+            this._Router.navigateByUrl('/auth/signin');
+          }
+
         });
     }
   }
