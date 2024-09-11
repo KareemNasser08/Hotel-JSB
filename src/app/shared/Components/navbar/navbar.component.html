@@ -29,27 +29,14 @@
                 <div *ngIf="isAuthenticated && role === 'user'">
                     <!-- Show this div if user is authenticated and the role is 'user' -->
                     <div class="d-flex flex-row justify-content-center align-items-center">
-                        <div>
-                            <img src="./assets/Images/Avatar.png" alt="" class="w-100 rounded">
-                        </div>
+
                         <li class="nav-item">
-                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User Menu">
-                                <mat-icon>more_vert</mat-icon>
-                            </button>
-                            <mat-menu #menu="matMenu">
-                                <button mat-menu-item>
-                                    <mat-icon>dialpad</mat-icon>
-                                    <span>Redial</span>
-                                </button>
-                                <button mat-menu-item disabled>
-                                    <mat-icon>voicemail</mat-icon>
-                                    <span>Check voice mail</span>
-                                </button>
-                                <button mat-menu-item>
-                                    <mat-icon>notifications_off</mat-icon>
-                                    <span>Disable alerts</span>
-                                </button>
-                            </mat-menu>
+                            <a class="nav-link active" aria-current="page" routerLink="/landing"
+                                routerLinkActive="text-primary">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" routerLink="/landing/explore"
+                                routerLinkActive="text-primary">Explore</a>
                         </li>
                         <div>
                             <button class="btn btn-danger mx-3" (click)="signOut()">SIGN OUT</button>
