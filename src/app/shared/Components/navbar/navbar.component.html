@@ -1,1 +1,89 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <div class="m-3">
+                <img src="../../../../assets/Images/Staycation.png" alt="">
+            </div>
+        </a>
+
+        <div>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <div *ngIf="!isAuthenticated">
+                    <!-- Show this  if user is not authenticated (no token) -->
+                    <div class="d-flex flex-row justify-content-center align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" routerLink="/landing"
+                                routerLinkActive="text-primary">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" routerLink="/landing/explore"
+                                routerLinkActive="text-primary">Explore</a>
+                        </li>
+                        <div>
+                            <button class="btn btn-primary mx-3" routerLink="/auth/signin">SIGN IN</button>
+                            <button class="btn btn-primary mx-3" routerLink="/auth/signup">SIGN UP</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="isAuthenticated && role === 'user'">
+                    <!-- Show this div if user is authenticated and the role is 'user' -->
+                    <div class="d-flex flex-row justify-content-center align-items-center">
+                        <div>
+                            <img src="./assets/Images/Avatar.png" alt="" class="w-100 rounded">
+                        </div>
+                        <li class="nav-item">
+                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User Menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>
+                                    <mat-icon>dialpad</mat-icon>
+                                    <span>Redial</span>
+                                </button>
+                                <button mat-menu-item disabled>
+                                    <mat-icon>voicemail</mat-icon>
+                                    <span>Check voice mail</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <mat-icon>notifications_off</mat-icon>
+                                    <span>Disable alerts</span>
+                                </button>
+                            </mat-menu>
+                        </li>
+                        <div>
+                            <button class="btn btn-danger mx-3" (click)="signOut()">SIGN OUT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="isAuthenticated && role === 'admin'">
+                    <!-- Show this div if user is authenticated and the role is 'admin' -->
+                    <div class="d-flex flex-row justify-content-center align-items-center">
+                        <div>
+                            <img src="./assets/Images/Avatar.png" alt="" class="w-100 rounded">
+                        </div>
+                        <li class="nav-item">
+                            <button mat-icon-button [matMenuTriggerFor]="adminMenu" aria-label="Admin Menu">
+                                <mat-icon>admin_panel_settings</mat-icon>
+                            </button>
+                            <mat-menu #adminMenu="matMenu">
+                                <button mat-menu-item>
+                                    <mat-icon>settings</mat-icon>
+                                    <span>Admin Settings</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <mat-icon>supervised_user_circle</mat-icon>
+                                    <span>Manage Users</span>
+                                </button>
+                            </mat-menu>
+                        </li>
+                        <div>
+                            <button class="btn btn-danger mx-3" (click)="signOut()">SIGN OUT</button>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>

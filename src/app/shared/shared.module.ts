@@ -1,36 +1,61 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// components
 import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { DeleteComponent } from './Components/delete/delete.component';
 
-import { InputTextModule } from 'primeng/inputtext';
-import { CheckboxModule } from 'primeng/checkbox';
-import { RadioButtonModule } from 'primeng/radiobutton';
+
+// angular modules
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
+
+
+// primeng modules
+
 import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputTextModule } from 'primeng/inputtext';
+import { CheckboxModule } from 'primeng/checkbox';
+
+
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ToastModule } from 'primeng/toast';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgImageSliderModule } from 'ng-image-slider';
+
 import { MultiSelectModule } from 'primeng/multiselect';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastModule } from 'primeng/toast';
+
 
 @NgModule({
   declarations: [
     SharedComponent,
     NavbarComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    DeleteComponent
   ],
   imports: [
+
+
+
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
@@ -46,9 +71,24 @@ import { ToastModule } from 'primeng/toast';
     CardModule,
     PasswordModule,
     ButtonModule,
+
+    NgxChartsModule,
+    MatDialogModule,
+    MatDividerModule,
+    NgImageSliderModule,
+    MatMenuModule
+
+
     MultiSelectModule
+
   ],
   exports: [
+
+
+    NavbarComponent,
+    SidebarComponent,
+    DeleteComponent,
+
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
@@ -66,9 +106,17 @@ import { ToastModule } from 'primeng/toast';
     ButtonModule,
     NgxDropzoneModule,
     ToastModule,
+
+    NgxChartsModule,
+    MatDialogModule,
+    MatDividerModule,
+    NgImageSliderModule,
+    MatMenuModule
+
     SidebarComponent,
     NavbarComponent
     MultiSelectModule
+
 
   ]
 })

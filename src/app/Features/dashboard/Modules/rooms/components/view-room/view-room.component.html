@@ -1,0 +1,96 @@
+<section>
+    <div class="container vh-100">
+        <div class="row">
+            <div class="card border-0 shadow-sm
+                 bg-body-tertiary w-100 m-3 p-3 d-flex justify-content-center align-items-start">
+                <div class="pt-3 fs-2">
+                    <p routerLink="/dashboard/Rooms"><i class="fa-solid fa-chevron-left" style="color: #146ebe;"></i>
+                        Back to room list!</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-0 rounded-2 shadow-lg m-3"
+                    *ngIf="roomDetails?.room?.images.length > 0; else noImages">
+                    <owl-carousel-o [options]="customOptions">
+
+                        <ng-container *ngFor="let slide of roomDetails?.room?.images">
+                            <ng-template carouselSlide [id]="slide.id">
+                                <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title">
+                            </ng-template>
+                        </ng-container>
+
+                    </owl-carousel-o>
+
+                </div>
+
+                <ng-template #noImages>
+                    <div class="card border-0 shadow-lg m-3">
+                        <img src="./assets/Images/Presidential-Suite-Bedroom-twin.jpg" class="w-100 h-25  rounded-2">
+                    </div>
+                </ng-template>
+            </div>
+            <div class="col-md-6 my-5">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex flex-column">
+
+                        <p>Room name:</p>
+                    </div>
+                    <div>
+                        <p class="my-3 fw-bolder fs-2">{{roomDetails?.room?.roomNumber}}</p>
+                    </div>
+
+                </div>
+                <div class=" d-flex justify-content-between align-items-center">
+                    <p>
+                        Room price:
+                    </p>
+                    <p class="text-primary fs-2 fw-bold my-3 ">{{roomDetails?.room?.price | currency:
+                        'EGP':'symbol':'1.0-0'}}
+                    </p>
+
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>available discount :</p>
+                    <div class="alert alert-danger bg-opacity-50 fs-4 mx-2 ">
+                        {{roomDetails?.room?.discount}} %
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex flex-column">
+                        <p>Room capacity:</p>
+
+                    </div>
+                    <div>
+                        <p class="text-success"><span class="fs-2 fw-bold">{{roomDetails?.room?.capacity}}</span>members
+                        </p>
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex flex-column">
+                        <p class="my-3 ">Created by:</p>
+
+                    </div>
+                    <div>
+                        <p class=" fs-2 fw-bold">
+                            {{roomDetails?.room?.createdBy?.userName}}
+                        </p>
+                    </div>
+
+                </div>
+                <p-divider type="dashed"></p-divider>
+                <div>
+                    <div>Room facilities:
+                        <div class="my-3">
+                            <span class="mx-3 badge text-bg-primary px-3 py-2 h6"
+                                *ngFor="let item of roomDetails?.room?.facilities">
+                                {{item.name}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
