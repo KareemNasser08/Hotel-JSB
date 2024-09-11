@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class RoomsService {
 
   constructor(private _HttpClient: HttpClient) { }
-  
+
   onViewRoom(id: number): Observable<any> {
     return this._HttpClient.get(`admin/rooms/${id}`)
   }
