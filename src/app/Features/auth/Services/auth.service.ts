@@ -37,6 +37,7 @@ export class AuthService {
     this.onGetUserRole();
   }
 
+
   onGetUserRole() {
     if (
       localStorage.getItem('eToken') !== null
