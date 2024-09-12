@@ -4,6 +4,7 @@ import { AuthService } from '../../Services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -35,6 +36,7 @@ export class SignUpComponent {
       },
       error:(err)=>{
         console.log(err);
+        this.toastr.error(err.error.message,'Error!');
       },
       complete:()=>{
         console.log('completed req!');
@@ -47,10 +49,10 @@ export class SignUpComponent {
   constructor(
     private _authService: AuthService,
     private toastr:ToastrService,
-    private _Router:Router) { }
-  
-  // Photo
+    private _Router:Router,
+  ) { }
 
+  // Photo
   files: File[] = [];
   imgSource: any;
   onSelect(event: any) {
@@ -58,7 +60,6 @@ export class SignUpComponent {
     this.files.push(...event.addedFiles);
     this.imgSource = this.files[0];
   }
-
   onRemove(event: any) {
     this.files.splice(this.files.indexOf(event), 1);
     this.files = [];

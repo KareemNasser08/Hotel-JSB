@@ -1,6 +1,6 @@
 .auth ngx-dropzone {
-    width: 120px !important;
-    height: 120px !important;
+    width: 100px !important;
+    height: 100px !important;
     border-radius: 50% !important;
     border-color: var(--main-color) !important;
     overflow: hidden !important;
@@ -16,8 +16,8 @@
 }
 
 .auth ngx-dropzone-image-preview {
-    height: 120px !important;
-    min-height: 120px !important;
+    height: 100px !important;
+    min-height: 100px !important;
     margin: 0 !important;
 }
 

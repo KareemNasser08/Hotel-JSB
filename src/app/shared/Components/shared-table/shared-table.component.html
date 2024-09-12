@@ -1,13 +1,28 @@
-<table class="table">
-    <thead>
+<div class="card">
+    <p-table
+        #dt
+        [columns]="headingArray"
+        [value]="dataArray"
+        dataKey="id"
+        [rowHover]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[5, 10, 25, 50]"
+        [paginator]="true"
+    >
+    <ng-template pTemplate="header" let-columns>
         <tr>
-            <th *ngFor="let head of headListArray">{{head}}</th>
+          <th *ngFor="let col of columns">
+            {{ col.headerTitle }}
+          </th>
         </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of gridListArray">
-            <td *ngFor="let head of headListArray">{{head}}--{{item}}</td>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+          <td *ngFor="let col of columns">
+            {{ rowData[col.headerKey] }}
+          </td>
         </tr>
-    </tbody>
-
-</table>
+      </ng-template>
+    </p-table>
+</div>

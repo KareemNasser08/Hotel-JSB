@@ -7,10 +7,10 @@ import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/
 })
 export class SharedTableComponent {
 
-  @Input() headListArray:any[]=[];
-  @Input() gridListArray:any[]=[];
+  @Input() headingArray:any[]=[];
+  @Input() dataArray:any[]=[];
 
 
-  
-
+  // headingArray = [{headerTitle:'Room Number', headerKey:'roomNumber'}]
+  // dataArray    = [{id: 455, roomNumber: 987}]
 }

@@ -10,16 +10,21 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./rooms.component.scss']
 })
 export class RoomsComponent implements OnInit {
-  // headArray = ['roomNumber','price', 'capacity', 'discount', 'facilities'];
-  // gridData:any;
-
-
   tableData: any;
+
+  headingList = [
+    {headerTitle: 'Room Number', headerKey:'roomNumber'},
+    {headerTitle: 'Price', headerKey:'price'},
+    {headerTitle: 'Discount', headerKey:'discount'},
+    {headerTitle: 'Capacity', headerKey:'capacity'},
+    {headerTitle: 'Facilities', headerKey:'facilities'},
+  ];
 
   constructor(
     private _RoomsService: RoomsService,
 
   ) { }
+  
   ngOnInit(): void {
     this.onGetAllRooms();
   }
@@ -28,14 +33,17 @@ export class RoomsComponent implements OnInit {
     let params = {
       page: 1,
       size: 10000
-    }
+    };
     this._RoomsService.getAllRooms(params).subscribe({
       next: (res) => {
-        console.log(res);
-        this.tableData = res.data.rooms;
-        console.log(this.tableData);
+        this.tableData = res.data.rooms.map((room: { facilities: any[]; }) => {
+          return {
+            ...room,
+            facilities: room.facilities.map((facility: { name: any; }) => facility.name).join(', ')
+          };
+        });
       }
-    })
+    });
   }
 
 
