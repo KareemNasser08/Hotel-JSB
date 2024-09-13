@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { TableColumn } from './interface/table-column';
 
 @Component({
   selector: 'app-shared-table',
@@ -7,10 +8,7 @@ import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/
 })
 export class SharedTableComponent {
 
-  @Input() headingArray:any[]=[];
-  @Input() dataArray:any[]=[];
+  @Input() columnList: TableColumn[] = [];
+  @Input() dataArray: any[] = [];
 
-
-  // headingArray = [{headerTitle:'Room Number', headerKey:'roomNumber'}]
-  // dataArray    = [{id: 455, roomNumber: 987}]
 }

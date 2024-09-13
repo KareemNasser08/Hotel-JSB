@@ -1,28 +1,27 @@
 <div class="card">
-    <p-table
-        #dt
-        [columns]="headingArray"
-        [value]="dataArray"
-        dataKey="id"
-        [rowHover]="true"
-        [rows]="5"
-        [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[5, 10, 25, 50]"
-        [paginator]="true"
-    >
+  <p-table #dt [columns]="columnList" [value]="dataArray" dataKey="id" [rowHover]="true" [rows]="5"
+    [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10, 25, 50]" [paginator]="true">
     <ng-template pTemplate="header" let-columns>
-        <tr>
-          <th *ngFor="let col of columns">
-            {{ col.headerTitle }}
-          </th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr>
-          <td *ngFor="let col of columns">
-            {{ rowData[col.headerKey] }}
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{ col.headerTitle }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          <ng-container [ngSwitch]="col.type">
+            <span *ngSwitchCase="'string'">{{ rowData[col.fieldKey] }}</span>
+            <span *ngSwitchCase="'arrayOfString'">{{ rowData[col.fieldKey].join(', ') }}</span>
+            <ng-container *ngSwitchCase="'arrayOfObject'">
+              <ng-container *ngFor="let item of rowData[col.fieldKey]">
+                <span>{{' '}}</span><p-tag severity="info" [value]="item[col.objectKey]"></p-tag>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
