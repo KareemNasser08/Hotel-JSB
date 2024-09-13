@@ -11,4 +11,17 @@ export class SharedTableComponent {
   @Input() columnList: TableColumn[] = [];
   @Input() dataArray: any[] = [];
 
+  @Output() actionClick = new EventEmitter<{
+    action: string;
+    item: any;
+  }>();
+item: any;
+
+  handleAction(action: string, item: any) {
+    this.actionClick.emit({ action, item });
+  }
+
+
+
+
 }
