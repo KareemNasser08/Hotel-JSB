@@ -12,11 +12,11 @@ export class AdsService {
   
   
   getAllAds():Observable<any>{
-    return this._HttpClient.get(`admin/ads`);
+    return this._HttpClient.get('admin/ads');
   }
   
   createAd(data: FormGroup):Observable<any>{
-    return this._HttpClient.post(`admin/ads`,data)
+    return this._HttpClient.post('admin/ads',data)
   }
 
   getAdDetails(id: string):Observable<any>{

@@ -47,10 +47,10 @@ export class AdsComponent {
 
   onGetAllAds() {
     this.adsService.getAllAds().subscribe({
-      next: (res) => {
+      next: (res:any) => {
         this.tableData = res.data.ads;
       },
-      error: (err) => {
+      error: (err:any) => {
         this.toastr.error('Error!', err.error.message);
       }
     });
