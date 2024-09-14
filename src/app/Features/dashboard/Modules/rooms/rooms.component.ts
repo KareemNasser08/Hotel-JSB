@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TableColumn } from 'src/app/shared/Components/shared-table/interface/table-column';
+import { DialogService } from 'primeng/dynamicdialog/dialogservice';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
 
 @Component({
   selector: 'app-rooms',
@@ -12,6 +15,7 @@ import { TableColumn } from 'src/app/shared/Components/shared-table/interface/ta
 })
 export class RoomsComponent implements OnInit {
   tableData: any;
+  ref: DynamicDialogRef | undefined;
 
   columns: TableColumn[] = [
     { headerTitle: 'Room Number', fieldKey: 'roomNumber', type: 'string', },
@@ -33,7 +37,8 @@ export class RoomsComponent implements OnInit {
   constructor(
     private _RoomsService: RoomsService,
     private _ToastrService: ToastrService,
-    private _Router: Router
+    private _Router: Router,
+    public dialogService: DialogService,
 
   ) { }
 
@@ -63,6 +68,14 @@ export class RoomsComponent implements OnInit {
   editRoom(id: string) {
     this._Router.navigate(['dashboard/Rooms/edit/', id]);
   }
+  deleteRoom(item:any){
+    this.ref = this.dialogService.open(DeleteComponent, {
+      width: '70%',
+      contentStyle: {"max-height": "500px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+
+  }
 
   onActionClick(action: string, item: any) {
     switch (action) {
@@ -72,9 +85,9 @@ export class RoomsComponent implements OnInit {
       case 'view':
         this.viewRoom(item._id);
         break;
-      // case 'delete':
-      //   this.deleteProject(item);
-      //   break;
+      case 'delete':
+        this.deleteRoom(item);
+        break;
     }
   }
 
