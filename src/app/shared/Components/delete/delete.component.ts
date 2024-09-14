@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-delete',
@@ -14,21 +15,19 @@ export class DeleteComponent implements OnInit {
 
 
   constructor(
-    public dialogRef: MatDialogRef<DeleteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number; name: string },
+    public ref: DynamicDialogRef, public config: DynamicDialogConfig
   ) { }
 
   ngOnInit(): void {
-    this.id = this.data.id;
-    this.name = this.data.name;
+
   }
 
   onClose(): void {
-    this.dialogRef.close();
+   
   }
 
-  onDlete(): void {
-    this.dialogRef.close({ id: this.id });
+  onDlete(id:number): void {
+    this.ref.close(id);
   }
 
 }
