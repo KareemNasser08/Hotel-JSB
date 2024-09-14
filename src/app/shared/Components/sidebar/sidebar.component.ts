@@ -27,6 +27,12 @@ export class SidebarComponent implements OnInit {
       isActive: true,
     },
     {
+      title: 'Room Facilities',
+      icon: 'room_preferences',
+      link: '/dashboard/Rooms-Facilities',
+      isActive: true,
+    },
+    {
       title: 'Ads',
       icon: 'group',
       link: '/dashboard/Ads',
@@ -38,6 +44,7 @@ export class SidebarComponent implements OnInit {
       link: '/dashboard/Booking-Facilities',
       isActive: true,
     },
+
 
   ];
 

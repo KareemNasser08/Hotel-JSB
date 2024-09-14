@@ -8,7 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
-import { NgImageSliderModule } from 'ng-image-slider';
+
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { LoaderInterceptor } from './Core/Interceptors/Loader/loader.interceptor';
@@ -26,7 +26,7 @@ import { GlobalInterceptor } from './Core/Interceptors/Global/global.interceptor
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
-    NgImageSliderModule,
+
     CarouselModule
   ],
   providers: [

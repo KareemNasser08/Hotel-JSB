@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 // components
 import { SharedRoutingModule } from './shared-routing.module';
@@ -20,7 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { PrimeIcons } from 'primeng/api';
+import { ChartModule } from 'primeng/chart';
 
 // primeng modules
 
@@ -35,12 +37,14 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastModule } from 'primeng/toast';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { NgImageSliderModule } from 'ng-image-slider';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SharedTableComponent } from './Components/shared-table/shared-table.component';
 import { TableModule } from 'primeng/table';
 import { MenuModule } from 'primeng/menu';
 import { TagModule } from 'primeng/tag';
+import { DropdownModule } from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
+
 
 @NgModule({
   declarations: [
@@ -70,17 +74,18 @@ import { TagModule } from 'primeng/tag';
     CardModule,
     PasswordModule,
     ButtonModule,
-
+    DropdownModule,
     NgxChartsModule,
     MatDialogModule,
     MatDividerModule,
-    NgImageSliderModule,
+    FormsModule,
     MatMenuModule,
     TableModule,
-
+    DialogModule,
     MultiSelectModule,
     MenuModule,
-    TagModule
+    TagModule,
+    ChartModule,
 
   ],
   exports: [
@@ -90,6 +95,7 @@ import { TagModule } from 'primeng/tag';
     DeleteComponent,
     SharedTableComponent,
 
+    FormsModule,
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
@@ -101,25 +107,24 @@ import { TagModule } from 'primeng/tag';
     ReactiveFormsModule,
     MatButtonModule,
     DividerModule,
-
+    DropdownModule,
     PasswordModule,
     CardModule,
     ButtonModule,
     NgxDropzoneModule,
     ToastModule,
-
+    ChartModule,
     NgxChartsModule,
     MatDialogModule,
     MatDividerModule,
-    NgImageSliderModule,
     MatMenuModule,
     SidebarComponent,
     NavbarComponent,
     MultiSelectModule,
     TableModule,
     MenuModule,
-    TagModule
-
+    TagModule,
+    DialogModule,
 
   ]
 })

@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "primeicons/primeicons.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+.auth {
+  min-height: 100vh;
+  overflow-y: auto;
+  height: 100%;
+}
+.auth .image-layout {
+  max-height: 100vh;
+}
+.auth .image-layout img {
+  max-height: inherit;
+  width: 100%;
+}
+
+.inter-font {
+  font-family: "inter", sans-serif;
+}
+
+.montserrat-font {
+  font-family: "Montserrat", sans-serif;
+}
+
+.poppins-font {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: "Poppins", "Montserrat", sans-serif !important;
+}
+
+.main-btn {
+  background-color: #3252DF;
+  color: white;
+  box-shadow: 5px 5px 10px rgba(50, 82, 223, 0.3);
+  transition: all 0.5s;
+  margin-top: 2rem;
+}
+.main-btn:hover {
+  opacity: 0.7;
+}
+
+.links {
+  display: flex;
+}
+.links a {
+  text-decoration: none;
+  color: #7B88A3;
+  transition: all 0.5s;
+}
+.links a:hover {
+  color: #4c4e54;
+}
+
+:root {
+  --main-color: #3252DF;
+  --second-color: #7B88A3;
+  --hvr-color: #1A1B1E2B;
+}
+
+.main-txt {
+  color: var(--main-color);
+}
+
+.second-txt {
+  color: var(--second-color);
+}
+
+.bg-sidebar-color {
+  background-color: var(--main-color);
+}
+
+.auth ngx-dropzone {
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50% !important;
+  border-color: var(--main-color) !important;
+  overflow: hidden !important;
+  justify-content: center !important;
+  background-color: transparent !important;
+}
+
+.auth ngx-dropzone-preview {
+  height: 100% !important;
+  min-height: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+}
+
+.auth ngx-dropzone-image-preview {
+  height: 120px !important;
+  min-height: 120px !important;
+  margin: 0 !important;
+}
+
+.auth ngx-dropzone-remove-badge {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.side-bar {
+  min-height: 100vh;
+  height: 100%;
+}
+.side-bar .menu .item {
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  margin: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.side-bar .menu .item:hover {
+  background-color: var(--hvr-color);
+  color: white;
+  text-decoration: none !important;
+}
+.side-bar .menu .active {
+  background-color: var(--hvr-color);
+  color: white;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  max-height: 100vh;
+}/*# sourceMappingURL=layout.css.map */
