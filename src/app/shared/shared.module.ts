@@ -49,7 +49,7 @@ import { TagModule } from 'primeng/tag';
     SidebarComponent,
     FooterComponent,
     DeleteComponent,
-    SharedTableComponent
+    SharedTableComponent,
   ],
   imports: [
 
