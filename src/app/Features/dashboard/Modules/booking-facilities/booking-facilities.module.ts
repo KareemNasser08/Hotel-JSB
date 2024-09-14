@@ -3,18 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { BookingFacilitiesRoutingModule } from './booking-facilities-routing.module';
 import { BookingFacilitiesComponent } from './booking-facilities.component';
-import { BookingListComponent } from './components/booking-list/booking-list.component';
+import { DeleteFacilityComponent } from './components/delete-facility/delete-facility.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [
     BookingFacilitiesComponent,
-    BookingListComponent,
+    DeleteFacilityComponent,
 
   ],
   imports: [
     CommonModule,
-    BookingFacilitiesRoutingModule
+    BookingFacilitiesRoutingModule,
+    SharedModule
   ]
 })
 export class BookingFacilitiesModule { }
