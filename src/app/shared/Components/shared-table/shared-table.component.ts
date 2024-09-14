@@ -20,4 +20,10 @@ item: any;
   handleAction(action: string, item: any) {
     this.actionClick.emit({ action, item });
   }
+
+
+  getNestedValue(obj: any, fieldKey: string): any {
+    return fieldKey.split('.').reduce((o, i) => o[i], obj);
+  }
+
 }

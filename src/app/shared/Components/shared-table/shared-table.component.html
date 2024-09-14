@@ -23,28 +23,30 @@
       <tr>
         <td *ngFor="let col of columns">
           <ng-container [ngSwitch]="col.type">
-            <span *ngSwitchCase="'string'">{{ rowData[col.fieldKey] }}</span>
+            <span *ngSwitchCase="'string'">{{ getNestedValue(rowData, col.fieldKey) }}</span>
+            <span *ngSwitchCase="'boolean'">{{ getNestedValue(rowData, col.fieldKey) ? 'Yes' : 'No' }}</span>
+            <span *ngSwitchCase="'arrayOfString'">{{ getNestedValue(rowData, col.fieldKey).join(', ') }}</span>
+            <!-- <span *ngSwitchCase="'string'">{{ rowData[col.fieldKey] }}</span> -->
             <img *ngSwitchCase="'image'" src={{rowData[col.fieldKey]}} alt="">
-            <span *ngSwitchCase="'arrayOfString'">{{ rowData[col.fieldKey].join(', ') }}</span>
+            <!-- <span *ngSwitchCase="'arrayOfString'">{{ rowData[col.fieldKey].join(', ') }}</span> -->
             <ng-container *ngSwitchCase="'arrayOfObject'">
-              <ng-container *ngFor="let item of rowData[col.fieldKey]">
+              <ng-container *ngFor="let item of getNestedValue(rowData, col.fieldKey)">
                 <span>{{' '}}</span><p-tag severity="info" [value]="item[col.objectKey]"></p-tag>
               </ng-container>
             </ng-container>
           </ng-container>
           <ng-container *ngIf="col.actions">
-
             <button mat-icon-button [matMenuTriggerFor]="menu">
               <mat-icon>more_vert</mat-icon>
             </button>
-            
             <mat-menu #menu="matMenu">
               <button mat-menu-item *ngFor="let action of col.actions" (click)="handleAction(action.key, rowData)">
-                <mat-icon>{{ action.icon}}</mat-icon>
-                {{action.key | titlecase}}
+                <mat-icon>{{ action.icon }}</mat-icon>
+                {{ action.key | titlecase }}
               </button>
             </mat-menu>
           </ng-container>
+
         </td>
 
 

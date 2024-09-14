@@ -41,6 +41,7 @@ import { SharedTableComponent } from './Components/shared-table/shared-table.com
 import { TableModule } from 'primeng/table';
 import { MenuModule } from 'primeng/menu';
 import { TagModule } from 'primeng/tag';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [
@@ -80,8 +81,8 @@ import { TagModule } from 'primeng/tag';
 
     MultiSelectModule,
     MenuModule,
-    TagModule
-
+    TagModule,
+    DynamicDialogModule
   ],
   exports: [
     //Components
@@ -118,8 +119,8 @@ import { TagModule } from 'primeng/tag';
     MultiSelectModule,
     TableModule,
     MenuModule,
-    TagModule
-
+    TagModule,
+    DynamicDialogModule
 
   ]
 })
