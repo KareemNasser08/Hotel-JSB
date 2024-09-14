@@ -6,19 +6,19 @@
   color: whitesmoke;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 20px;
   text-decoration: none;
-  margin: 8px;
+  margin: 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 .side-bar .menu .item:hover {
-  background-color: var(--hvr-color);
+  background-color: var(--second-color);
   color: white;
   text-decoration: none !important;
 }
 .side-bar .menu .active {
-  background-color: var(--hvr-color);
+  background-color: var(--second-color);
   color: white;
 }/*# sourceMappingURL=sidebar.css.map */
