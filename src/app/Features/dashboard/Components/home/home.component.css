@@ -1,0 +1,11 @@
+.card-box div {
+  background-color: #ac0170 !important;
+  color: white;
+  border-radius: 6px;
+  padding: 2rem;
+}
+
+.card-box {
+  margin-top: 3rem;
+  border: none;
+}/*# sourceMappingURL=home.component.css.map */
