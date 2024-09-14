@@ -42,6 +42,8 @@ import { TableModule } from 'primeng/table';
 import { MenuModule } from 'primeng/menu';
 import { TagModule } from 'primeng/tag';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { MessagesModule } from 'primeng/messages';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,9 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     MultiSelectModule,
     MenuModule,
     TagModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    DropdownModule
+    
   ],
   exports: [
     //Components
@@ -120,8 +124,9 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     TableModule,
     MenuModule,
     TagModule,
-    DynamicDialogModule
-
+    DynamicDialogModule,
+    MessagesModule,
+    DropdownModule
   ]
 })
 export class SharedModule { }

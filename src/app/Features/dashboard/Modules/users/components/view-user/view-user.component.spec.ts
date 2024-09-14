@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddNewAdComponent } from './add-new-ad.component';
+import { ViewUserComponent } from './view-user.component';
 
-describe('AddNewAdComponent', () => {
-  let component: AddNewAdComponent;
-  let fixture: ComponentFixture<AddNewAdComponent>;
+describe('ViewUserComponent', () => {
+  let component: ViewUserComponent;
+  let fixture: ComponentFixture<ViewUserComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AddNewAdComponent]
+      declarations: [ViewUserComponent]
     });
-    fixture = TestBed.createComponent(AddNewAdComponent);
+    fixture = TestBed.createComponent(ViewUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

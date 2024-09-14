@@ -4,7 +4,6 @@ import { AdsService } from './services/ads.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
-import { AddNewAdComponent } from './Components/add-new-ad/add-new-ad.component';
 import { DeleteAdComponent } from './Components/delete-ad/delete-ad.component';
 
 @Component({
@@ -37,7 +36,7 @@ export class AdsComponent {
   constructor(
     private adsService: AdsService,
     private toastr: ToastrService,
-    private router: Router,
+    private _Router: Router,
     public dialogService: DialogService
   ) { }
 
@@ -70,8 +69,21 @@ export class AdsComponent {
     });
   }
 
+  viewAd(id: string) {
+    this._Router.navigate(['dashboard/Ads/view/', id]);
+  }
+  editAd(id: string) {
+    this._Router.navigate(['dashboard/Ads/edit/', id]);
+  }
+
   onActionClick(action: string, item: any) {
     switch (action) {
+      case 'edit':
+        this.editAd(item._id);
+        break;
+      case 'view':
+        this.viewAd(item._id);
+        break;
       case 'delete':
         this.deleteAd(item._id);
         break;

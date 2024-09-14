@@ -26,6 +26,9 @@
             <span *ngSwitchCase="'string'">{{ getNestedValue(rowData, col.fieldKey) }}</span>
             <span *ngSwitchCase="'boolean'">{{ getNestedValue(rowData, col.fieldKey) ? 'Yes' : 'No' }}</span>
             <span *ngSwitchCase="'arrayOfString'">{{ getNestedValue(rowData, col.fieldKey).join(', ') }}</span>
+            <!-- <span *ngSwitchCase="'string'">{{ rowData[col.fieldKey] }}</span> -->
+            <img *ngSwitchCase="'image'" src={{rowData[col.fieldKey]}} alt="">
+            <!-- <span *ngSwitchCase="'arrayOfString'">{{ rowData[col.fieldKey].join(', ') }}</span> -->
             <ng-container *ngSwitchCase="'arrayOfObject'">
               <ng-container *ngFor="let item of getNestedValue(rowData, col.fieldKey)">
                 <span>{{' '}}</span><p-tag severity="info" [value]="item[col.objectKey]"></p-tag>
