@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from './services/users.service';
+import { TableColumn } from 'src/app/shared/Components/shared-table/interface/table-column';
 
 @Component({
   selector: 'app-users',
@@ -10,18 +11,26 @@ import { UsersService } from './services/users.service';
 export class UsersComponent implements OnInit {
   tableData: any;
 
-  headingList = [
-    {headerTitle: 'User Name', headerKey:'userName'},
-    {headerTitle: 'Image', headerKey:'profileImage'},
-    {headerTitle: 'email', headerKey:'email'},
-    {headerTitle: 'Country', headerKey:'country'},
-    {headerTitle: 'Phone Number', headerKey:'phoneNumber'},
-    {headerTitle: 'Role', headerKey:'role'},
+  columns :TableColumn[] = [
+    {headerTitle: 'User Name', fieldKey:'userName',type: 'string'},
+    {headerTitle: 'Image', fieldKey:'profileImage',type: 'image'},
+    {headerTitle: 'email', fieldKey:'email',type: 'string'},
+    {headerTitle: 'Country', fieldKey:'country',type: 'string'},
+    {headerTitle: 'Phone Number', fieldKey:'phoneNumber',type: 'string'},
+    {headerTitle: 'Role', fieldKey:'role',type: 'string'},
+    {
+      headerTitle: 'Actions', fieldKey: 'actions',
+      actions: [
+        { key: 'view', icon: 'visibility' },
+        { key: 'delete', icon: 'delete' },
+      ],
+
+    },
   ];
 
   constructor(
     private _UsersService: UsersService,
-
+    private _Router: Router
   ) { }
   
   ngOnInit(): void {
@@ -43,6 +52,19 @@ export class UsersComponent implements OnInit {
       }
     });
   }
-
+  viewUser(id: string) {
+    console.log(id,'before route')
+    this._Router.navigate(['dashboard/Users/view/', id]);
+  }
+  onActionClick(action: string, item: any) {
+    switch (action) {
+      case 'view':
+        this.viewUser(item._id);
+        break;
+      // case 'delete':
+      //   this.deleteProject(item);
+      //   break;
+    }
+  }
 
 }

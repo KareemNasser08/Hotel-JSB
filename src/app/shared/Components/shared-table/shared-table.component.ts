@@ -20,8 +20,4 @@ item: any;
   handleAction(action: string, item: any) {
     this.actionClick.emit({ action, item });
   }
-
-
-
-
 }

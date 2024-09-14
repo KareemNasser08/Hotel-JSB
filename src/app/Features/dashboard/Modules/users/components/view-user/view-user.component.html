@@ -1,0 +1,46 @@
+<section>
+    <div class="container vh-100">
+        <div class="row justify-content-center">
+            <span class="shadow-sm bg-body-tertiary m-2 p-2 ">
+                <a routerLink="/dashboard/users" class="pointer text-decoration-none">
+                    <i class="fa-solid fa-chevron-left" style="color: #146ebe;"></i> Back to users list!
+                </a>
+            </span>
+            <div class="col-md-6 my-5">
+                <div class="d-flex ">
+                    <p>User name:</p>
+                    <p class="my-3 fw-bolder fs-2">{{userDetails?.user?.userName}}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>Room price:</p>
+                    <p class="text-primary fs-2 fw-bold my-3">{{userDetails?.room?.price | currency:
+                        'EGP':'symbol':'1.0-0'}}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>Available discount:</p>
+                    <div class="alert alert-danger bg-opacity-50 fs-4 mx-2">{{userDetails?.room?.discount}}%</div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>Room capacity:</p>
+                    <p class="text-success"><span class="fs-2 fw-bold">{{userDetails?.room?.capacity}}</span> members
+                    </p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="my-3">Created by:</p>
+                    <p class="fs-2 fw-bold">{{userDetails?.room?.createdBy?.userName}}</p>
+                </div>
+                <p-divider type="dashed"></p-divider>
+                <div>
+                    <div>Room facilities:
+                        <div class="my-3">
+                            <span class="mx-3 badge text-bg-primary px-3 py-2 h6"
+                                *ngFor="let item of userDetails?.room?.facilities">
+                                {{item.name}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

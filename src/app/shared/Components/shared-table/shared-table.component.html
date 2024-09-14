@@ -24,6 +24,7 @@
         <td *ngFor="let col of columns">
           <ng-container [ngSwitch]="col.type">
             <span *ngSwitchCase="'string'">{{ rowData[col.fieldKey] }}</span>
+            <img *ngSwitchCase="'image'" src={{rowData[col.fieldKey]}} alt="">
             <span *ngSwitchCase="'arrayOfString'">{{ rowData[col.fieldKey].join(', ') }}</span>
             <ng-container *ngSwitchCase="'arrayOfObject'">
               <ng-container *ngFor="let item of rowData[col.fieldKey]">
