@@ -1,7 +1,9 @@
-<section class="bg-sidebar-color side-bar overflow-y-auto pt-5 position-relative">
-    <div class="position-absolute d-flex align-items-center justify-content-center pointer">
+<section class="bg-sidebar-color side-bar overflow-y-auto pt-2">
+    <div class="bg-white text-center rounded-2 p-3 m-2">
+        <img src="../../../../assets/Images/Staycation.png" alt="">
     </div>
-    <div class="menu">
+    <div class="menu mt-4">
+
         <ng-container *ngFor="let item of menu">
             <a *ngIf="item.isActive" class="item py-3 px-4" [routerLink]="item.link" routerLinkActive="active">
                 <mat-icon matSuffix>{{ item.icon }}</mat-icon>

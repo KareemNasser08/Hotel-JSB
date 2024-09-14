@@ -42,9 +42,12 @@ import { SharedTableComponent } from './Components/shared-table/shared-table.com
 import { TableModule } from 'primeng/table';
 import { MenuModule } from 'primeng/menu';
 import { TagModule } from 'primeng/tag';
-import { DropdownModule } from 'primeng/dropdown';
+
 import { DialogModule } from 'primeng/dialog';
 
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { MessagesModule } from 'primeng/messages';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,7 @@ import { DialogModule } from 'primeng/dialog';
     SidebarComponent,
     FooterComponent,
     DeleteComponent,
-    SharedTableComponent
+    SharedTableComponent,
   ],
   imports: [
 
@@ -85,7 +88,13 @@ import { DialogModule } from 'primeng/dialog';
     MultiSelectModule,
     MenuModule,
     TagModule,
+
     ChartModule,
+
+
+    DynamicDialogModule,
+    DropdownModule
+    
 
   ],
   exports: [
@@ -124,7 +133,11 @@ import { DialogModule } from 'primeng/dialog';
     TableModule,
     MenuModule,
     TagModule,
+
     DialogModule,
+    DynamicDialogModule,
+    MessagesModule,
+    DropdownModule
 
   ]
 })

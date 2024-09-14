@@ -1,0 +1,48 @@
+<section>
+    <div class="container-fluid justify-content-center align-items-center p-3 ">
+  
+      <form class="example-form w-50 mx-auto" [formGroup]="addEditAdForm">
+        <div class="row">
+            <div class="mt-4 col-md-12 d-flex flex-column justify-content-center">
+
+                <label for="room">Room Number</label>
+                <p-dropdown [options]="roomsDropDown" formControlName="room" placeholder="Room number"
+                  optionLabel="roomNumber" optionValue="_id" [filter]="true" filterBy="name" [showClear]="true"></p-dropdown>
+                <small class="block p-error" *ngIf="addEditAdForm.controls.room.invalid &&
+                             (addEditAdForm.controls.room.dirty || addEditAdForm.controls.room.touched)">
+                  <div *ngIf="addEditAdForm.controls.room.errors?.['required']">Room number is required</div>
+                </small>
+              </div>
+          <div class="mt-4 col-md-12">
+            <label for="discount">Discount</label>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">$</span>
+                <input type="text" pInputText placeholder="Discount" formControlName="discount" />
+                <span class="p-inputgroup-addon">.00</span>
+            </div>
+            <small class="block p-error" *ngIf="addEditAdForm.controls.discount.invalid &&
+                           (addEditAdForm.controls.discount.dirty || addEditAdForm.controls.discount.touched)">
+              <div *ngIf="addEditAdForm.controls.discount.errors?.['required']">Discount is required</div>
+            </small>
+          </div>
+          <div class="mt-4 col-md-12 d-flex flex-column justify-content-center">
+
+            <label for="isActive">Status</label>
+            <p-dropdown [options]="roomsDropDown" formControlName="isActive" placeholder="Status"
+              optionLabel="name" optionValue="_id" ></p-dropdown>
+            <small class="block p-error" *ngIf="addEditAdForm.controls.isActive.invalid &&
+                         (addEditAdForm.controls.isActive.dirty || addEditAdForm.controls.isActive.touched)">
+              <div *ngIf="addEditAdForm.controls.isActive.errors?.['required']">Status is required</div>
+            </small>
+          </div>
+
+        <div class="d-flex align-items-center justify-content-end gap-3 mt-5 ">
+          <p-button label="Cancel" severity="secondary" type="reset" (click)="navigateToAdsList()"></p-button>
+          <p-button label="Save" type="submit" (click)="onSubmit(addEditAdForm)"></p-button>
+  
+        </div>
+    </div>
+    </form>
+  
+</div>
+  </section>

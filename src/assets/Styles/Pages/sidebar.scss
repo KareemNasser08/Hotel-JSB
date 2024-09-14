@@ -7,22 +7,22 @@
         color: whitesmoke;
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 8px;
         text-decoration: none;
-        margin: 10px;
+        margin: 8px;
         border-radius: 5px;
         cursor: pointer;
         transition: all .3s ease-in-out;
   
         &:hover {
-          background-color: var(--second-color);
+          background-color: var(--hvr-color);
           color: white;
           text-decoration: none !important;
         }
       }
   
       .active {
-        background-color: var(--second-color);
+        background-color: var(--hvr-color);
         color: white;
       }
     }

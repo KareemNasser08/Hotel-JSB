@@ -11,9 +11,12 @@ export class BookingService {
   constructor(private _HttpClient: HttpClient) { }
 
 
+  getAllFacilities():Observable<any>{
+    return this._HttpClient.get(`admin/room-facilities`);
+  }
 
-  deletebooking(id: number): Observable<any> {
-    return this._HttpClient.delete(`admin/booking/${id}`);
+  deleteFacility(id: string): Observable<any> {
+    return this._HttpClient.delete(`admin/room-facilities/${id}`);
   }
 
 }

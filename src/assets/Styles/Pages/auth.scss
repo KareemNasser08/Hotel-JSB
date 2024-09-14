@@ -1,17 +1,36 @@
 .auth {
+    max-height: 100vh;
     min-height: 100vh;
-    overflow-y: auto;
     height: 100%;
+    overflow-y: auto;
 
-    .image-layout {
-        max-height: 100vh;
-
-        img {
-            max-height: inherit;
-            width: 100%;
-        }
+    .container-fluid,
+    .row,
+    .col-md-6 {
+        max-height: inherit;
+        min-height: inherit;
+        height: 100%;
     }
 
+    .col-md-6 {
+        .form-container {
+            padding: 15px;
+            height: 100%;
+            overflow-y: auto;
 
+        }
 
+        .image-layout {
+            max-height: inherit;
+            width: 100%;
+            padding: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                max-height: inherit !important;
+            }
+        }
+    }
 }

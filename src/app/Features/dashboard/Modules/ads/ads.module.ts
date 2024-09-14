@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
 
 import { AdsRoutingModule } from './ads-routing.module';
 import { AdsComponent } from './ads.component';
-import { MatDialog } from '@angular/material/dialog';
-import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
-import { AdsService } from './services/ads.service';
-import { ToastrService } from 'ngx-toastr';
-import { AdsListComponent } from './components/ads-list/ads-list.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { DeleteAdComponent } from './Components/delete-ad/delete-ad.component';
+import { AddEditAdComponent } from './Components/add-edit-ad/add-edit-ad.component';
+
 
 
 @NgModule({
   declarations: [
     AdsComponent,
-    AdsListComponent
+    DeleteAdComponent,
+    AddEditAdComponent,
   ],
   imports: [
     CommonModule,
-    AdsRoutingModule
+    AdsRoutingModule,
+    SharedModule
   ]
 })
 export class AdsModule {

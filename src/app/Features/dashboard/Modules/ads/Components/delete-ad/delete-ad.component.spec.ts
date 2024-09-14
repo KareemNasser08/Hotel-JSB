@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdsListComponent } from './ads-list.component';
+import { DeleteAdComponent } from './delete-ad.component';
 
-describe('AdsListComponent', () => {
-  let component: AdsListComponent;
-  let fixture: ComponentFixture<AdsListComponent>;
+describe('DeleteAdComponent', () => {
+  let component: DeleteAdComponent;
+  let fixture: ComponentFixture<DeleteAdComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdsListComponent]
+      declarations: [DeleteAdComponent]
     });
-    fixture = TestBed.createComponent(AdsListComponent);
+    fixture = TestBed.createComponent(DeleteAdComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
