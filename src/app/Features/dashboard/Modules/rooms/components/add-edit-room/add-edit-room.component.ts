@@ -11,13 +11,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./add-edit-room.component.scss']
 })
 export class AddEditRoomComponent implements OnInit {
-
-
-
-
-
-
-
   roomId: string = '';
 
   files: File[] = [];
@@ -87,16 +80,9 @@ export class AddEditRoomComponent implements OnInit {
             // imgs:res.imgs,
             facilities: res.data.room.facilities.map((c: any) => c._id),
           }
-
-
-
         );
       }, error: () => {
-
       }, complete: () => {
-
-
-
       }
     })
 

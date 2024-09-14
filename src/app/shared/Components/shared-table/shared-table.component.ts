@@ -22,6 +22,8 @@ item: any;
   }
 
 
-
+  getNestedValue(obj: any, fieldKey: string): any {
+    return fieldKey.split('.').reduce((o, i) => o[i], obj);
+  }
 
 }

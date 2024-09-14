@@ -1,0 +1,15 @@
+<section class="mt-3">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <h3 class="m-0 fw-semibold fs-4">Ads Table Details</h3>
+            <p class="m-0 fs-6 fw-normal">You can check all details</p>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" routerLink="add-edit-room">Add new ads</button>
+        </div>
+    </div>
+
+    <div class="mt-2">
+        <app-shared-table [columnList]="columns" [dataArray]="tableData" (actionClick)="onActionClick($event.action, $event.item)"></app-shared-table>
+    </div>
+</section>
