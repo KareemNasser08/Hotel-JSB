@@ -31,5 +31,4 @@ export class RoomsService {
   EditRoom(id: string, data: FormData): Observable<any> {
     return this._HttpClient.put(`admin/rooms/${id}`, data);
   }
-
 }

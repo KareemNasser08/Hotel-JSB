@@ -23,6 +23,14 @@ export class AdsService {
     return this._HttpClient.get(`admin/ads${id}`);
   }
 
+  addAd(data: FormData): Observable<any> {
+    return this._HttpClient.post('admin/ads', data);
+  }
+
+  editAd(id: string, data: FormData): Observable<any> {
+      return this._HttpClient.put(`admin/ads/${id}`, data);
+    }
+
   deleteAd(id: number): Observable<any> {
     return this._HttpClient.delete(`admin/ads/${id}`);
   }

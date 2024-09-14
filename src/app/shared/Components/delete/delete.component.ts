@@ -19,15 +19,15 @@ export class DeleteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
   }
 
+  
   onClose(): void {
    
   }
 
-  onDlete(id:number): void {
-    this.ref.close(id);
+  onDelete(): void {
+    this.ref.close(this.config.data?._id);
   }
 
 }
