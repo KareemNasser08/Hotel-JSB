@@ -22,17 +22,6 @@
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
         <td *ngFor="let col of columns">
-          <!-- <ng-container [ngSwitch]="col.type">
-            <span *ngSwitchCase="'string'">{{ rowData[col.fieldKey] }}</span>
-            <span *ngSwitchCase="'boolean'">{{ rowData[col.fieldKey] ? 'Yes' : 'No' }}</span>
-
-            <span *ngSwitchCase="'arrayOfString'">{{ rowData[col.fieldKey].join(', ') }}</span>
-            <ng-container *ngSwitchCase="'arrayOfObject'">
-              <ng-container *ngFor="let item of rowData[col.fieldKey]">
-                <span>{{' '}}</span><p-tag severity="info" [value]="item[col.objectKey]"></p-tag>
-              </ng-container>
-            </ng-container>
-          </ng-container> -->
           <ng-container [ngSwitch]="col.type">
             <span *ngSwitchCase="'string'">{{ getNestedValue(rowData, col.fieldKey) }}</span>
             <span *ngSwitchCase="'boolean'">{{ getNestedValue(rowData, col.fieldKey) ? 'Yes' : 'No' }}</span>

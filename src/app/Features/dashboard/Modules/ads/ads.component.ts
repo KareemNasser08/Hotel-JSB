@@ -11,7 +11,7 @@ import { DeleteAdComponent } from './Components/delete-ad/delete-ad.component';
   selector: 'app-ads',
   templateUrl: './ads.component.html',
   styleUrls: ['./ads.component.scss'],
-  providers: [DialogService], // أضف DialogService هنا
+  providers: [DialogService]
 
 })
 export class AdsComponent {
@@ -58,14 +58,14 @@ export class AdsComponent {
 
   deleteAd(id: string) {
     this.ref = this.dialogService.open(DeleteAdComponent, {
-      data: id,  // Pass the ad ID to the dialog component
+      data: id,  
       header: 'Delete Ad'
     });
 
-    // Listen for the dialog close event and check the result
+ 
     this.ref.onClose.subscribe((result) => {
       if (result) {
-        this.onGetAllAds();  // Refresh the table if the ad was deleted successfully
+        this.onGetAllAds();
       }
     });
   }
@@ -75,7 +75,7 @@ export class AdsComponent {
       case 'delete':
         this.deleteAd(item._id);
         break;
-      // Add other cases like view or edit if needed
+
     }
   }
 }
