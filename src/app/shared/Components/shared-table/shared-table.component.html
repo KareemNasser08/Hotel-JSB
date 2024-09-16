@@ -30,6 +30,9 @@
         <ng-container [ngSwitch]="col.type">
           <span *ngSwitchCase="'string'">{{ getNestedValue(rowData, col.fieldKey) }}</span>
           <span *ngSwitchCase="'boolean'">{{ getNestedValue(rowData, col.fieldKey) ? 'Yes' : 'No' }}</span>
+          <span *ngSwitchCase="'date'">
+            {{ getNestedValue(rowData, col.fieldKey) | date: col.format || 'dd/MM/yyyy' }}
+          </span>
           <span *ngSwitchCase="'arrayOfString'">{{ getNestedValue(rowData, col.fieldKey).join(', ') }}</span>
           <img *ngSwitchCase="'image'" src={{rowData[col.fieldKey]}} alt="">
 
