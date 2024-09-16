@@ -44,6 +44,7 @@ import { MenuModule } from 'primeng/menu';
 import { TagModule } from 'primeng/tag';
 
 import { DialogModule } from 'primeng/dialog';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { MessagesModule } from 'primeng/messages';
@@ -61,7 +62,7 @@ import { DropdownModule } from 'primeng/dropdown';
   imports: [
 
 
-
+    SplitButtonModule,
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
@@ -99,6 +100,7 @@ import { DropdownModule } from 'primeng/dropdown';
   ],
   exports: [
     //Components
+    SplitButtonModule,
     NavbarComponent,
     SidebarComponent,
     DeleteComponent,
