@@ -33,14 +33,13 @@
                                     </ngx-dropzone>
                                 </div>
                                 <form [formGroup]="signUpForm" (ngSubmit)="onSignUp(signUpForm)">
-
                                     <div class="row">
                                         <!-- username input -->
                                         <div class="col-md-6">
                                             <label class="fs-6 fw-semibold">User Name</label>
                                             <div class="my-1">
                                                 <input formControlName="userName" class="w-100" pInputText
-                                                    placeholder="Enter your name" placeholder="Please type here ..." />
+                                                    placeholder="Enter your name" placeholder="Enter your name" />
 
                                                 <div>
                                                     <small
@@ -60,12 +59,14 @@
                                         <div class="col-md-6">
                                             <label class="fs-6 fw-semibold">Email Address</label>
                                             <div class="my-1">
-                                                <input formControlName="email" class="w-100" pInputText type="email"
-                                                    placeholder="Username" placeholder="Please type here ..." />
-                                                <div
-                                                    *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid">
-                                                    <small class="text-danger">Please enter a valid email
-                                                        address</small>
+                                                <input formControlName="email" class="w-100" pInputText type="email" placeholder="Enter your e-mail" />
+                                                <div *ngSwitch="signUpForm.get('email')?.invalid">
+                                                    <small *ngSwitchCase="signUpForm.get('email')?.hasError('required')" class="text-danger">
+                                                        E-mail address is required
+                                                    </small>
+                                                    <small *ngSwitchCase="signUpForm.get('email')?.hasError('email')" class="text-danger">
+                                                        Please enter a valid email address
+                                                    </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -73,8 +74,7 @@
                                         <div class="col-md-6">
                                             <label class="fs-6 fw-semibold">Phone Number</label>
                                             <div class="my-1">
-                                                <input formControlName="phoneNumber" class=" w-100" pInputText
-                                                    placeholder="Username" placeholder="Please type here ..." />
+                                                <input formControlName="phoneNumber" class=" w-100" pInputText placeholder="Enter your phone number" />
                                                 <div>
                                                     <small
                                                         *ngIf="signUpForm.get('phoneNumber')?.touched && signUpForm.get('phoneNumber')?.hasError('pattern')"
@@ -93,8 +93,7 @@
                                         <div class="col-md-6">
                                             <label class="fs-6 fw-semibold">Country</label>
                                             <div class="my-1">
-                                                <input formControlName="country" class=" w-100" pInputText
-                                                    placeholder="Username" placeholder="Please type here ..." />
+                                                <input formControlName="country" class=" w-100" pInputText placeholder="Enter your country" />
                                             </div>
                                         </div>
                                         <!-- password input -->
@@ -127,7 +126,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-9 my-2 mx-auto">
-                                            <button class="btn btn-primary w-100">Sign up</button>
+                                            <button class="btn btn-primary w-100" [disabled]="signUpForm.invalid">Sign up</button>
                                         </div>
                                     </div>
                                 </form>
