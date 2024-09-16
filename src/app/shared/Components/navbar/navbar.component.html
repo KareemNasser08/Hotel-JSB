@@ -1,13 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <div class="m-3">
+        <a class="navbar-brand">
+            <div class="m-2">
                 <img src="../../../../assets/Images/Staycation.png" alt="">
             </div>
         </a>
-
         <div>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
                 <div *ngIf="!isAuthenticated">
                     <!-- Show this  if user is not authenticated (no token) -->
                     <div class="d-flex flex-row justify-content-center align-items-center">
@@ -47,16 +46,16 @@
                     <!-- Show this div if user is authenticated and the role is 'admin' -->
                     <div class="d-flex flex-row justify-content-center align-items-center">
                         <div>
-                            <img src="./assets/Images/Avatar.png" alt="" class="w-100 rounded">
+                            <img src="./assets/Images/Avatar.png" class="w-100 rounded">
                         </div>
                         <li class="nav-item">
                             <button mat-icon-button [matMenuTriggerFor]="adminMenu" aria-label="Admin Menu">
-                                <mat-icon>admin_panel_settings</mat-icon>
+                                <i class="pi pi-angle-down" style="font-size: 1rem"></i>
                             </button>
                             <mat-menu #adminMenu="matMenu">
-                                <button mat-menu-item>
-                                    <mat-icon>settings</mat-icon>
-                                    <span>Admin Settings</span>
+                                <button mat-menu-item class="d-flex align-items-center" (click)="signOut()">
+                                    <span class="me-3">Sign out</span>
+                                    <i class="pi pi-sign-out" style="font-size: 1rem"></i>
                                 </button>
                                 <button mat-menu-item>
                                     <mat-icon>supervised_user_circle</mat-icon>
@@ -64,9 +63,6 @@
                                 </button>
                             </mat-menu>
                         </li>
-                        <div>
-                            <button class="btn btn-danger mx-3" (click)="signOut()">SIGN OUT</button>
-                        </div>
                     </div>
                 </div>
             </ul>

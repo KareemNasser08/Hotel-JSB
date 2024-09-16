@@ -1,91 +1,144 @@
-<section class="auth">
-    <div class="container-fluid">
+<section class="auth-layout">
+    <div class="container-fluid h-100 ">
         <div class="row">
-            <div class="col-md-6 shadow-sm">
-                <div class="container p-2">
-                    <div class="p-3">
-                        <img src="./assets/Images/Staycation.png" alt="">
-                    </div>
-                    <div class="form-container">
-                        <div>
-                            <h3 class="fs-3 fw-bold">Sign up</h3>
-                            <p class="fw-semibold m-0">
-                                If you already have an account
-                            </p>
-                            <p class="fw-semibold m-0">
-                                You can <a class="text-danger text-decoration-none" routerLink="/auth/signin">Login
-                                    here!</a>
-                            </p>
-                        </div>
-                        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp(signUpForm)">
-                            <div class="d-flex justify-content-center my-2">
-                                <ngx-dropzone (change)="onSelect($event)">
-                                    <ngx-dropzone-label class="main-color">
-                                        <i class="pi pi-camera"></i>
-                                    </ngx-dropzone-label>
-                                    <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview"
-                                        *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
-                                        <ngx-dropzone-label> </ngx-dropzone-label>
-                                    </ngx-dropzone-image-preview>
-                                </ngx-dropzone>
+            <div class="col-md-6 formLayoutContainer overflow-auto">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 my-1">
+                            <div class="image-form">
+                                <img src="../../../../../assets/Images/Staycation.png"
+                                    class="shadow-sm py-3 px-5 rounded-3" role="button">
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="fs-6 fw-semibold">User Name</label>
-                                    <div class="my-1">
-                                        <input formControlName="userName" class="bg-body-tertiary w-100" pInputText
-                                            placeholder="Username" placeholder="Please type here ..." />
-                                    </div>
+                        </div>
+                        <div class="col-12 my-1">
+                            <div class="form-auth mt-1">
+                                <h4 class="fw-semibold fs-5">Sign up</h4>
+                                <p class="fs-6 m-0">If you already have an account</p>
+                                <p class="fs-6 m-0">
+                                    You can
+                                    <a class="text-danger text-decoration-none" routerLink="/auth/signin">
+                                        Sign in here!
+                                    </a>
+                                </p>
+                                <div class="d-flex justify-content-center my-2">
+                                    <ngx-dropzone (change)="onSelect($event)" >
+                                        <ngx-dropzone-label class="main-color">
+                                            <i class="pi pi-camera"></i>
+                                        </ngx-dropzone-label>
+                                        <ngx-dropzone-image-preview 
+                                            *ngFor="let f of files" [file]="f" [removable]="true"
+                                            (removed)="onRemove(f)">
+                                            <ngx-dropzone-label> </ngx-dropzone-label>
+                                        </ngx-dropzone-image-preview>
+                                    </ngx-dropzone>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="fs-6 fw-semibold">Email Address</label>
-                                    <div class="my-1">
-                                        <input formControlName="email" class="bg-body-tertiary w-100" pInputText
-                                            type="email" placeholder="Username" placeholder="Please type here ..." />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="fs-6 fw-semibold">Phone Number</label>
-                                    <div class="my-1">
-                                        <input formControlName="phoneNumber" class="bg-body-tertiary w-100" pInputText
-                                            placeholder="Username" placeholder="Please type here ..." />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="fs-6 fw-semibold">Country</label>
-                                    <div class="my-1">
-                                        <input formControlName="country" class="bg-body-tertiary w-100" pInputText
-                                            placeholder="Username" placeholder="Please type here ..." />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="fs-6 fw-semibold">Password</label>
-                                    <div class="my-1">
-                                        <div class="p-inputgroup">
-                                            <input pInputText placeholder="Enter password" type="password" />
-                                            <span class="p-inputgroup-addon pointer">
-                                                <i class="pi pi-eye"></i>
-                                            </span>
+                                <form [formGroup]="signUpForm" (ngSubmit)="onSignUp(signUpForm)">
+
+                                    <div class="row">
+                                        <!-- username input -->
+                                        <div class="col-md-6">
+                                            <label class="fs-6 fw-semibold">User Name</label>
+                                            <div class="my-1">
+                                                <input formControlName="userName" class="w-100" pInputText
+                                                    placeholder="Enter your name" placeholder="Please type here ..." />
+
+                                                <div>
+                                                    <small
+                                                        *ngIf="signUpForm.get('userName')?.touched && signUpForm.get('userName')?.hasError('pattern')"
+                                                        class="text-danger">
+                                                        Username must contain at least one capital letter and one digit
+                                                    </small>
+                                                    <small
+                                                        *ngIf="signUpForm.get('userName')?.touched && signUpForm.get('userName')?.hasError('required')"
+                                                        class="text-danger">
+                                                        Username is required
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- e-mail input -->
+                                        <div class="col-md-6">
+                                            <label class="fs-6 fw-semibold">Email Address</label>
+                                            <div class="my-1">
+                                                <input formControlName="email" class="w-100" pInputText type="email"
+                                                    placeholder="Username" placeholder="Please type here ..." />
+                                                <div
+                                                    *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid">
+                                                    <small class="text-danger">Please enter a valid email
+                                                        address</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- phone number input -->
+                                        <div class="col-md-6">
+                                            <label class="fs-6 fw-semibold">Phone Number</label>
+                                            <div class="my-1">
+                                                <input formControlName="phoneNumber" class=" w-100" pInputText
+                                                    placeholder="Username" placeholder="Please type here ..." />
+                                                <div>
+                                                    <small
+                                                        *ngIf="signUpForm.get('phoneNumber')?.touched && signUpForm.get('phoneNumber')?.hasError('pattern')"
+                                                        class="text-danger">
+                                                        Phone number must be a valid number (e.g., 01010505895)
+                                                    </small>
+                                                    <small
+                                                        *ngIf="signUpForm.get('phoneNumber')?.touched && signUpForm.get('phoneNumber')?.hasError('required')"
+                                                        class="text-danger">
+                                                        Phone number is required
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- country input -->
+                                        <div class="col-md-6">
+                                            <label class="fs-6 fw-semibold">Country</label>
+                                            <div class="my-1">
+                                                <input formControlName="country" class=" w-100" pInputText
+                                                    placeholder="Username" placeholder="Please type here ..." />
+                                            </div>
+                                        </div>
+                                        <!-- password input -->
+                                        <div class="col-md-6">
+                                            <label class="fs-6 fw-semibold">Password</label>
+                                            <div class="my-1">
+                                                <div class="p-inputgroup">
+                                                    <input pInputText placeholder="Enter your password"
+                                                        [type]="isHidePass?'password':'text'" formControlName="password"/>
+                                                    <span class="p-inputgroup-addon pointer rounded-end-2"
+                                                        (click)="isHidePass=!isHidePass">
+                                                        <i class="pi " [class]="isHidePass?'pi-eye-slash':'pi-eye'"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- confirm password input -->
+                                        <div class="col-md-6">
+                                            <label class="fs-6 fw-semibold">Confirm Password</label>
+                                            <div class="my-1">
+                                                <div class="p-inputgroup">
+                                                    <input pInputText placeholder="Confirm new password"
+                                                        [type]="isHideConfirmPass?'password':'text'" formControlName="confirmPassword"/>
+                                                    <span class="p-inputgroup-addon pointer rounded-end-2"
+                                                        (click)="isHideConfirmPass=!isHideConfirmPass">
+                                                        <i class="pi "
+                                                            [class]="isHideConfirmPass?'pi-eye-slash':'pi-eye'"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9 my-2 mx-auto">
+                                            <button class="btn btn-primary w-100">Sign up</button>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="fs-6 fw-semibold">Confirm Password</label>
-                                    <div class="my-1">
-                                        <p-password formControlName="confirmPassword" class="bg-body-tertiary w-100"
-                                            placeholder="Please type here ..." [toggleMask]="true"></p-password>
-                                    </div>
-                                </div>
-                                <div class="col-md-9 my-2 mx-auto">
-                                    <button class="btn btn-primary w-100">Sign up</button>
-                                </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6">
-                <div class="image-layout ">
+                <div class="image-layout">
                     <img src="../../../../../assets/Images/signup.png" class="img-fluid">
                 </div>
             </div>

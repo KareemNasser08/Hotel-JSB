@@ -11,15 +11,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
+  isHidePass = true;
+  isHideConfirmPass = true;
+
   signUpForm = new FormGroup({
-    userName: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required]),
+    userName: new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/)]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required]),
     confirmPassword: new FormControl(null, [Validators.required]),
-    phoneNumber: new FormControl(null, [Validators.required]),
+    phoneNumber: new FormControl(null, [Validators.required,Validators.pattern(/^(01)[0-2,5][0-9]{8}$/)]),
     country: new FormControl(null, [Validators.required]),
-    profileImage: new FormControl(null),
+    profileImage: new FormControl(null,[Validators.required]),
   });
+
+
   onSignUp(data: FormGroup) {
     let formData = new FormData();
     formData.append('userName', data.value.userName);
@@ -31,25 +36,25 @@ export class SignUpComponent {
     formData.append('role', 'admin');
     formData.append('profileImage', this.imgSource);
     this._authService.signUp(formData).subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
-        this.toastr.error(err.error.message,'Error!');
+        this.toastr.error(err.error.message, 'Error!');
       },
-      complete:()=>{
+      complete: () => {
         console.log('completed req!');
-        this.toastr.success("Let's Sign In!",'Successfully Registerd');
-        this._Router.navigate(['/dashboard']);
+        this.toastr.success("Let's Sign In!", 'Successfully Registerd');
+        this._Router.navigate(['/auth/signin']);
       },
     })
   }
 
   constructor(
     private _authService: AuthService,
-    private toastr:ToastrService,
-    private _Router:Router,
+    private toastr: ToastrService,
+    private _Router: Router,
   ) { }
 
   // Photo
