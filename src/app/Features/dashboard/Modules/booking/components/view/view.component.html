@@ -1,0 +1,41 @@
+<section>
+    <div class="container vh-100">
+        <div class="row">
+            <span class="shadow-sm bg-body-tertiary m-2 p-2 ">
+                <a routerLink="/dashboard/Booking" class="pointer text-decoration-none">
+                    <i class="fa-solid fa-chevron-left" style="color: #146ebe;"></i> Back to booking list!
+                </a>
+            </span>
+
+            <div class="card shadow-lg my-4 p-4 mx-3 d-flex row justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>User name:</p>
+                    <p class="my-3 fw-bolder fs-2">{{bookingDetails?.user?.userName}}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>Room :</p>
+                    <p class=" fs-2 fw-bold my-3">{{bookingDetails?.room?.roomNumber}}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>Room status:</p>
+                    <p class="fs-2 fw-bold my-3">{{bookingDetails?.status}}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>Room price:</p>
+                    <p class=" fs-2 fw-bold my-3">{{bookingDetails?.totalPrice | currency:
+                        'EGP':'symbol':'1.0-0'}}</p>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="my-3">Start date:</p>
+                    <p class="fs-2 fw-bold">{{bookingDetails?.startDate | date : 'dd/MM/yy'}}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="my-3">End date:</p>
+                    <p class="fs-2 fw-bold">{{bookingDetails?.endDate | date : 'dd/MM/yy'}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

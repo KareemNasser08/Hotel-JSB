@@ -30,7 +30,7 @@ import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-
+import { InputNumberModule } from 'primeng/inputnumber';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -42,9 +42,10 @@ import { SharedTableComponent } from './Components/shared-table/shared-table.com
 import { TableModule } from 'primeng/table';
 import { MenuModule } from 'primeng/menu';
 import { TagModule } from 'primeng/tag';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { DialogModule } from 'primeng/dialog';
-
+import { CalendarModule } from 'primeng/calendar';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
@@ -90,11 +91,13 @@ import { DropdownModule } from 'primeng/dropdown';
     TagModule,
 
     ChartModule,
-
-
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CalendarModule,
     DynamicDialogModule,
-    DropdownModule
-    
+    DropdownModule,
+    InputNumberModule
+
 
   ],
   exports: [
@@ -133,12 +136,14 @@ import { DropdownModule } from 'primeng/dropdown';
     TableModule,
     MenuModule,
     TagModule,
-
+    MatDatepickerModule,
+    MatNativeDateModule,
     DialogModule,
     DynamicDialogModule,
     MessagesModule,
-    DropdownModule
-
+    DropdownModule,
+    CalendarModule,
+    InputNumberModule
   ]
 })
 export class SharedModule { }

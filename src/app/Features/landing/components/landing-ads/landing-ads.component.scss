@@ -1,0 +1,48 @@
+.icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 30px;
+    background-color: #FF498B;
+    color: white;
+    border-radius: 0% 10px 0% 10px;
+}
+
+.img-container {
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+}
+
+.layer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    background-color: rgba(36, 24, 128, 0.267);
+    position: absolute;
+    top: 110%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    transition: all 0.7s ease;
+    opacity: 100;
+    color: white;
+}
+
+.img-container:hover .layer {
+    top: 0%;
+}
+
+img {
+    border-radius: 10px;
+}
+
+.favIcon:hover {
+    color: #FF498B;
+}
+
+.viewIcon:hover {
+    color: #35C2FD;
+}
