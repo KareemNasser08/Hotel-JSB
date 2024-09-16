@@ -1,4 +1,4 @@
-<div class="card table-card">
+<div class="card table-card mt-2">
   <p-table 
     #dt 
     [columns]="columnList" 
@@ -36,18 +36,11 @@
           <span *ngSwitchCase="'arrayOfString'">{{ getNestedValue(rowData, col.fieldKey).join(', ') }}</span>
           <img *ngSwitchCase="'image'" src={{rowData[col.fieldKey]}} alt="">
 
-          <!-- <ng-container *ngSwitchCase="'arrayOfObject'">
-            <ng-container *ngFor="let item of getNestedValue(rowData, col.fieldKey)">
-              <span>{{' '}}</span><p-tag severity="info" [value]="item[col.objectKey]"></p-tag>
-            </ng-container>
-          </ng-container> -->
           <ng-container *ngSwitchCase="'arrayOfObject'">
             <ng-container *ngFor="let item of getNestedValue(rowData, col.fieldKey); let i = index">
-              <!-- عرض أول 3 tags فقط -->
               <span *ngIf="i < 2">
-                <p-tag severity="info" [value]="item[col.objectKey]" class="custom-tag"></p-tag>
+                <span>{{" "}}</span> <p-tag severity="info" [value]="item[col.objectKey]" class="custom-tag"></p-tag>
               </span>
-              <!-- إذا كانت هناك المزيد من tags، عرض عدد tags المتبقية -->
               <span *ngIf="i === 2" class="more-tags">
                 +{{ getNestedValue(rowData, col.fieldKey).length - 2 }} more
               </span>
@@ -56,6 +49,7 @@
           
         
         </ng-container>
+        
         <ng-container *ngIf="col.actions">
           <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
@@ -67,6 +61,10 @@
             </button>
           </mat-menu>
         </ng-container>
+        <!-- <ng-container *ngIf="col.actions">
+          <p-splitButton  icon="pi pi-cog" label="Settings" (onClick)="onMainButtonClick(rowData)" [model]="getActionsForRow(rowData)">
+          </p-splitButton>
+        </ng-container> -->
       </td>
     </tr>
   </ng-template>

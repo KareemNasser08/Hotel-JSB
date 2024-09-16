@@ -45,7 +45,12 @@ import { TagModule } from 'primeng/tag';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DialogModule } from 'primeng/dialog';
+
+import { SplitButtonModule } from 'primeng/splitbutton';
+
+
 import { CalendarModule } from 'primeng/calendar';
+
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
@@ -62,7 +67,7 @@ import { DropdownModule } from 'primeng/dropdown';
   imports: [
 
 
-
+    SplitButtonModule,
     CommonModule,
     SharedRoutingModule,
     InputTextModule,
@@ -102,6 +107,7 @@ import { DropdownModule } from 'primeng/dropdown';
   ],
   exports: [
     //Components
+    SplitButtonModule,
     NavbarComponent,
     SidebarComponent,
     DeleteComponent,
