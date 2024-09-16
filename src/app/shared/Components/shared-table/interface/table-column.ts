@@ -4,6 +4,8 @@ export interface TableColumn {
     type?: string;
     objectKey?: string;
     actions?: { key: string, icon: string }[];
+    format?: string;
+
 }
 
 

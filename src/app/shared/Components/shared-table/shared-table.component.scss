@@ -1,21 +1,51 @@
 table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  th, td {
+}
+
+th,
+td {
     padding: 8px 12px;
     border: 1px solid #ddd;
-  }
-  
-  th {
+    
+}
+
+th {
     background-color: #f4f4f4;
     text-align: left;
-  }
-  img{
+}
+
+img {
     width: 70px;
     height: 70px;
     border-radius: 50%;
 
+}
+
+.card.table-card {
+    max-height: calc(100vh - 60px);
+    overflow: auto;
+}
+
+  .more-tags {
+    display: inline-block; 
+    background-color: #e0e0e0;
+    color: #555; 
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    margin-left: 4px;
   }
   
+.p-table .p-datatable-thead > tr > th {
+    position: sticky;
+    top: 0;
+    z-index: 2; 
+    background-color: #f4f4f4; 
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4); 
+  }
+  
+  .frozen-table {
+    max-height: 400px; 
+    overflow-y: auto;
+  }
