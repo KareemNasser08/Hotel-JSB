@@ -20,7 +20,7 @@ export class AdsService {
   }
 
   getAdDetails(id: string):Observable<any>{
-    return this._HttpClient.get(`admin/ads${id}`);
+    return this._HttpClient.get(`admin/ads/${id}`);
   }
 
   addAd(data: FormData): Observable<any> {

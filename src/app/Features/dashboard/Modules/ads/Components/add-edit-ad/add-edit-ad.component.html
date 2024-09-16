@@ -28,7 +28,7 @@
           <div class="mt-4 col-md-12 d-flex flex-column justify-content-center">
 
             <label for="isActive">Status</label>
-            <p-dropdown [options]="roomsDropDown" formControlName="isActive" placeholder="Status"
+            <p-dropdown [options]="" formControlName="isActive" placeholder="Status"
               optionLabel="name" optionValue="_id" ></p-dropdown>
             <small class="block p-error" *ngIf="addEditAdForm.controls.isActive.invalid &&
                          (addEditAdForm.controls.isActive.dirty || addEditAdForm.controls.isActive.touched)">
