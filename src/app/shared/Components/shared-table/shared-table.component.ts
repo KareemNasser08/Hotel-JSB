@@ -8,6 +8,7 @@ import { TableColumn } from './interface/table-column';
 })
 export class SharedTableComponent {
 
+
   @Input() columnList: TableColumn[] = [];
   @Input() dataArray: any[] = [];
 
@@ -15,7 +16,10 @@ export class SharedTableComponent {
     action: string;
     item: any;
   }>();
-item: any;
+  item: any;
+
+
+
 
   handleAction(action: string, item: any) {
     this.actionClick.emit({ action, item });

@@ -14,7 +14,7 @@ export class UsersComponent implements OnInit {
   columns :TableColumn[] = [
     {headerTitle: 'User Name', fieldKey:'userName',type: 'string'},
     {headerTitle: 'Image', fieldKey:'profileImage',type: 'image'},
-    {headerTitle: 'email', fieldKey:'email',type: 'string'},
+    {headerTitle: 'E-mail', fieldKey:'email',type: 'string'},
     {headerTitle: 'Country', fieldKey:'country',type: 'string'},
     {headerTitle: 'Phone Number', fieldKey:'phoneNumber',type: 'string'},
     {headerTitle: 'Role', fieldKey:'role',type: 'string'},

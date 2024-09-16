@@ -1,36 +1,24 @@
-.auth {
-    max-height: 100vh;
-    min-height: 100vh;
-    height: 100%;
-    overflow-y: auto;
-
-    .container-fluid,
-    .row,
-    .col-md-6 {
+.auth-layout {
+    .container-fluid {
         max-height: inherit;
-        min-height: inherit;
-        height: 100%;
-    }
-
-    .col-md-6 {
-        .form-container {
-            padding: 15px;
-            height: 100%;
-            overflow-y: auto;
-
-        }
 
         .image-layout {
-            max-height: inherit;
-            width: 100%;
-            padding: 25px;
+            max-height: 100vh;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
 
             img {
-                max-height: inherit !important;
+                max-height: inherit;
             }
         }
+
+        .formLayoutContainer {
+            max-height: 100vh;
+        }
     }
+
 }

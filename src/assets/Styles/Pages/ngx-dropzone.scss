@@ -1,4 +1,4 @@
-.auth ngx-dropzone {
+.auth-layout ngx-dropzone {
     width: 100px !important;
     height: 100px !important;
     border-radius: 50% !important;
@@ -8,21 +8,21 @@
     background-color: transparent !important;
 }
 
-.auth ngx-dropzone-preview {
+.auth-layout ngx-dropzone-preview {
     height: 100% !important;
     min-height: 100% !important;
     min-width: 100% !important;
     max-width: 100% !important;
 }
 
-.auth ngx-dropzone-image-preview {
+.auth-layout ngx-dropzone-image-preview {
     height: 100px !important;
     min-height: 100px !important;
     margin: 0 !important;
 }
 
 
-.auth ngx-dropzone-remove-badge {
+.auth-layout ngx-dropzone-remove-badge {
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
