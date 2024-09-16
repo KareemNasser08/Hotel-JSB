@@ -1,76 +1,80 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { RoomsService } from './services/rooms.service';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { BookingService } from './services/booking.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { TableColumn } from 'src/app/shared/Components/shared-table/interface/table-column';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-
 import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
-import { MessageService } from 'primeng/api';
+
 
 @Component({
-  selector: 'app-rooms',
-  templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.scss'],
+  selector: 'app-booking',
+  templateUrl: './booking.component.html',
+  styleUrls: ['./booking.component.scss'],
   providers: [DialogService, MessageService]
 })
-export class RoomsComponent implements OnInit {
+export class BookingComponent implements OnInit {
+
   tableData: any;
   ref: DynamicDialogRef | undefined;
 
   columns: TableColumn[] = [
-    { headerTitle: 'Room Number', fieldKey: 'roomNumber', type: 'string', },
-    { headerTitle: 'Price', fieldKey: 'price', type: 'string' },
-    { headerTitle: 'Discount', fieldKey: 'discount', type: 'string' },
-    { headerTitle: 'Capacity', fieldKey: 'capacity', type: 'string' },
-    { headerTitle: 'Facilities', fieldKey: 'facilities', type: 'arrayOfObject', objectKey: 'name' },
+    { headerTitle: 'User Name', fieldKey: 'user.userName', type: 'object' },
+    { headerTitle: 'Room Number', fieldKey: 'room.roomNumber', type: 'object' },
+    { headerTitle: 'Total Price', fieldKey: 'totalPrice', type: 'number' },
+    { headerTitle: 'Status', fieldKey: 'status', type: 'string' },
+    { headerTitle: 'Start Date', fieldKey: 'startDate', type: 'date' },
+    { headerTitle: 'End Date', fieldKey: 'endDate', type: 'date' },
     {
       headerTitle: 'Actions', fieldKey: 'actions',
       actions: [
         { key: 'view', icon: 'visibility' },
-        { key: 'edit', icon: 'edit_square' },
         { key: 'delete', icon: 'delete' },
       ],
-
     },
   ];
 
+
   constructor(
-    private _RoomsService: RoomsService,
+    private _BookingService: BookingService,
     private _ToastrService: ToastrService,
     private _Router: Router,
     public dialogService: DialogService,
     public messageService: MessageService
-
   ) { }
 
+
+
+
   ngOnInit(): void {
-    this.onGetAllRooms();
+    this.getAllBooking();
   }
 
-  onGetAllRooms() {
+
+
+  getAllBooking() {
     let params = {
       page: 1,
-      size: 10000
+      size: 10
     };
-    this._RoomsService.getAllRooms(params).subscribe({
+    this._BookingService.onGetAllBooking(params).subscribe({
       next: (res) => {
-        this.tableData = res.data.rooms;
-        console.log(this.tableData);
+        this.tableData = res.data.booking;
+
       }, error: (err) => {
-        console.log(err);
+
         this._ToastrService.error('error!', err.error.message);
       }
     });
   }
 
+
+
   viewRoom(id: string) {
-    this._Router.navigate(['dashboard/Rooms/view/', id]);
+    this._Router.navigate(['dashboard/Booking/view/', id]);
   }
-  editRoom(id: string) {
-    this._Router.navigate(['dashboard/Rooms/edit/', id]);
-  }
+
   deleteRoom(item: any) {
     this.ref = this.dialogService.open(DeleteComponent, {
       data: item,
@@ -78,16 +82,16 @@ export class RoomsComponent implements OnInit {
       contentStyle: { "max-height": "500px", "overflow": "auto" },
       baseZIndex: 10000
     });
-    this.ref.onClose.subscribe((roomId: any) => {
-      if (roomId) {
-        this._RoomsService.deleteRoom(roomId).subscribe({
+    this.ref.onClose.subscribe((bookingId: any) => {
+      if (bookingId) {
+        this._BookingService.onDeleteBooking(bookingId).subscribe({
           error: (err) => {
-            console.log(err);
+
             this._ToastrService.error('error!', err.error.message);
           },
           complete: () => {
-            this._ToastrService.success('Room Removed succefully ')
-            this.onGetAllRooms();
+            this._ToastrService.success('Booking Removed succefully ')
+            this.getAllBooking();
           }
         });
 
@@ -97,9 +101,6 @@ export class RoomsComponent implements OnInit {
 
   onActionClick(action: string, item: any) {
     switch (action) {
-      case 'edit':
-        this.editRoom(item._id);
-        break;
       case 'view':
         this.viewRoom(item._id);
         break;
