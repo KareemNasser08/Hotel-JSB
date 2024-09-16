@@ -1,0 +1,47 @@
+<section>
+    <div class="container mt-5 justify-content-between d-lg-flex mx-auto">
+        <div class=" row w-100 ">
+            <div class=" col-md-6 mt-5">
+                <div>
+                    <h1 class="fs-1 fw-bold pt-4 mt-4">Forget Busy Work,
+                    </h1>
+                    <h1 class="fs-1 fw-bold my-3 pb-4">Start Next Vacation</h1>
+                    <p class="fs-5 text-mutted text-body-tertiary mb-4">We provide what you need to enjoy your holiday
+                        with
+                        family.
+                        Time to make another memorable moments.</p>
+                    <span class="fs-3 text-info-emphasis fw-bold ">Start booking</span><br>
+                    <p class="mt-4">Pick a date</p>
+
+                </div>
+
+
+                <div>
+                    <form class="w-100 my-3" [formGroup]="BookingForm">
+                        <p-calendar placeholder="start date - end date" formControlName="date" [(ngModel)]="rangeDates"
+                            selectionMode="range" [showIcon]="true"></p-calendar>
+                    </form>
+                    <div class="flex-auto">
+                        <label class="mb-2 block font-bold" for="horizontal">Capacity</label><br>
+                        <p-inputNumber [(ngModel)]="value3" [showButtons]="true" buttonLayout="horizontal"
+                            inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
+                            incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"
+                            mode="decimal"></p-inputNumber>
+                    </div>
+                    <div class="my-4 ">
+                        <p-button label="Explore" routerLink="/"></p-button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="imag_home imag_home_border">
+                    <div class="imag-img_home w-100">
+                        <img src="./assets/Images/picture (1).png" alt="" class="homeImg w-100">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

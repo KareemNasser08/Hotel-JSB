@@ -1,16 +1,7 @@
 <div class="card">
-  <p-table 
-    #dt 
-    [columns]="columnList" 
-    [value]="dataArray" 
-    dataKey="id" 
-    [rowHover]="true" 
-    [rows]="5"
-    [showCurrentPageReport]="true" 
-    [rowsPerPageOptions]="[5, 10, 25, 50]" 
-    [paginator]="true"
-    >
-    
+  <p-table #dt [columns]="columnList" [value]="dataArray" dataKey="id" [rowHover]="true" [rows]="5"
+    [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10, 25, 50]" [paginator]="true">
+
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th *ngFor="let col of columns">
@@ -18,12 +9,18 @@
         </th>
       </tr>
     </ng-template>
-    
+
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
         <td *ngFor="let col of columns">
           <ng-container [ngSwitch]="col.type">
             <span *ngSwitchCase="'string'">{{ getNestedValue(rowData, col.fieldKey) }}</span>
+            <!-- date -->
+            <span *ngSwitchCase="'date'">{{ getNestedValue(rowData, col.fieldKey) | date :'dd/MM/yy'}}</span>
+            <!-- number -->
+            <span *ngSwitchCase="'number'">{{ getNestedValue(rowData, col.fieldKey) }}</span>
+            <!-- object -->
+            <span *ngSwitchCase="'object'">{{ getNestedValue(rowData, col.fieldKey) }}</span>
             <span *ngSwitchCase="'boolean'">{{ getNestedValue(rowData, col.fieldKey) ? 'Yes' : 'No' }}</span>
             <span *ngSwitchCase="'arrayOfString'">{{ getNestedValue(rowData, col.fieldKey).join(', ') }}</span>
             <!-- <span *ngSwitchCase="'string'">{{ rowData[col.fieldKey] }}</span> -->
