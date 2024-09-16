@@ -12,7 +12,7 @@ import { AdsService } from '../../services/ads.service';
 })
 export class AddEditAdComponent implements OnInit {
   adId: string = '';
-  adStatus:boolean=true;
+  adStatus:any=true;
   roomsDropDown: any[] = [];
 
   addEditAdForm = new FormGroup({
@@ -48,11 +48,12 @@ export class AddEditAdComponent implements OnInit {
     this._adService.getAdDetails(id).subscribe({
       next: (res) => {
         console.log(res, 'ad object');
+        this.adStatus=res.data.ads.room.isActive;
         this.addEditAdForm.patchValue(
           {
-            room: res.data.ads.room,
-            discount: res.data.ads.discount,
-            isActive: res.data.ads.isActive,
+            room: res.data.ads.room._id,
+            discount: res.data.ads.room.discount,
+            isActive: this.adStatus
           }
         );
       }, error: () => {
