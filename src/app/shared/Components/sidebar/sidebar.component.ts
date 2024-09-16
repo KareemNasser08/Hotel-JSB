@@ -38,13 +38,19 @@ export class SidebarComponent implements OnInit {
       link: '/dashboard/Ads',
       isActive: true,
     },
-    // {
-    //   title: 'Booking Facilities',
-    //   icon: 'grid_view',
-    //   link: '/dashboard/Booking-Facilities',
-    //   isActive: true,
-    // },
 
+    {
+      title: 'Booking Facilities',
+      icon: 'grid_view',
+      link: '/dashboard/Booking-Facilities',
+      isActive: true,
+     },
+    {
+      title: 'Booking',
+      icon: 'calendar_month',
+      link: '/dashboard/Booking',
+      isActive: true,
+    },
 
   ];
 
