@@ -17,7 +17,8 @@ export class GlobalInterceptor implements HttpInterceptor {
     const baseUrl = 'https://upskilling-egypt.com:3000/api/v0/';
     const token = localStorage.getItem('eToken');
     const newReq = request.clone({
-      url: baseUrl + request.url,
+      url:request.url.includes('assets') ? request.url:
+      baseUrl + request.url,
       setHeaders: {
         Authorization: `Bearer ${token}`,
       },
