@@ -9,7 +9,7 @@
 }
 
 .img-container {
-    height: 700px;
+
     position: relative;
     overflow: hidden;
 }
@@ -18,7 +18,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 9px;
     background-color: rgba(36, 24, 128, 0.267);
     position: absolute;
     top: 110%;
@@ -45,4 +44,21 @@ img {
 
 .viewIcon:hover {
     color: #35C2FD;
+}
+
+
+.imgHeight2 {
+    height: 16rem;
+}
+
+
+.colheight {
+
+    height: 600px;
+}
+
+.rowheight {
+
+    height: 300px;
+
 }
