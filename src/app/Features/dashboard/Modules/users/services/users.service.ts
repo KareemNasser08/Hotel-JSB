@@ -21,13 +21,5 @@ export class UsersService {
   getUserById(id: string): Observable<any> {
     return this._HttpClient.get(`admin/users/${id}`);
   }
-  // getAllFacilities(): Observable<any> {
-  //   return this._HttpClient.get('admin/room-facilities');
-  // }
-  // AddRoom(data: FormData): Observable<any> {
-  //   return this._HttpClient.post('admin/rooms', data);
-  // }
-  // EditRoom(id: string, data: FormData): Observable<any> {
-  //   return this._HttpClient.put(`admin/rooms/${id}`, data);
-  // }
+ 
 }
