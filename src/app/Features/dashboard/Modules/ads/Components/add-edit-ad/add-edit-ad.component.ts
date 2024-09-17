@@ -12,7 +12,10 @@ import { AdsService } from '../../services/ads.service';
 })
 export class AddEditAdComponent implements OnInit {
   adId: string = '';
-  adStatus:any=true;
+  adStatus = [
+    { key: 'Active', value: true },
+    { key: 'Retire', value: false }
+  ];
   roomsDropDown: any[] = [];
 
   addEditAdForm = new FormGroup({
@@ -38,6 +41,7 @@ export class AddEditAdComponent implements OnInit {
 
   ngOnInit(): void {
     this.onGetRooms();
+    console.log(this.adStatus)
 
   }
 
@@ -53,7 +57,7 @@ export class AddEditAdComponent implements OnInit {
           {
             room: res.data.ads.room._id,
             discount: res.data.ads.room.discount,
-            isActive: this.adStatus
+            isActive: res.data.ads.room.isActive
           }
         );
       }, error: () => {
@@ -74,6 +78,7 @@ export class AddEditAdComponent implements OnInit {
   }
 
   onAddAd(data: FormData): void {
+    console.log(data,'in the function')
     this._adService.addAd(data).subscribe({
       complete: () => {
         this.toastr.success('Success', 'Ad added successfully');
@@ -105,14 +110,9 @@ export class AddEditAdComponent implements OnInit {
     console.log(data.value, 'before send')
 
     if (this.addEditAdForm.valid) {
+      debugger
       const addEditAdFormData: FormData = new FormData();
       // addEditRoomFormData.append("roomNumber",data.value.roomNumber)
-      // addEditRoomFormData.append("price",data.value.price )
-      // addEditRoomFormData.append("capacity",data.value.capacity )
-      // addEditRoomFormData.append("discount",data.value.discount )
-      // addEditRoomFormData.append("imgs",this.files[0])
-      // addEditRoomFormData.append("facilities",JSON.stringify(data.value.facilities))
-
       for (const key in data.value) {
         const value = data.value[key];
 

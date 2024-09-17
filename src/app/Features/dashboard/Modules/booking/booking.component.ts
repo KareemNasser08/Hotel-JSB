@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BookingService } from './services/booking.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
 import { TableColumn } from 'src/app/shared/Components/shared-table/interface/table-column';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
@@ -12,7 +11,7 @@ import { DeleteComponent } from 'src/app/shared/Components/delete/delete.compone
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.scss'],
-  providers: [DialogService, MessageService]
+  providers: [DialogService]
 })
 export class BookingComponent implements OnInit {
 
@@ -20,17 +19,16 @@ export class BookingComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
   columns: TableColumn[] = [
-    { headerTitle: 'User Name', fieldKey: 'user.userName', type: 'object' },
-    { headerTitle: 'Room Number', fieldKey: 'room.roomNumber', type: 'object' },
-    { headerTitle: 'Total Price', fieldKey: 'totalPrice', type: 'number' },
-    { headerTitle: 'Status', fieldKey: 'status', type: 'string' },
+    { headerTitle: 'Room Number', fieldKey: 'room.roomNumber', type: 'string' },
+    { headerTitle: 'User Name', fieldKey: 'user.userName', type: 'string' },
+    { headerTitle: 'Total Price', fieldKey: 'totalPrice', type: 'string' },
     { headerTitle: 'Start Date', fieldKey: 'startDate', type: 'date' },
     { headerTitle: 'End Date', fieldKey: 'endDate', type: 'date' },
+    { headerTitle: 'Status', fieldKey: 'status', type: 'string' },
     {
       headerTitle: 'Actions', fieldKey: 'actions',
       actions: [
         { key: 'view', icon: 'visibility' },
-        { key: 'delete', icon: 'delete' },
       ],
     },
   ];
@@ -41,7 +39,7 @@ export class BookingComponent implements OnInit {
     private _ToastrService: ToastrService,
     private _Router: Router,
     public dialogService: DialogService,
-    public messageService: MessageService
+
   ) { }
 
 
@@ -71,41 +69,16 @@ export class BookingComponent implements OnInit {
 
 
 
-  viewRoom(id: string) {
+  viewBooking(id: string) {
     this._Router.navigate(['dashboard/Booking/view/', id]);
   }
 
-  deleteRoom(item: any) {
-    this.ref = this.dialogService.open(DeleteComponent, {
-      data: item,
-      width: '70%',
-      contentStyle: { "max-height": "500px", "overflow": "auto" },
-      baseZIndex: 10000
-    });
-    this.ref.onClose.subscribe((bookingId: any) => {
-      if (bookingId) {
-        this._BookingService.onDeleteBooking(bookingId).subscribe({
-          error: (err) => {
 
-            this._ToastrService.error('error!', err.error.message);
-          },
-          complete: () => {
-            this._ToastrService.success('Booking Removed succefully ')
-            this.getAllBooking();
-          }
-        });
-
-      }
-    });
-  }
 
   onActionClick(action: string, item: any) {
     switch (action) {
       case 'view':
-        this.viewRoom(item._id);
-        break;
-      case 'delete':
-        this.deleteRoom(item);
+        this.viewBooking(item._id);
         break;
     }
   }

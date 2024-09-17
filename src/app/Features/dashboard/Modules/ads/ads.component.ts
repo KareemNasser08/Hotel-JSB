@@ -4,7 +4,8 @@ import { AdsService } from './services/ads.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
-import { DeleteAdComponent } from './Components/delete-ad/delete-ad.component';
+import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
+
 
 @Component({
   selector: 'app-ads',
@@ -34,8 +35,8 @@ export class AdsComponent {
   ];
 
   constructor(
-    private adsService: AdsService,
-    private toastr: ToastrService,
+    private _adsService: AdsService,
+    private _ToastrService: ToastrService,
     private _Router: Router,
     public dialogService: DialogService
   ) { }
@@ -45,29 +46,16 @@ export class AdsComponent {
   }
 
   onGetAllAds() {
-    this.adsService.getAllAds().subscribe({
+    this._adsService.getAllAds().subscribe({
       next: (res:any) => {
         this.tableData = res.data.ads;
       },
       error: (err:any) => {
-        this.toastr.error('Error!', err.error.message);
+        this._ToastrService.error('Error!', err.error.message);
       }
     });
   }
 
-  deleteAd(id: string) {
-    this.ref = this.dialogService.open(DeleteAdComponent, {
-      data: id,  
-      header: 'Delete Ad'
-    });
-
- 
-    this.ref.onClose.subscribe((result) => {
-      if (result) {
-        this.onGetAllAds();
-      }
-    });
-  }
 
   viewAd(id: string) {
     this._Router.navigate(['dashboard/Ads/view/', id]);
@@ -75,6 +63,31 @@ export class AdsComponent {
   editAd(id: string) {
     this._Router.navigate(['dashboard/Ads/edit/', id]);
   }
+
+  deleteAd(item: any) {
+    this.ref = this.dialogService.open(DeleteComponent, {
+      data: item,
+      width: '50%',
+      contentStyle: { "max-height": "500px", "overflow": "auto" },
+      baseZIndex: 10000
+    });
+    this.ref.onClose.subscribe((adId: any) => {
+      if (adId) {
+        this._adsService.deleteAd(adId).subscribe({
+          error: (err) => {
+            console.log(err);
+            this._ToastrService.error('error!', err.error.message);
+          },
+          complete: () => {
+            this._ToastrService.success('Ad Removed succefully ')
+            this.onGetAllAds();
+          }
+        });
+
+      }
+    });
+  }
+
 
   onActionClick(action: string, item: any) {
     switch (action) {

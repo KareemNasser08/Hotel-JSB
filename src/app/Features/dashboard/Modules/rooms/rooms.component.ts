@@ -1,19 +1,18 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { RoomsService } from './services/rooms.service';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TableColumn } from 'src/app/shared/Components/shared-table/interface/table-column';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
-import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss'],
-  providers: [DialogService, MessageService]
+  providers: [DialogService]
 })
 export class RoomsComponent implements OnInit {
   tableData: any;
@@ -41,7 +40,6 @@ export class RoomsComponent implements OnInit {
     private _ToastrService: ToastrService,
     private _Router: Router,
     public dialogService: DialogService,
-    public messageService: MessageService
 
   ) { }
 
@@ -74,7 +72,7 @@ export class RoomsComponent implements OnInit {
   deleteRoom(item: any) {
     this.ref = this.dialogService.open(DeleteComponent, {
       data: item,
-      width: '70%',
+      width: '50%',
       contentStyle: { "max-height": "500px", "overflow": "auto" },
       baseZIndex: 10000
     });
