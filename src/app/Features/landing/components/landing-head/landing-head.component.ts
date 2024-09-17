@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { IAds } from '../../interfaces/landing';
 import { LandingService } from '../../services/landing.service';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-landing-head',
   templateUrl: './landing-head.component.html',
@@ -17,12 +17,15 @@ export class LandingHeadComponent implements OnInit {
   tableUserAds: IAds[] = [];
   rangeDates: Date[] | undefined;
   value3: number = 0;
-
   constructor(public dialog: MatDialog,
     private _LandingService: LandingService,
     private _router: Router,
-    private _ToastrService: ToastrService) { }
+    private _ToastrService: ToastrService,
+    public translate:TranslateService) { 
 
+      translate.setDefaultLang('en');
+    }
+    
 
 
   ngOnInit(): void {
@@ -35,6 +38,15 @@ export class LandingHeadComponent implements OnInit {
     date: new FormControl(null),
 
   })
+
+
+  translateToEng(){
+    this.translate.use('en');
+
+  }
+  translateToAr(){
+    this.translate.use('ar');
+  }
 
 
 
