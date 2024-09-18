@@ -9,8 +9,11 @@ import { AuthService } from 'src/app/Features/auth/Services/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+
+  // declerations
   isAuthenticated = false;
   role: string | null = null;
+  // profileImg: any;
 
   constructor(
     private _AuthService: AuthService,
@@ -20,6 +23,12 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkAuthentication();
+    // this.profileImg = this._AuthService.getImgSource();
+    // console.log(this.profileImg);
+    // if (this.profileImg) {
+    //   this.profileImg = URL.createObjectURL(this.profileImg); // Convert the File to a URL
+    // }
+
   }
 
   checkAuthentication() {

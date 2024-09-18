@@ -45,15 +45,13 @@ import { TagModule } from 'primeng/tag';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DialogModule } from 'primeng/dialog';
-
+import { RatingModule } from 'primeng/rating';
 import { SplitButtonModule } from 'primeng/splitbutton';
-
-
 import { CalendarModule } from 'primeng/calendar';
-
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -94,14 +92,15 @@ import { DropdownModule } from 'primeng/dropdown';
     MultiSelectModule,
     MenuModule,
     TagModule,
-
+    InputTextareaModule,
     ChartModule,
     MatDatepickerModule,
     MatNativeDateModule,
     CalendarModule,
     DynamicDialogModule,
     DropdownModule,
-    InputNumberModule
+    InputNumberModule,
+    RatingModule
 
 
   ],
@@ -149,7 +148,9 @@ import { DropdownModule } from 'primeng/dropdown';
     MessagesModule,
     DropdownModule,
     CalendarModule,
-    InputNumberModule
+    InputNumberModule,
+    RatingModule,
+    InputTextareaModule
   ]
 })
 export class SharedModule { }
