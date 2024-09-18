@@ -53,6 +53,8 @@ import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TranslateModule } from '@ngx-translate/core';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [
@@ -103,6 +105,8 @@ import { TranslateModule } from '@ngx-translate/core';
     InputNumberModule,
     RatingModule,
     InputNumberModule,
+    InputSwitchModule,
+    SelectButtonModule,
 
     TranslateModule,
 
@@ -157,6 +161,8 @@ import { TranslateModule } from '@ngx-translate/core';
     RatingModule,
     InputTextareaModule,
     InputNumberModule,
+    InputSwitchModule,
+    SelectButtonModule,
 
     TranslateModule,
   ]

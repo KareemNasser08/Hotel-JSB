@@ -13,6 +13,9 @@ export class NavbarComponent implements OnInit {
   // declerations
   isAuthenticated = false;
   role: string | null = null;
+  stateOptions: any[] = [{label: 'EN', value: 'en'}, {label: 'AR', value: 'ar'}];
+
+  value: string = 'en';
   // profileImg: any;
 
   constructor(
