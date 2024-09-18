@@ -4,6 +4,7 @@ import { AdDetailsService } from './services/ad-details.service';
 import { IAds } from '../interfaces/landing';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-ad-details',
@@ -26,15 +27,39 @@ export class AdDetailsComponent implements OnInit {
   visibleReviewDialog: boolean = false;
   allRoomComments: any[] = [];
   visibleCommentDialog: boolean = false;
+  translate: any;
+
+
+
+
+
   // --------------------------------------------
+
+
+
+  translateToEng() {
+    this.translate.use('en');
+
+  }
+  translateToAr() {
+    this.translate.use('ar');
+  }
+
+
+
+
+
+  // ----------------------------------------------
+
+
   constructor(
 
     private _AdDetailsService: AdDetailsService,
     private _ActivatedRoute: ActivatedRoute,
     private _Toastr: ToastrService,
     private _Router: Router,
-
-  ) { }
+    public _translate: TranslateService
+  ) { _translate.setDefaultLang('en'); }
 
   ngOnInit(): void {
 

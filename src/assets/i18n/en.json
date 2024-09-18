@@ -1,4 +1,6 @@
-
 {
-    "HELLO":"Hello"    
+    "HELLO": "Hello",
+    "hotelDescription": "The Grand Luxe Hotel offers a perfect blend of comfort and elegance. Known for its spacious rooms and modern amenities, the hotel provides an unforgettable experience for travelers seeking luxury and convenience. Each room is designed with meticulous attention to detail, featuring high-quality furnishings, a calming ambiance, and stunning city views. Guests can enjoy a variety of services, including 24-hour room service, a fully equipped fitness center, and complimentary high-speed internet.",
+    "hotelLocation": "One of the hotel's standout features is its central location, making it ideal for both business and leisure travelers. Situated in the heart of the city, guests are within walking distance of major landmarks, shopping districts, and vibrant nightlife. The Grand Luxe Hotel also boasts an array of dining options, from a casual cafe to a gourmet restaurant, offering a wide range of international cuisine prepared by world-class chefs.",
+    "hotelService": "In addition to its prime location and luxurious amenities, the hotel prides itself on exceptional customer service. The dedicated staff ensures that every guest’s stay is personalized and memorable, catering to individual needs and preferences. Whether for a weekend getaway or an extended stay, the Grand Luxe Hotel guarantees comfort, relaxation, and a seamless experience from check-in to check-out."
 }
