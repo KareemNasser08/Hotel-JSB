@@ -101,7 +101,7 @@ import { TranslateModule } from '@ngx-translate/core';
     DynamicDialogModule,
     DropdownModule,
     InputNumberModule,
-    RatingModule
+    RatingModule,
     InputNumberModule,
 
     TranslateModule,
@@ -155,7 +155,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CalendarModule,
     InputNumberModule,
     RatingModule,
-    InputTextareaModule
+    InputTextareaModule,
     InputNumberModule,
 
     TranslateModule,
