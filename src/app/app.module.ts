@@ -19,9 +19,9 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+// export function HttpLoaderFactory(http: HttpClient) {
+//   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+// }
 @NgModule({
   declarations: [
     AppComponent
@@ -37,9 +37,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
+          useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json'),
           deps: [HttpClient]
-      }
+      },
+      defaultLanguage: 'en'
   }),
     
     CarouselModule

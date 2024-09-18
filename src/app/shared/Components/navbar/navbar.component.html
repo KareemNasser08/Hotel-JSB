@@ -70,8 +70,7 @@
                 <div *ngIf="isAuthenticated && role === 'admin'">
                     <!-- Show this div if user is authenticated and the role is 'admin' -->
                     <div class="d-flex flex-row justify-content-center align-items-center">
-                        <p-selectButton class="me-4" [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value"></p-selectButton>
-                        <div>
+                        <p-selectButton class="me-4" [options]="availableLanguages" [(ngModel)]="currentLanguage" optionLabel="label" optionValue="value" (onChange)="changeLanguage($event.value)"></p-selectButton>                        <div>
                             <img src="./assets/Images/Avatar.png" class="w-100 rounded">
                         </div>
                         <li class="nav-item">
