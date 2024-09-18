@@ -2,14 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from './services/users.service';
 import { TableColumn } from 'src/app/shared/Components/shared-table/interface/table-column';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
+  providers: [DialogService]
 })
 export class UsersComponent implements OnInit {
   tableData: any;
+  ref: DynamicDialogRef | undefined;
 
   columns :TableColumn[] = [
     {headerTitle: 'User Name', fieldKey:'userName',type: 'string'},
@@ -30,7 +35,9 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private _UsersService: UsersService,
-    private _Router: Router
+    private _ToastrService: ToastrService,
+    private _Router: Router,
+    public dialogService: DialogService,
   ) { }
   
   ngOnInit(): void {
@@ -52,18 +59,44 @@ export class UsersComponent implements OnInit {
       }
     });
   }
+
   viewUser(id: string) {
     console.log(id,'before route')
     this._Router.navigate(['dashboard/Users/view/', id]);
   }
+
+  deleteUser(item: any) {
+    this.ref = this.dialogService.open(DeleteComponent, {
+      data: item,
+      width: '50%',
+      contentStyle: { "max-height": "500px", "overflow": "auto" },
+      baseZIndex: 10000
+    });
+    this.ref.onClose.subscribe((userId: any) => {
+      if (userId) {
+        this._UsersService.deleteUser(userId).subscribe({
+          error: (err) => {
+            console.log(err);
+            this._ToastrService.error('error!', err.error.message);
+          },
+          complete: () => {
+            this._ToastrService.success('Room Removed succefully ')
+            this.onGetAllUsers();
+          }
+        });
+
+      }
+    });
+  }
+
   onActionClick(action: string, item: any) {
     switch (action) {
       case 'view':
         this.viewUser(item._id);
         break;
-      // case 'delete':
-      //   this.deleteProject(item);
-      //   break;
+        case 'delete':
+        this.deleteUser(item);
+        break;
     }
   }
 

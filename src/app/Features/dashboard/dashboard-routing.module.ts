@@ -13,7 +13,6 @@ const routes: Routes = [
       { path: 'Rooms', loadChildren: () => import('./Modules/rooms/rooms.module').then(m => m.RoomsModule) },
       { path: 'Rooms-Facilities', loadChildren: () => import('./Modules/room-facilities/room-facilities.module').then(m => m.RoomFacilitiesModule) },
       { path: 'Ads', loadChildren: () => import('./Modules/ads/ads.module').then(m => m.AdsModule) },
-      { path: 'Booking-Facilities', loadChildren: () => import('./Modules/booking-facilities/booking-facilities.module').then(m => m.BookingFacilitiesModule) },
       { path: 'Booking', loadChildren: () => import('./Modules/booking/booking.module').then(m => m.BookingModule) },
 
     ]

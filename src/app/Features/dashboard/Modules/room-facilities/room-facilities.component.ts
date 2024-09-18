@@ -1,144 +1,22 @@
 import { Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { RoomFacilityService } from './services/room-facility.service';
-import { Column, Product, Room } from './interface/room-facility';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { TableColumn } from 'src/app/shared/Components/shared-table/interface/table-column';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
+import { AddEditFacilityComponent } from './components/add-edit-facility/add-edit-facility.component';
 
 @Component({
   selector: 'app-room-facilities',
   templateUrl: './room-facilities.component.html',
-  styleUrls: ['./room-facilities.component.scss']
+  styleUrls: ['./room-facilities.component.scss'],
+  providers: [DialogService]
 })
 export class RoomFacilitiesComponent implements OnInit {
-
-  // products!: Product[];
-  // productDetails!: Product | any;
-  // cols!: Column[];
-  // selectedProduct!: Product;
-  // visibleView: boolean = false;
-  // visibleAdd: boolean = false;
-  // visibleUpdate: boolean = false;
-  // visibleDelete: boolean = false;
-  // roomUpdate!: Room;
-
-
-  // constructor(
-  //   private _RoomFacilityService: RoomFacilityService,
-  //   private _Toastr: ToastrService,
-  // ) { }
-
-  // ngOnInit() {
-  //   this.getAllRoomFacilities();
-  // }
-
-  // // get all room facilities
-  // getAllRoomFacilities() {
-  //   this._RoomFacilityService.onGetAllRoomFacility().subscribe((resp) => {
-  //     this.products = resp.data.facilities;
-  //   });
-
-  //   this.cols = [
-  //     { field: 'name', header: 'Name' },
-  //     { field: 'createdBy', header: 'Created by' },
-  //     { field: 'createdAt', header: 'Created at' },
-  //     { field: 'updatedAt', header: 'Updated at' },
-  //     { field: 'actions', header: 'Actions' },
-  //   ];
-  // }
-
-  // // view room facility
-  // showViewDialog(id: number) {
-  //   this._RoomFacilityService.onViewRoomFacility(id).subscribe({
-  //     next: (resp) => {
-  //       this.productDetails = resp.data.facility;
-  //       this.visibleView = true;
-  //     },
-  //     error: (err) => {
-  //       // Handle error
-  //     }
-  //   });
-  // }
-
-  // // add room facility
-  // showAddDialog() {
-  //   this.visibleAdd = true;
-  // }
-
-  // RoomFacilityForm: FormGroup = new FormGroup({
-  //   name: new FormControl(null, [Validators.required])
-  // });
-
-  // addRoomFacility(RoomFacilityForm: FormGroup) {
-  //   this._RoomFacilityService.onAddRoomFacility(RoomFacilityForm.value).subscribe({
-  //     next: (resp) => {
-  //       this._Toastr.success('New room facility has been added successfully', 'Success');
-  //       this.getAllRoomFacilities();
-  //       RoomFacilityForm.reset();
-
-  //     },
-  //     error: (err) => {
-  //       this._Toastr.error('Failed to add new room facility', 'Error');
-  //     }
-  //   });
-  // }
-
-
-  // get name() {
-  //   return this.RoomFacilityForm.controls['name'];
-  // }
-
-  // // ===============================================
-
-
-  // updateForm: FormGroup = new FormGroup({
-  //   name: new FormControl(null, [Validators.required])
-  // })
-
-  // showupdateDialog(id: number, name: string) {
-  //   this.visibleUpdate = true;
-  //   this.productDetails._id = id;
-  //   this.updateForm.patchValue({
-  //     name: name
-  //   });
-  // }
-
-
-  // UpdateRoomFacility(id: number, updateForm: FormGroup) {
-
-  //   this._RoomFacilityService.onUpdateRoomFacility(id, updateForm.value).subscribe({
-  //     next: (resp) => {
-  //       this._Toastr.success(`Room facility updated successfully`, 'Success');
-  //       this.getAllRoomFacilities();
-  //       this.visibleUpdate = false;
-  //     },
-  //     error: (err) => {
-  //       this._Toastr.error('Failed to update room facility', 'Error');
-  //     }
-  //   });
-  // }
-  // // ---------------------
-  // showDeleteDialog(id: number) {
-  //   this.productDetails = this.productDetails || {};
-  //   this.visibleDelete = true;
-  //   this.productDetails._id = id;
-  // }
-
-  // DeleteRoomFacility(id: number) {
-  //   this._RoomFacilityService.onDeleteRoomFacility(id).subscribe({
-  //     next: (resp) => {
-  //       this.getAllRoomFacilities();
-  //       this._Toastr.success('Room facility item has been deleted successfully', 'success');
-  //       this.visibleDelete = false;
-  //     },
-  //     error: (err) => {
-  //       this._Toastr.error('error has been happened', 'error')
-  //     }
-  //   })
-  // }
-
+  ref: DynamicDialogRef | undefined;
   tableData: any;
 
   columns :TableColumn[] = [
@@ -149,8 +27,8 @@ export class RoomFacilitiesComponent implements OnInit {
     {
       headerTitle: 'Actions', fieldKey: 'actions',
       actions: [
-        { key: 'View', icon: 'visibility' },
-        { key: 'Delete', icon: 'delete' },
+        { key: 'edit', icon: 'edit_square' },
+        { key: 'delete', icon: 'delete' },
       ],
 
     },
@@ -158,7 +36,9 @@ export class RoomFacilitiesComponent implements OnInit {
 
   constructor(
     private _RoomFacilityService: RoomFacilityService,
-    private _Router: Router
+    private _Router: Router,
+    public dialogService: DialogService,
+    private _ToastrService: ToastrService,
   ) { }
   
   ngOnInit(): void {
@@ -181,17 +61,78 @@ export class RoomFacilitiesComponent implements OnInit {
     this._Router.navigate(['dashboard/Users/view/', id]);
   }
 
+  addFacility(name: string){
+    this._RoomFacilityService.onAddRoomFacility(name).subscribe({
+      error: (err) => {
+        console.log(err);
+        this._ToastrService.error('error!', err.error.message);
+      },
+      complete: () => {
+        this._ToastrService.success('Facility Added succefully ')
+        this.onGetAllRoomFacility();
+  }})};
+
+  editFacility(id: number, name: string){
+    this._RoomFacilityService.onUpdateRoomFacility(id,name).subscribe({
+      error: (err) => {
+        console.log(err);
+        this._ToastrService.error('error!', err.error.message);
+      },
+      complete: () => {
+        this._ToastrService.success('Facility Updated succefully ')
+        this.onGetAllRoomFacility();
+  }})};
+
+  onAddEditFacility(item?: any) {
+    this.ref = this.dialogService.open(AddEditFacilityComponent, {
+      data: item,
+      width: '50%',
+      contentStyle: { "max-height": "500px", "overflow": "auto" },
+      baseZIndex: 10000
+    });
+    this.ref.onClose.subscribe((result: { facilityName: string; facilityId: number }) => {
+      if (result.facilityId) {
+        this.addFacility(result.facilityName)
+      } else{
+        this.editFacility(result.facilityId , result.facilityName)
+      }
+    });
+  }
+
+  deleteFacility(item: any) {
+    this.ref = this.dialogService.open(DeleteComponent, {
+      data: item,
+      width: '50%',
+      contentStyle: { "max-height": "500px", "overflow": "auto" },
+      baseZIndex: 10000
+    });
+    this.ref.onClose.subscribe((facilityId: any) => {
+      if (facilityId) {
+        this._RoomFacilityService.onDeleteRoomFacility(facilityId).subscribe({
+          error: (err) => {
+            console.log(err);
+            this._ToastrService.error('error!', err.error.message);
+          },
+          complete: () => {
+            this._ToastrService.success('Facility Removed succefully ')
+            this.onGetAllRoomFacility();
+          }
+        });
+
+      }
+    });
+  }
+
   onActionClick(action: string, item: any) {
     switch (action) {
-      case 'view':
-        this.viewUser(item._id);
+      case 'edit':
+        this.onAddEditFacility(item._id);
         break;
-      // case 'delete':
-      //   this.deleteProject(item);
-      //   break;
+      case 'delete':
+        this.deleteFacility(item);
+        break;
     }
   }
 
 }
-
 

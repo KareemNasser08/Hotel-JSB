@@ -54,6 +54,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,10 @@ import { DropdownModule } from 'primeng/dropdown';
     CalendarModule,
     DynamicDialogModule,
     DropdownModule,
-    InputNumberModule
+    InputNumberModule,
+
+    TranslateModule,
+
 
 
   ],
@@ -149,7 +153,9 @@ import { DropdownModule } from 'primeng/dropdown';
     MessagesModule,
     DropdownModule,
     CalendarModule,
-    InputNumberModule
+    InputNumberModule,
+
+    TranslateModule,
   ]
 })
 export class SharedModule { }

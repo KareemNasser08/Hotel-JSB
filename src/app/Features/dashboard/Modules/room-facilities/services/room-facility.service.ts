@@ -21,8 +21,8 @@ export class RoomFacilityService {
 
 
 
-  onAddRoomFacility(addForm: FormGroup): Observable<any> {
-    return this._HttpClient.post(`admin/room-facilities`, addForm)
+  onAddRoomFacility(data:string): Observable<any> {
+    return this._HttpClient.post(`admin/room-facilities`, {name:data})
   }
 
 
@@ -31,8 +31,8 @@ export class RoomFacilityService {
     return this._HttpClient.get(`admin/room-facilities/${id}`)
   }
 
-  onUpdateRoomFacility(id: number, updateForm: FormGroup): Observable<any> {
-    return this._HttpClient.put(`admin/room-facilities/${id}`, updateForm)
+  onUpdateRoomFacility(id:number , data:string): Observable<any> {
+    return this._HttpClient.put(`admin/room-facilities/${id}`, {name:data})
   }
 
 
