@@ -20,7 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
     Ads1Component,
     Ads2Component,
     Ads3Component,
-    FooterComponent
+    FooterComponent,
+
   ],
   imports: [
     CommonModule,

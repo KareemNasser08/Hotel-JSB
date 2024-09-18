@@ -45,16 +45,14 @@ import { TagModule } from 'primeng/tag';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DialogModule } from 'primeng/dialog';
-
+import { RatingModule } from 'primeng/rating';
 import { SplitButtonModule } from 'primeng/splitbutton';
-
-
 import { CalendarModule } from 'primeng/calendar';
-
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
-import {TranslateModule} from '@ngx-translate/core';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -95,13 +93,15 @@ import {TranslateModule} from '@ngx-translate/core';
     MultiSelectModule,
     MenuModule,
     TagModule,
-
+    InputTextareaModule,
     ChartModule,
     MatDatepickerModule,
     MatNativeDateModule,
     CalendarModule,
     DynamicDialogModule,
     DropdownModule,
+    InputNumberModule,
+    RatingModule
     InputNumberModule,
 
     TranslateModule,
@@ -153,6 +153,9 @@ import {TranslateModule} from '@ngx-translate/core';
     MessagesModule,
     DropdownModule,
     CalendarModule,
+    InputNumberModule,
+    RatingModule,
+    InputTextareaModule
     InputNumberModule,
 
     TranslateModule,

@@ -16,7 +16,8 @@
                     <div class="layer rounded-4 ">
                         <a type="button"><span class="favIcon material-icons fs-1"
                                 (click)=" saveFavRoom(ad.room._id)">favorite</span></a>
-                        <a type="button" routerLink="/"><span class="viewIcon material-icons fs-1">visibility</span></a>
+                        <a type="button" [routerLink]="['adDetails', ad._id]"><span
+                                class="viewIcon material-icons fs-1">visibility</span></a>
                     </div>
                 </div>
             </div>
@@ -35,7 +36,7 @@
                         <div class="layer rounded-4 ">
                             <a type="button"><span class="favIcon material-icons fs-1"
                                     (click)=" saveFavRoom(ad.room._id)">favorite</span></a>
-                            <a type="button" routerLink="/"><span
+                            <a type="button" [routerLink]="['adDetails', ad._id]"><span
                                     class="viewIcon material-icons fs-1">visibility</span></a>
                         </div>
                     </div>
@@ -57,7 +58,7 @@
                         <div class="layer rounded-4 ">
                             <a type="button"><span class="favIcon material-icons fs-1"
                                     (click)=" saveFavRoom(ad.room._id)">favorite</span></a>
-                            <a type="button" routerLink="/"><span
+                            <a type="button" [routerLink]="['adDetails', ad._id]"><span
                                     class="viewIcon material-icons fs-1">visibility</span></a>
                         </div>
                     </div>

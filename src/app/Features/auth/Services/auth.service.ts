@@ -11,15 +11,24 @@ import { FormGroup } from '@angular/forms';
 })
 export class AuthService {
 
+
+
+  // declerations
+  role: string | any = '';
+  private imgSource: File | null = null;
+
+
+  // ---------------------------------
+
+
   constructor(private _HttpClient: HttpClient) {
     if (localStorage.getItem('eToken') !== null) {
       this.onGetUserData();
     }
   }
 
-  // declerations
-  role: string | any = '';
-  
+
+
   onCheckEmail(email: string): Observable<any> {
     return this._HttpClient.post(`portal/users/forgot-password`, email); // fix end points 
   }
@@ -53,9 +62,20 @@ export class AuthService {
   signUp(data: FormData): Observable<any> {
     return this._HttpClient.post(`admin/users`, data)
   }
-  
+
   onResetPassword(form: ResetPasswordRequest): Observable<ResetPasswordRequest> {
     return this._HttpClient.post<ResetPasswordRequest>(`portal/users/reset-password`, form);   // fix end points 
   }
+
+
+
+
+  // setImgSource(image: File) {
+  //   this.imgSource = image;
+  // }
+
+  // getImgSource(): File | null {
+  //   return this.imgSource;
+  // }
 
 }

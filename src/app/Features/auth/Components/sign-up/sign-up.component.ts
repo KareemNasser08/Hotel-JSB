@@ -19,9 +19,9 @@ export class SignUpComponent {
     email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required]),
     confirmPassword: new FormControl(null, [Validators.required]),
-    phoneNumber: new FormControl(null, [Validators.required,Validators.pattern(/^(01)[0-2,5][0-9]{8}$/)]),
+    phoneNumber: new FormControl(null, [Validators.required, Validators.pattern(/^(01)[0-2,5][0-9]{8}$/)]),
     country: new FormControl(null, [Validators.required]),
-    profileImage: new FormControl(null,[Validators.required]),
+    profileImage: new FormControl(null, [Validators.required]),
   });
 
 
@@ -64,6 +64,7 @@ export class SignUpComponent {
     this.files = [];
     this.files.push(...event.addedFiles);
     this.imgSource = this.files[0];
+    // this._authService.setImgSource(this.imgSource);
   }
   onRemove(event: any) {
     this.files.splice(this.files.indexOf(event), 1);
