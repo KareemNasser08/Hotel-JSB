@@ -23,16 +23,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-12  my-5">
-                <div class=" flex justify-content-center">
-                    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="42"
-                        [rowsPerPageOptions]="[15, 30, 45]">
-                    </p-paginator>
-                </div>
-            </div>
         </div>
-
     </div>
 </section>
 
@@ -83,6 +74,8 @@
                     [disabled]="signInForm.invalid">login</button>
                 <!-- <p-button type="submit" label="SIGN IN" class="w-100 text-white"></p-button> -->
             </form>
+
+
         </div>
     </p-dialog>
 </section>

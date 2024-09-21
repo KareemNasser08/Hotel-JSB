@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
+    <div class="container-fluid">
+
+        <ul class="navbar-nav ms-auto mb-1 mb-lg-0 d-flex justify-content-end align-items-center">
+            <div *ngIf="isAuthenticated && role === 'admin'" class="d-flex align-items-center">
+                <div>
+                    <img src="./assets/Images/Avatar.png" class="w-100 rounded">
+                </div>
+                <li class="nav-item">
+                    <button mat-icon-button [matMenuTriggerFor]="adminMenu" aria-label="Admin Menu">
+                        <i class="pi pi-angle-down" style="font-size: 1rem"></i>
+                    </button>
+                    <mat-menu #adminMenu="matMenu">
+                        <button mat-menu-item (click)="showDialog()">
+                            <mat-icon>supervised_user_circle</mat-icon>
+                            <span>Change Password</span>
+                        </button>
+                    </mat-menu>
+                </li>
+                <div>
+                    <button class="btn btn-danger mx-3" (click)="signOut()">SIGN OUT</button>
+                </div>
+            </div>
+        </ul>
+
+        <section>
+            <p-dialog header="Change your password!" [(visible)]="visible" [style]="{width: '50vw'}">
+                <div>
+                    <form class="example-form" [formGroup]="changePassForm" (ngSubmit)="changePass(changePassForm)">
+                        <div class="row">
+
+                            <div class="mt-4">
+
+                                <label for="oldPassword">Old Password</label>
+                                <input type="text" pInputText formControlName="oldPassword" class="d-block w-100 mt-2"
+                                    name="oldPassword" placeholder="Enter your old password" />
+
+                                <small class="block p-error" *ngIf="oldPassword.invalid &&
+                                         (oldPassword.dirty || oldPassword.touched)">
+                                    <div *ngIf="oldPassword.errors?.['required']">Old password is required</div>
+                                    <div *ngIf="oldPassword.errors?.['pattern']">please enter a valid old password!
+                                    </div>
+
+                                </small>
+
+                            </div>
+                            <div class="mt-4">
+
+                                <label for="newPassword">New password</label>
+                                <input type="password" pInputText formControlName="newPassword"
+                                    class="d-block w-100 mt-2" name="newPassword" placeholder="Enter your password" />
+
+                                <small class="block p-error" *ngIf="newPassword.invalid &&
+                                        (newPassword.dirty || newPassword.touched)">
+                                    <div *ngIf="newPassword.errors?.['required']">new password is required</div>
+                                    <div *ngIf="newPassword.errors?.['pattern']">
+                                        Password should be 6-20
+                                        character long
+                                    </div>
+                                </small>
+
+                            </div>
+                            <div class="mt-4">
+
+                                <label for="newPassword">confirm password</label>
+                                <input type="password" pInputText formControlName="confirmPassword"
+                                    class="d-block w-100 mt-2" name="confirmPassword"
+                                    placeholder="Confirm your password" />
+
+                                <small class="block p-error" *ngIf="confirmPassword.invalid &&
+                                        (confirmPassword.dirty || confirmPassword.touched)">
+                                    <div *ngIf="confirmPassword.errors?.['require']">new password is required</div>
+                                    <div *ngIf="confirmPassword.errors?.['notSame']">
+                                        confirm password doesn't match with your new password
+                                    </div>
+                                </small>
+
+                            </div>
+                        </div>
+
+
+                        <button type="submit" mat-button class="w-100 main-btn text-white bg-primary"
+                            [disabled]="changePassForm.invalid">Change password</button>
+                    </form>
+
+
+                </div>
+            </p-dialog>
+        </section>
+    </div>
+</nav>

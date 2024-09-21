@@ -4,6 +4,8 @@ import { IAds } from '../../interfaces/landing';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { AuthService } from 'src/app/Features/auth/Services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,14 +19,15 @@ export class LandingAdsComponent implements OnInit {
 
   PopularAds: IAds[] = [];
   visible: boolean = false;
-  _AuthService: any;
-  _Router: any;
+
 
 
   constructor(
 
     private _LandingService: LandingService,
     private _Toastr: ToastrService,
+    private _AuthService: AuthService,
+    private _Router: Router,
 
   ) { }
 
@@ -79,6 +82,8 @@ export class LandingAdsComponent implements OnInit {
 
   }
 
+
+
   showDialog() {
     this.visible = true;
   }
@@ -119,12 +124,15 @@ export class LandingAdsComponent implements OnInit {
         localStorage.setItem('eToken', eToken);
         this._AuthService.onGetUserData();
         this._Toastr.success('you have successfully logged in!', 'success');
+        this.visible = false;
+        window.location.reload()
       },
       error: (err: any) => {
         this._Toastr.error(err.message, 'error');
       },
       complete: () => {
-        this._Router.navigate(['/dashboard/home']);
+        this._Router.navigate(['/landing']);
+
       }
     })
   }

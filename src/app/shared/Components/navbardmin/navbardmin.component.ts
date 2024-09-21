@@ -1,23 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormControlOptions } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Features/auth/Services/auth.service';
 
-
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'app-navbardmin',
+  templateUrl: './navbardmin.component.html',
+  styleUrls: ['./navbardmin.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbardminComponent {
+
+
+
 
   // declerations
   isAuthenticated = false;
   role: string | null = null;
 
   visible: boolean = false;
+
 
   // profileImg: any;
 
@@ -56,6 +59,8 @@ export class NavbarComponent implements OnInit {
     this._Toastr.success('you have logged out successfully', 'success')
     this._Router.navigate(['/landing'])
   }
+
+
   // -------------------------------
 
 
@@ -121,7 +126,7 @@ export class NavbarComponent implements OnInit {
   // signIn Func
   changePass(changePassForm: FormGroup) {
 
-    this._AuthService.onChangePassUser(changePassForm.value).subscribe({
+    this._AuthService.onChangePassAdmin(changePassForm.value).subscribe({
 
       next: (resp: any) => {
 
@@ -139,5 +144,16 @@ export class NavbarComponent implements OnInit {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 

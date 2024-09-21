@@ -53,6 +53,10 @@ import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TranslateModule } from '@ngx-translate/core';
+import { CarouselModule } from 'primeng/carousel';
+import { PaginatorModule } from 'primeng/paginator';
+import { NavbardminComponent } from './Components/navbardmin/navbardmin.component';
+
 
 @NgModule({
   declarations: [
@@ -62,6 +66,7 @@ import { TranslateModule } from '@ngx-translate/core';
     FooterComponent,
     DeleteComponent,
     SharedTableComponent,
+    NavbardminComponent,
   ],
   imports: [
 
@@ -103,9 +108,9 @@ import { TranslateModule } from '@ngx-translate/core';
     InputNumberModule,
     RatingModule,
     InputNumberModule,
-
+    CarouselModule,
     TranslateModule,
-
+    PaginatorModule,
 
 
   ],
@@ -116,6 +121,7 @@ import { TranslateModule } from '@ngx-translate/core';
     SidebarComponent,
     DeleteComponent,
     SharedTableComponent,
+    NavbardminComponent,
 
     FormsModule,
     CommonModule,
@@ -157,8 +163,10 @@ import { TranslateModule } from '@ngx-translate/core';
     RatingModule,
     InputTextareaModule,
     InputNumberModule,
-
+    CarouselModule,
     TranslateModule,
+    PaginatorModule,
+
   ]
 })
 export class SharedModule { }

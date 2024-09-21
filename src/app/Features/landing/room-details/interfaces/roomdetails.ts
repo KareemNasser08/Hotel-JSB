@@ -1,0 +1,2 @@
+export interface Roomdetails {
+}

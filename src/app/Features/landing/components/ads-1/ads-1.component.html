@@ -1,68 +1,138 @@
 <section>
-    <div class="container mt-5 justify-content-center d-lg-flex mx-auto">
-        <div class=" row w-100 ">
-            <h2>Houses with beauty backyard</h2>
-            <div class="row houses-with-beauty-backyard">
-                <div class="col-md-3">
-                  <div class="card border-0">
-                    <img src="../../../../../assets/Images/pic.png" alt="Tabby Town" class="card-img-top">
-                    <div class="card-body">
-                      <h5 class="card-title">Tabby Town</h5>
-                      <p class="card-text">Guntung Baru, Indonesia</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card border-0">
-                    <img src="../../../../../assets/Images/pic (1).png" alt="Anggana" class="card-img-top">
-                    <div class="card-body">
-                      <h5 class="card-title">Anggana</h5>
-                      <p class="card-text">Bogor, Indonesia</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 ">
-                  <div class="card border-0">
-                    <img src="../../../../../assets/Images/pic (2).png" alt="Seattle Rain" class="card-img-top">
-                    <div class="card-body">
-                      <h5 class="card-title">Seattle Rain</h5>
-                      <p class="card-text">Jakarta, Indonesia</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card border-0">
-                    <img src="../../../../../assets/Images/pic (3).png" alt="Wooden Pit" class="card-img-top">
-                    <div class="card-body">
-                      <h5 class="card-title">Wooden Pit</h5>
-                      <p class="card-text">Wrimicon, Indonesia</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <!-- <div>
-                <div class="my-5 " *ngFor="let ad of PopularAds">
-                    <div class="img-container col-md-4">
-                        <img [src]="ad.room.images" alt="" class="imag-img2 w-100 h-100 ">
-                        <div class="icon fs-5">
-                            <span class="fw-bold mx-2"> {{ad.room.price | currency :'USD' :'symbol':'1.0-0'}}</span>per
-                            night!
-                        </div>
-                        <div class="position-absolute bottom-0 ms-4 text-white fs-2">
-                            <p class="py-3">{{ad.room.roomNumber}}</p>
-                            <p class="pb-3">{{ad.createdBy.userName}}</p>
-                        </div>
-                        <div class="layer rounded-4 ">
-                            <a type="button"><span class="favIcon material-icons fs-1"
-                                    (click)=" saveFavRoom(ad.room._id)">favorite</span></a>
-                            <a type="button" routerLink="/"><span
-                                    class="viewIcon material-icons fs-1">visibility</span></a>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div> -->
+  <div class="container my-5">
+    <h2 class="fs-3 text-info-emphasis fw-bold my-5">Houses with beauty backyard</h2>
+    <div class="row">
+      <div class="col-12 col-md-3 colheight rounded-2" *ngFor="let ad of PopularAds.slice(0,4)">
+        <div class="img-container h-100">
+          <img [src]="ad.room.images && ad.room.images.length > 0 ? ad.room.images : './assets/Images/R.jpeg'" alt=""
+            class=" w-100 h-100 ">
+          <div class="icon fs-5">
+            <span class="fw-bold mx-2"> {{ad.room.price | currency :'USD' :'symbol':'1.0-0'}}</span>per
+            night!
+          </div>
+          <div class="position-absolute bottom-0 ms-4 text-white fs-2">
+            <p class="py-3" style="color: #FF498B;">{{ad.room.roomNumber}}</p>
+            <p class="pb-3">{{ad.createdBy.userName}}</p>
+          </div>
+          <div class="layer rounded-4 ">
+            <a type="button"><span class="favIcon material-icons fs-1"
+                (click)=" saveFavRoom(ad.room._id)">favorite</span></a>
+            <a type="button" [routerLink]="['roomDetails', ad._id]"><span
+                class="viewIcon material-icons fs-1">visibility</span></a>
+          </div>
         </div>
+      </div>
+
     </div>
+  </div>
+</section>
+<section>
+  <div class="container my-5">
+    <h2 class="fs-3 text-info-emphasis fw-bold my-5">Hotels with large living room</h2>
+    <div class="row">
+      <div class="col-12 col-md-3 colheight rounded-2" *ngFor="let ad of PopularAds.slice(3,7)">
+        <div class="img-container h-100">
+          <img [src]="ad.room.images && ad.room.images.length > 0 ? ad.room.images : './assets/Images/R.jpeg'" alt=""
+            class=" w-100 h-100 ">
+          <div class="icon fs-5">
+            <span class="fw-bold mx-2"> {{ad.room.price | currency :'USD' :'symbol':'1.0-0'}}</span>per
+            night!
+          </div>
+          <div class="position-absolute bottom-0 ms-4 text-white fs-2">
+            <p class="py-3" style="color: #FF498B;">{{ad.room.roomNumber}}</p>
+            <p class="pb-3">{{ad.createdBy.userName}}</p>
+          </div>
+          <div class="layer rounded-4 ">
+            <a type="button"><span class="favIcon material-icons fs-1"
+                (click)=" saveFavRoom(ad.room._id)">favorite</span></a>
+            <a type="button" [routerLink]="['roomDetails', ad._id]"><span
+                class="viewIcon material-icons fs-1">visibility</span></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container my-5">
+    <h2 class="fs-3 text-info-emphasis fw-bold my-5">Ads</h2>
+    <div class="row">
+      <div class="col-12 col-md-3 colheight rounded-2" *ngFor="let ad of PopularAds.slice(0,4)">
+        <div class="img-container h-100">
+          <img [src]="ad.room.images && ad.room.images.length > 0 ? ad.room.images : './assets/Images/R.jpeg'" alt=""
+            class=" w-100 h-100 ">
+          <div class="icon fs-5">
+            <span class="fw-bold mx-2"> {{ad.room.price | currency :'USD' :'symbol':'1.0-0'}}</span>per
+            night!
+          </div>
+          <div class="position-absolute bottom-0 ms-4 text-white fs-2">
+            <p class="py-3" style="color: #FF498B;">{{ad.room.roomNumber}}</p>
+            <p class="pb-3">{{ad.createdBy.userName}}</p>
+          </div>
+          <div class="layer rounded-4 ">
+            <a type="button"><span class="favIcon material-icons fs-1"
+                (click)=" saveFavRoom(ad.room._id)">favorite</span></a>
+            <a type="button" [routerLink]="['roomDetails', ad._id]"><span
+                class="viewIcon material-icons fs-1">visibility</span></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <p-dialog header="please, sign in!" [(visible)]="visible" [style]="{width: '50vw'}">
+    <div>
+      <form class="example-form" [formGroup]="signInForm" (ngSubmit)="signIn(signInForm)">
+        <div class="row">
+
+          <div class="mt-4">
+
+            <label for="email">Email address</label>
+            <input type="text" pInputText formControlName="email" class="d-block w-100 mt-2" name="email"
+              placeholder="Enter your email" />
+
+            <small class="block p-error" *ngIf="email.invalid &&
+                               (email.dirty || email.touched)">
+              <div *ngIf="email.errors?.['required']">Email is required</div>
+              <div *ngIf="email.errors?.['email']">please enter a valid email!</div>
+
+            </small>
+
+          </div>
+          <div class="mt-4">
+
+            <label for="password">password</label>
+            <input type="password" pInputText formControlName="password" class="d-block w-100 mt-2" name="password"
+              placeholder="Enter your password" />
+
+            <small class="block p-error" *ngIf="password.invalid &&
+                              (password.dirty || password.touched)">
+              <div *ngIf="password.errors?.['required']">password is required</div>
+              <div *ngIf="password.errors?.['pattern']">
+                Password should be 6-20
+                character long
+              </div>
+            </small>
+
+          </div>
+        </div>
+
+        <div class="links mt-3 w-100">
+          <a type="button" class="ms-auto mb-3" routerLink="/auth/forgetPassword">
+            Forget password?
+          </a>
+        </div>
+        <!-- <button type="submit" mat-button class="w-100 main-btn text-white bg-primary"
+                  [disabled]="signInForm.invalid">login</button> -->
+        <p-button type="submit" label="SIGN IN" class="w-100 text-white"></p-button>
+      </form>
+
+
+    </div>
+  </p-dialog>
 </section>

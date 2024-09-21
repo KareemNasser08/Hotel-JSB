@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -60,8 +61,6 @@ export class AdDetailsService {
   onDeleteComment(id: number): Observable<any> {
     return this._HttpClient.delete(`portal/room-comments/${id}`)
   }
-
-
 
 
 

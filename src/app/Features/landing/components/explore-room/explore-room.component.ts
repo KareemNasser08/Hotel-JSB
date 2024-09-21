@@ -1,97 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { LandingService } from '../services/landing.service';
-import { PaginatorState } from 'primeng/paginator';
+import { LandingService } from '../../services/landing.service';
+import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { AuthService } from '../../auth/Services/auth.service';
+import { AuthService } from 'src/app/Features/auth/Services/auth.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-
-
-
-
-interface PageEvent {
-  first: number;
-  rows: number;
-  page: number;
-  pageCount: number;
-}
-
 
 @Component({
-  selector: 'app-explore',
-  templateUrl: './explore.component.html',
-  styleUrls: ['./explore.component.scss']
+  selector: 'app-explore-room',
+  templateUrl: './explore-room.component.html',
+  styleUrls: ['./explore-room.component.scss']
 })
-export class ExploreComponent implements OnInit {
+export class ExploreRoomComponent implements OnInit {
 
   // decleration
+
   roomList: any[] = [];
-  first: number = 1;
-  rows: number = 15;
-  startDate: any;
-  endDate: any;
+
   visible: boolean = false;
 
 
-  // ------------------------------------
 
 
+
+  // -------------------------------
   constructor(
 
     private _LandingService: LandingService,
+    private _Toastr: ToastrService,
     private _AuthService: AuthService,
     private _Router: Router,
-    private _Toastr: ToastrService,
-
 
   ) { }
 
+
   ngOnInit(): void {
 
-
-    this.explore()
-
-  }
-
-  // --------------------------------------
-
-
-
-  explore() {
-
-
-    const exploreData = {
-      page: this.first + 1,
-      size: this.rows,
-      startDate: this.startDate,
-      endDate: this.endDate,
-    }
-
-    this._LandingService.onExplore(exploreData).subscribe({
+    this._LandingService.exploreRooms.subscribe({
       next: (resp) => {
 
-        this.roomList = resp.data.rooms
-
-        console.log(this.roomList);
+        this.roomList = resp;
 
 
       }
     })
 
-
-
-  }
-
-  onPageChange(event: PaginatorState) {
-
-    this.first = event.first || 0;
-    this.rows = event.rows || 15;
-    this.explore();
   }
 
 
-  // -----------------------------
+
+  // -------------------------------------
+
+
+
 
   saveFavRoom(roomId: any) {
 
@@ -159,12 +120,23 @@ export class ExploreComponent implements OnInit {
         localStorage.setItem('eToken', eToken);
         this._AuthService.onGetUserData();
         this._Toastr.success('you have successfully logged in!', 'success');
+        this.visible = false;
+
       },
       error: (err: any) => {
         this._Toastr.error(err.message, 'error');
       },
       complete: () => {
-        this._Router.navigate(['/dashboard/home']);
+        this._Router.navigate(['/landing/explore-Room']);
+        this._LandingService.exploreRooms.subscribe({
+          next: (resp) => {
+
+            this.roomList = resp;
+
+
+
+          }
+        })
       }
     })
   }
@@ -172,7 +144,16 @@ export class ExploreComponent implements OnInit {
 
 
 
+
 }
+
+
+
+
+
+
+
+
 
 
 
