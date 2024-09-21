@@ -1,13 +1,44 @@
-<section>
-    <div class="container vh-100">
-        <div class="row">
-            <span class="shadow-sm bg-body-tertiary m-2 p-2 ">
-                <a routerLink="/dashboard/Booking" class="pointer text-decoration-none">
-                    <i class="fa-solid fa-chevron-left" style="color: #146ebe;"></i> Back to booking list!
-                </a>
-            </span>
+<section class="mt-1">
+    <div class="container">
+        <div class="flex justify-content-center">
+            <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+        </div>
+        <div class="row mt-3">
+            <p-fieldset>
+                <ng-template pTemplate="header">
+                    <div class="flex align-items-center text-primary">
+                        <span class="pi pi-calendar-plus fs-4 me-3"></span>
+                        <span class="font-bold text-lg">Booking Details</span>
+                    </div>
+                </ng-template>
+                <div class="d-flex  align-items-center">
+                    <p class=" fw-bolder fs-6">User name :</p>
+                    <p class="ms-3 fs-6">{{bookingDetails?.user?.userName}}</p>
+                </div>
+                <div class="d-flex  align-items-center">
+                    <p class=" fw-bolder fs-6">Room :</p>
+                    <p class="ms-3 fs-6">{{bookingDetails?.room?.roomNumber}}</p>
+                </div>
+                <div class="d-flex  align-items-center">
+                    <p class=" fw-bolder fs-6">Booking status :</p>
+                    <p class="ms-3 fs-6">{{bookingDetails?.status}}</p>
+                </div>
+                <div class="d-flex  align-items-center">
+                    <p class=" fw-bolder fs-6">Booking cost:</p>
+                    <p class="ms-3 fs-6">{{bookingDetails?.totalPrice | currency:
+                        'EGP':'symbol':'1.0-0'}}</p>
+                </div>
+                <div class="d-flex  align-items-center">
+                    <p class=" fw-bolder fs-6">Start date :</p>
+                    <p class="ms-3 fs-6">{{bookingDetails?.startDate | date : 'dd/MM/yy'}}</p>
+                </div>
+                <div class="d-flex  align-items-center">
+                    <p class=" fw-bolder fs-6">End date :</p>
+                    <p class="ms-3 fs-6">{{bookingDetails?.endDate | date : 'dd/MM/yy'}}</p>
+                </div>
+            </p-fieldset>
 
-            <div class="card shadow-lg my-4 p-4 mx-3 d-flex row justify-content-between align-items-center">
+            <!-- <div class="card shadow-lg my-4 p-4 mx-3 d-flex row justify-content-between align-items-center">
                 <div class="d-flex justify-content-between align-items-center">
                     <p>User name:</p>
                     <p class="my-3 fw-bolder fs-2">{{bookingDetails?.user?.userName}}</p>
@@ -35,7 +66,9 @@
                     <p class="fs-2 fw-bold">{{bookingDetails?.endDate | date : 'dd/MM/yy'}}</p>
                 </div>
 
-            </div>
+            </div> -->
+
+            
         </div>
     </div>
 </section>

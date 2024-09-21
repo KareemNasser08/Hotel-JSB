@@ -30,10 +30,13 @@ export class LandingHeadComponent implements OnInit {
     private _LandingService: LandingService,
     private _router: Router,
     private _ToastrService: ToastrService,
+
     public translate: TranslateService) {
 
     translate.setDefaultLang('en');
   }
+
+
 
 
 
@@ -66,12 +69,14 @@ export class LandingHeadComponent implements OnInit {
 
 
 
+
   getAllRooms() {
 
     const rangeDates = this.BookingForm.get('date')?.value;
     const capaciy = this.BookingForm.get('capacity')?.value;
 
     if (rangeDates && rangeDates.length === 2) {
+
 
       const sDate = rangeDates[0];
       const eDate = rangeDates[1];

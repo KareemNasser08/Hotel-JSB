@@ -23,11 +23,11 @@ export class AdsService {
     return this._HttpClient.get(`admin/ads/${id}`);
   }
 
-  addAd(data: FormData): Observable<any> {
+  addAd(data: any): Observable<any> {
     return this._HttpClient.post('admin/ads', data);
   }
 
-  editAd(id: string, data: FormData): Observable<any> {
+  editAd(id: string, data: any): Observable<any> {
       return this._HttpClient.put(`admin/ads/${id}`, data);
     }
 

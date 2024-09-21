@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { TableColumn } from './interface/table-column';
-import { MenuItem } from 'primeng/api';
+import { MenuItem,PrimeIcons } from 'primeng/api';
+
 
 @Component({
   selector: 'app-shared-table',

@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { IRoom } from '../../interfaces/rooms';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-view-room',
@@ -16,7 +17,9 @@ export class ViewRoomComponent implements OnInit {
   // declerations
   roomDetails: IRoom | any;
   roomId: number = 0;
-
+  items: MenuItem[] | undefined;
+  home: MenuItem | undefined;
+  images: any[] = []; 
 
   constructor(
 
@@ -40,7 +43,10 @@ export class ViewRoomComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.items = [{ label: 'Rooms', routerLink: ['/dashboard/Rooms'] },
+    { label: 'Room details' }];
 
+    this.home = { icon: 'pi pi-home', routerLink: '/dashboard/home' };
 
   }
 

@@ -8,15 +8,18 @@ import { LandingAdsComponent } from './components/landing-ads/landing-ads.compon
 import { LandingHeadComponent } from './components/landing-head/landing-head.component';
 import { Ads1Component } from './components/ads-1/ads-1.component';
 import { FooterComponent } from './components/footer/footer.component';
+
 import { ExploreRoomComponent } from './components/explore-room/explore-room.component';
 import { CarouselModule } from 'primeng/carousel';
 import { LandingSlideComponent } from './components/landing-slide/landing-slide.component';
+
 
 @NgModule({
   declarations: [
     LandingComponent,
     LandingAdsComponent,
     LandingHeadComponent,
+    LandingSlideComponent,
     Ads1Component,
     FooterComponent,
     ExploreRoomComponent,

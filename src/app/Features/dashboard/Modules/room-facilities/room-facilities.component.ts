@@ -8,6 +8,7 @@ import { TableColumn } from 'src/app/shared/Components/shared-table/interface/ta
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
 import { AddEditFacilityComponent } from './components/add-edit-facility/add-edit-facility.component';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-room-facilities',
@@ -16,6 +17,8 @@ import { AddEditFacilityComponent } from './components/add-edit-facility/add-edi
   providers: [DialogService]
 })
 export class RoomFacilitiesComponent implements OnInit {
+  items: MenuItem[] | undefined;
+  home: MenuItem | undefined;
   ref: DynamicDialogRef | undefined;
   tableData: any;
 
@@ -43,6 +46,8 @@ export class RoomFacilitiesComponent implements OnInit {
   
   ngOnInit(): void {
     this.onGetAllRoomFacility();
+    this.items = [{ label: 'Room facilities' }];
+    this.home = { icon: 'pi pi-home', routerLink: '/dashboard/home' };
   }
 
   onGetAllRoomFacility() {
@@ -54,11 +59,6 @@ export class RoomFacilitiesComponent implements OnInit {
         console.log(err.error);
       }
     });
-  }
-
-  viewUser(id: string) {
-    console.log(id,'before route')
-    this._Router.navigate(['dashboard/Users/view/', id]);
   }
 
   addFacility(name: string){
@@ -86,15 +86,19 @@ export class RoomFacilitiesComponent implements OnInit {
   onAddEditFacility(item?: any) {
     this.ref = this.dialogService.open(AddEditFacilityComponent, {
       data: item,
-      width: '50%',
+      width: '40%',
       contentStyle: { "max-height": "500px", "overflow": "auto" },
       baseZIndex: 10000
     });
-    this.ref.onClose.subscribe((result: { facilityName: string; facilityId: number }) => {
-      if (result.facilityId) {
-        this.addFacility(result.facilityName)
+    this.ref.onClose.subscribe((result:any) => {
+      console.log(result);
+      
+      if (result.id) {
+        console.log(result.name,result.id);
+        this.editFacility(result.id , result.name)
       } else{
-        this.editFacility(result.facilityId , result.facilityName)
+        this.addFacility(result.name)
+       
       }
     });
   }
@@ -102,7 +106,7 @@ export class RoomFacilitiesComponent implements OnInit {
   deleteFacility(item: any) {
     this.ref = this.dialogService.open(DeleteComponent, {
       data: item,
-      width: '50%',
+      width: '35%',
       contentStyle: { "max-height": "500px", "overflow": "auto" },
       baseZIndex: 10000
     });
@@ -126,7 +130,7 @@ export class RoomFacilitiesComponent implements OnInit {
   onActionClick(action: string, item: any) {
     switch (action) {
       case 'edit':
-        this.onAddEditFacility(item._id);
+        this.onAddEditFacility(item);
         break;
       case 'delete':
         this.deleteFacility(item);

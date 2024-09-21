@@ -21,7 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
-import { PrimeIcons } from 'primeng/api';
+
 import { ChartModule } from 'primeng/chart';
 
 // primeng modules
@@ -53,10 +53,18 @@ import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TranslateModule } from '@ngx-translate/core';
+
 import { CarouselModule } from 'primeng/carousel';
 import { PaginatorModule } from 'primeng/paginator';
 import { NavbardminComponent } from './Components/navbardmin/navbardmin.component';
 
+
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { FileUploadModule } from 'primeng/fileupload';
+import { GalleriaModule } from 'primeng/galleria';
+import { FieldsetModule } from 'primeng/fieldset';
 
 @NgModule({
   declarations: [
@@ -108,7 +116,17 @@ import { NavbardminComponent } from './Components/navbardmin/navbardmin.componen
     InputNumberModule,
     RatingModule,
     InputNumberModule,
+
     CarouselModule,
+
+    InputSwitchModule,
+    SelectButtonModule,
+    BreadcrumbModule,
+    FileUploadModule,
+    MessagesModule,
+    GalleriaModule,
+    FieldsetModule,
+
     TranslateModule,
     PaginatorModule,
 
@@ -163,7 +181,16 @@ import { NavbardminComponent } from './Components/navbardmin/navbardmin.componen
     RatingModule,
     InputTextareaModule,
     InputNumberModule,
+
     CarouselModule,
+    InputSwitchModule,
+    SelectButtonModule,
+    BreadcrumbModule,
+    MessagesModule,
+    FileUploadModule,
+    GalleriaModule,
+    FieldsetModule,
+
     TranslateModule,
     PaginatorModule,
 

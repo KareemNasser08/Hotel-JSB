@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsersService } from '../../services/users.service';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-view-user',
@@ -14,7 +15,9 @@ export class ViewUserComponent implements OnInit {
   // declerations
   userDetails: any;
   userId: number = 0;
+  items: MenuItem[] | undefined;
 
+  home: MenuItem | undefined;
 
   constructor(
 
@@ -38,7 +41,10 @@ export class ViewUserComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.items = [{ label: 'Users', routerLink: ['/dashboard/Users'] },
+    { label: 'User details' }];
 
+    this.home = { icon: 'pi pi-home', routerLink: '/dashboard/home' };
 
   }
 

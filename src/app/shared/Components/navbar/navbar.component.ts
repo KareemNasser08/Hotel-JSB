@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormControlOptions } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
+
 import { AuthService } from 'src/app/Features/auth/Services/auth.service';
 
 
@@ -19,14 +21,25 @@ export class NavbarComponent implements OnInit {
 
   visible: boolean = false;
 
+
+  availableLanguages = [{label: 'EN', value: 'en'}, {label: 'AR', value: 'ar'}];
+  currentLanguage = this.translate.defaultLang;
+
+  value: string = 'en';
+
   // profileImg: any;
 
   constructor(
     private _AuthService: AuthService,
     private _Router: Router,
+
     private _Toastr: ToastrService,
 
-  ) { }
+    public translate:TranslateService
+
+
+
+  ) {}
 
   ngOnInit(): void {
     this.checkAuthentication();
@@ -45,6 +58,24 @@ export class NavbarComponent implements OnInit {
       this.role = this._AuthService.role;
     }
   }
+
+  changeLanguage(language: string) {
+    this.translate.use(language);   
+
+    this.currentLanguage = language;
+
+    console.log(language);
+    console.log(this.currentLanguage)
+    
+  }
+  // translateToEng(){
+  //   this.translate.use('en');
+
+  // }
+  // translateToAr(){
+  //   this.translate.use('ar');
+  // }
+
 
   signOut() {
     localStorage.removeItem('eToken');

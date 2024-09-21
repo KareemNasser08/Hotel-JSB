@@ -2,13 +2,13 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-8 ">
-                    <h2 class="mb-4">Add facility</h2>
+                <h2 class="mb-4">{{ title }}</h2>
                     <div class="d-flex flex-column gap-2 mb-5">
                         <label htmlFor="facility">Facility name</label>
                         <input pInputText id="facility" aria-describedby="facility-help" [(ngModel)]="name" />
                         <small id="facility-help">Enter your facility name.</small>
                     </div>
-                <button pButton icon="pi pi-info-circle" (click)="onSubmit()" label="Save" class="d-flex mx-auto"></button>
+                <button pButton icon="pi pi-plus" (click)="onSubmit()" label="{{ buttonLabel }}" class="d-flex mx-auto"></button>
             </div>
         </div>
     </div>
