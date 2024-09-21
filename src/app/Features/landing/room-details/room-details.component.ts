@@ -1,24 +1,26 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AdDetailsService } from './services/ad-details.service';
-import { IAds } from '../interfaces/landing';
+import { RoomdetailsService } from './services/roomdetails.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
-import { TranslateService } from '@ngx-translate/core';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../auth/Services/auth.service';
+import { IAds } from '../interfaces/landing';
 
 @Component({
-  selector: 'app-ad-details',
-  templateUrl: './ad-details.component.html',
-  styleUrls: ['./ad-details.component.scss']
+  selector: 'app-room-details',
+  templateUrl: './room-details.component.html',
+  styleUrls: ['./room-details.component.scss']
 })
-export class AdDetailsComponent implements OnInit {
+export class RoomDetailsComponent implements OnInit {
+
 
   // decleration
 
+  roomId: number | any = 0;
+  roomDetails: any;
   adId: number | any = 0;
-  adDetails: IAds | any;
   rangeDates: Date[] | any;
   value3: number = 0;
   sDate: any = '';
@@ -36,9 +38,31 @@ export class AdDetailsComponent implements OnInit {
 
 
 
+  // ---------------------------------
 
-  // --------------------------------------------
+  constructor(
 
+    private _RoomdetailsService: RoomdetailsService,
+
+    private _ActivatedRoute: ActivatedRoute,
+
+    private _Toastr: ToastrService,
+    private _Router: Router,
+    private _AuthService: AuthService,
+    public _translate: TranslateService
+  ) { _translate.setDefaultLang('en'); }
+
+
+
+  ngOnInit(): void {
+
+
+
+    this.roomId = this._ActivatedRoute.snapshot.params['id']
+
+    this.getRoomDetails()
+
+  }
 
 
   translateToEng() {
@@ -50,54 +74,38 @@ export class AdDetailsComponent implements OnInit {
   }
 
 
+  // ------------------------------------------
 
 
 
-  // ----------------------------------------------
+  getRoomDetails() {
 
+    let roomid = this.roomId
 
-  constructor(
-
-    private _AdDetailsService: AdDetailsService,
-    private _ActivatedRoute: ActivatedRoute,
-    private _Toastr: ToastrService,
-    private _Router: Router,
-    private _AuthService: AuthService,
-    public _translate: TranslateService
-  ) { _translate.setDefaultLang('en'); }
-
-  ngOnInit(): void {
-
-
-    this.adId = this._ActivatedRoute.snapshot.params['id'];
-    this.getAdDetails();
-
-  }
-
-  // ----------------------------------
-  // ad details
-
-  getAdDetails() {
-
-    let AdIdNum = this.adId;
-
-    this._AdDetailsService.getAdDetails(AdIdNum).subscribe({
+    this._RoomdetailsService.onGetRoomDetails(roomid, { roomId: roomid }).subscribe({
       next: (resp) => {
 
-        this.adDetails = resp.data.ads;
-        this.roomPrice = resp.data.ads.room.price;
-        this.roomid = resp.data.ads.room._id;
+        this.roomDetails = resp.data;
+        console.log(this.roomDetails);
+        this.roomPrice = resp.data.room.price;
+        this.roomid = resp.data.room._id;
         this.getSomeComments(this.roomid);
         this.getSomeReviews(this.roomid);
+
       },
       error: (err) => {
-
+        console.log(err);
 
       }
-
     })
 
   }
+
+
+  // =======================================================================
+
+
+
 
 
   // getFacility() {
@@ -140,12 +148,12 @@ export class AdDetailsComponent implements OnInit {
       const bookingData = {
         startDate: sDate,
         endDate: eDate,
-        room: this.adId,
+        room: this.roomId,
         totalPrice: this.roomPrice
       };
 
       if (localStorage.getItem('eToken')) {
-        this._AdDetailsService.onContinueBooking(bookingData).subscribe({
+        this._RoomdetailsService.onContinueBooking(bookingData).subscribe({
           next: (resp) => {
 
 
@@ -248,7 +256,7 @@ export class AdDetailsComponent implements OnInit {
       roomId: this.roomid,
     }
 
-    this._AdDetailsService.onRating(rateForm).subscribe({
+    this._RoomdetailsService.onRating(rateForm).subscribe({
       next: (resp) => {
 
         this._Toastr.success('your review has been added successfully', 'success');
@@ -266,7 +274,7 @@ export class AdDetailsComponent implements OnInit {
 
   getAllReviews(id: number) {
     this.visibleReviewDialog = true;
-    this._AdDetailsService.ongetAllReviews(id).subscribe({
+    this._RoomdetailsService.ongetAllReviews(id).subscribe({
       next: (resp) => {
 
         console.log(resp);
@@ -286,7 +294,7 @@ export class AdDetailsComponent implements OnInit {
 
   getSomeReviews(id: number) {
 
-    this._AdDetailsService.ongetAllReviews(id).subscribe({
+    this._RoomdetailsService.ongetAllReviews(id).subscribe({
       next: (resp) => {
 
         this.someReviews = resp.data.roomReviews
@@ -326,7 +334,7 @@ export class AdDetailsComponent implements OnInit {
     }
 
 
-    this._AdDetailsService.onCommenting(commentData).subscribe({
+    this._RoomdetailsService.onCommenting(commentData).subscribe({
       next: (resp) => {
 
         this._Toastr.success('your comment has been added successfully', 'success')
@@ -344,7 +352,7 @@ export class AdDetailsComponent implements OnInit {
 
   getAllComments(id: number) {
     this.visibleCommentDialog = true;
-    this._AdDetailsService.ongetAllComments(id).subscribe({
+    this._RoomdetailsService.ongetAllComments(id).subscribe({
       next: (resp) => {
 
         console.log(resp);
@@ -365,7 +373,7 @@ export class AdDetailsComponent implements OnInit {
 
   getSomeComments(id: number) {
 
-    this._AdDetailsService.ongetAllComments(id).subscribe({
+    this._RoomdetailsService.ongetAllComments(id).subscribe({
       next: (resp) => {
 
         this.SomeComments = resp.data.roomComments
@@ -384,10 +392,10 @@ export class AdDetailsComponent implements OnInit {
 
 
   DeleteComment(id: number) {
-    this._AdDetailsService.onDeleteComment(id).subscribe({
+    this._RoomdetailsService.onDeleteComment(id).subscribe({
       next: (resp) => {
         this._Toastr.success('Comment has been deleted successfully', 'success');
-        this.getAdDetails();
+        this.getRoomDetails();
         this.getAllComments(this.roomid)
       },
       error: (err) => {
@@ -397,3 +405,7 @@ export class AdDetailsComponent implements OnInit {
   }
 
 }
+
+
+
+

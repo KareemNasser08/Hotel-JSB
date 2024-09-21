@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AdDetailsRoutingModule } from './ad-details-routing.module';
 import { AdDetailsComponent } from './ad-details.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LandingModule } from '../landing.module';
 
 
 
@@ -14,7 +15,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     AdDetailsRoutingModule,
-    SharedModule
+    SharedModule,
+    LandingModule
   ]
 })
 export class AdDetailsModule { }

@@ -53,6 +53,12 @@ import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { CarouselModule } from 'primeng/carousel';
+import { PaginatorModule } from 'primeng/paginator';
+import { NavbardminComponent } from './Components/navbardmin/navbardmin.component';
+
+
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -68,6 +74,7 @@ import { FieldsetModule } from 'primeng/fieldset';
     FooterComponent,
     DeleteComponent,
     SharedTableComponent,
+    NavbardminComponent,
   ],
   imports: [
 
@@ -109,6 +116,9 @@ import { FieldsetModule } from 'primeng/fieldset';
     InputNumberModule,
     RatingModule,
     InputNumberModule,
+
+    CarouselModule,
+
     InputSwitchModule,
     SelectButtonModule,
     BreadcrumbModule,
@@ -116,8 +126,9 @@ import { FieldsetModule } from 'primeng/fieldset';
     MessagesModule,
     GalleriaModule,
     FieldsetModule,
-    TranslateModule,
 
+    TranslateModule,
+    PaginatorModule,
 
 
   ],
@@ -128,6 +139,7 @@ import { FieldsetModule } from 'primeng/fieldset';
     SidebarComponent,
     DeleteComponent,
     SharedTableComponent,
+    NavbardminComponent,
 
     FormsModule,
     CommonModule,
@@ -169,6 +181,8 @@ import { FieldsetModule } from 'primeng/fieldset';
     RatingModule,
     InputTextareaModule,
     InputNumberModule,
+
+    CarouselModule,
     InputSwitchModule,
     SelectButtonModule,
     BreadcrumbModule,
@@ -176,7 +190,10 @@ import { FieldsetModule } from 'primeng/fieldset';
     FileUploadModule,
     GalleriaModule,
     FieldsetModule,
+
     TranslateModule,
+    PaginatorModule,
+
   ]
 })
 export class SharedModule { }

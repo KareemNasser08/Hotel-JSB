@@ -3,15 +3,19 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from 'src/app/Features/auth/Services/auth.service';
 
 export const adminGuard: CanActivateFn = (route, state) => {
-  let _Router = inject(Router);
-  let _AuthService = inject(AuthService);
-  if (localStorage.getItem('eToken') !== null
-    &&
-    localStorage.getItem('userRole') === 'admin') {
+  const _Router = inject(Router)
+  if (localStorage.getItem('eToken') !== null && localStorage.getItem('userRole') == 'admin') {
+    console.log('Guard T');
     return true;
+
   } else {
-    _AuthService.onGetUserData();
-    _Router.navigate(['/landing']);
+    if (localStorage.getItem('eToken') !== null && localStorage.getItem('userRole') == 'user') {
+
+      _Router.navigate(['/landing']);
+    } else {
+
+      _Router.navigate(['/auth/signin']);
+    }
     return false;
   }
 

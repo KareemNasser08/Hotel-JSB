@@ -1,0 +1,31 @@
+<section>
+    <div class="container mt-5 justify-content-between d-lg-flex mx-auto py-5 my-5">
+        <div class="row w-100">
+            <div class="col-md-5">
+                <div class="imag_home imag_home_border">
+                    <div class="imag-img_home ">
+                        <img src="./assets/Images/family.png" alt="" class="homeImg w-100">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <p-carousel #carousel [value]="reviews" [numVisible]="1" [numScroll]="1" [circular]="true"
+                    [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+
+                    <ng-template let-review pTemplate="item">
+                        <div>
+                            <h2 class="fs-1 fw-bold pt-4 my-5" style="color:#152C5B;">{{review.head}}</h2>
+                            <p-rating [(ngModel)]="review.ratingValue" [cancel]="false" [stars]="5"
+                                [style]="{'color': 'yellow'}"></p-rating>
+                            <p class="fs-3 mb-4 text-dark mt-5" style="line-height: 3rem;">{{review.opinion}}</p>
+                            <span class="fs-5 text-body-tertiary">{{review.visitorName}}</span>
+                        </div>
+                    </ng-template>
+
+
+                </p-carousel>
+            </div>
+        </div>
+    </div>
+</section>

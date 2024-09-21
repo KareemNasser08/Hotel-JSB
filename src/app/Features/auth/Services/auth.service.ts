@@ -5,6 +5,7 @@ import { IsignIn } from '../interfaces/auth';
 import { jwtDecode } from 'jwt-decode';
 import { ResetPasswordRequest } from '../interfaces/reset-password-request';
 import { FormGroup } from '@angular/forms';
+import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -77,5 +78,18 @@ export class AuthService {
   // getImgSource(): File | null {
   //   return this.imgSource;
   // }
+
+
+
+
+  onChangePassUser(myparams: Params): Observable<any> {
+    return this._HttpClient.post(`portal/users/change-password`, myparams)
+  }
+
+
+  onChangePassAdmin(myparams: Params): Observable<any> {
+    return this._HttpClient.post(`admin/users/change-password`, myparams)
+  }
+
 
 }

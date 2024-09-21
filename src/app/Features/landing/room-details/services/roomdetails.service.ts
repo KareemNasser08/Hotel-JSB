@@ -3,22 +3,21 @@ import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class AdDetailsService {
+export class RoomdetailsService {
 
   constructor(
+
     private _HttpClient: HttpClient,
+
   ) { }
 
 
 
-  getAdDetails(id: number): Observable<any> {
-
-    return this._HttpClient.get(`portal/ads/${id}`)
-
+  onGetRoomDetails(id: number, myparams: Params): Observable<any> {
+    return this._HttpClient.get(`portal/rooms/${id}`, myparams)
   }
 
 
@@ -28,10 +27,6 @@ export class AdDetailsService {
   //   return this._HttpClient.get(`admin/room-facilities/${id}`)
   // }
 
-
-  // onContinueBooking(myparams: Params): Observable<any> {
-  //   return this._HttpClient.post(`portal/booking`, myparams)
-  // }
 
 
   onContinueBooking(myparams: Params): Observable<any> {
@@ -65,3 +60,6 @@ export class AdDetailsService {
 
 
 }
+
+
+

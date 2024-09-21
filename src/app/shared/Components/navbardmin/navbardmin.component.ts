@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormControlOptions } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
-
 import { ToastrService } from 'ngx-toastr';
-
 import { AuthService } from 'src/app/Features/auth/Services/auth.service';
 
-
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'app-navbardmin',
+  templateUrl: './navbardmin.component.html',
+  styleUrls: ['./navbardmin.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbardminComponent {
+
+
+
 
   // declerations
   isAuthenticated = false;
@@ -22,24 +22,14 @@ export class NavbarComponent implements OnInit {
   visible: boolean = false;
 
 
-  availableLanguages = [{label: 'EN', value: 'en'}, {label: 'AR', value: 'ar'}];
-  currentLanguage = this.translate.defaultLang;
-
-  value: string = 'en';
-
   // profileImg: any;
 
   constructor(
     private _AuthService: AuthService,
     private _Router: Router,
-
     private _Toastr: ToastrService,
 
-    public translate:TranslateService
-
-
-
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.checkAuthentication();
@@ -59,24 +49,6 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  changeLanguage(language: string) {
-    this.translate.use(language);   
-
-    this.currentLanguage = language;
-
-    console.log(language);
-    console.log(this.currentLanguage)
-    
-  }
-  // translateToEng(){
-  //   this.translate.use('en');
-
-  // }
-  // translateToAr(){
-  //   this.translate.use('ar');
-  // }
-
-
   signOut() {
     localStorage.removeItem('eToken');
     localStorage.removeItem('userRole');
@@ -87,6 +59,8 @@ export class NavbarComponent implements OnInit {
     this._Toastr.success('you have logged out successfully', 'success')
     this._Router.navigate(['/landing'])
   }
+
+
   // -------------------------------
 
 
@@ -152,7 +126,7 @@ export class NavbarComponent implements OnInit {
   // signIn Func
   changePass(changePassForm: FormGroup) {
 
-    this._AuthService.onChangePassUser(changePassForm.value).subscribe({
+    this._AuthService.onChangePassAdmin(changePassForm.value).subscribe({
 
       next: (resp: any) => {
 
@@ -170,5 +144,16 @@ export class NavbarComponent implements OnInit {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
