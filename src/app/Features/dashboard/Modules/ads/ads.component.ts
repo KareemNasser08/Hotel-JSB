@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
 import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
+import { MenuItem } from 'primeng/api';
+import { AddEditAdComponent } from './Components/add-edit-ad/add-edit-ad.component';
 
 
 @Component({
@@ -17,7 +19,8 @@ import { DeleteComponent } from 'src/app/shared/Components/delete/delete.compone
 export class AdsComponent {
   tableData: any;
   ref: DynamicDialogRef | undefined;
-
+  items: MenuItem[] | undefined;
+  home: MenuItem | undefined;
   columns: TableColumn[] = [
     { headerTitle: 'Room Number', fieldKey: 'room.roomNumber', type: 'string' },
     { headerTitle: 'Price', fieldKey: 'room.price', type: 'string' },
@@ -27,7 +30,6 @@ export class AdsComponent {
     {
       headerTitle: 'Actions', fieldKey: 'actions',
       actions: [
-        { key: 'view', icon: 'visibility' },
         { key: 'edit', icon: 'edit_square' },
         { key: 'delete', icon: 'delete' },
       ],
@@ -43,6 +45,8 @@ export class AdsComponent {
 
   ngOnInit(): void {
     this.onGetAllAds();
+    this.items = [{ label: 'Ads' }];
+    this.home = { icon: 'pi pi-home', routerLink: '/dashboard/home' };
   }
 
   onGetAllAds() {
@@ -57,17 +61,55 @@ export class AdsComponent {
   }
 
 
-  viewAd(id: string) {
-    this._Router.navigate(['dashboard/Ads/view/', id]);
+  onAddEditAd(item?: any) {
+    this.ref = this.dialogService.open(AddEditAdComponent, {
+      data: item,
+      width: '40%',
+      contentStyle: { "max-height": "500px", "overflow": "auto" },
+      baseZIndex: 10000
+    });
+
+    this.ref.onClose.subscribe((result:any) => {
+      
+      if (result.room) {
+        this.editAd(result)
+      } else{
+        this.addAd(result)
+       
+      }
+    });
   }
-  editAd(id: string) {
-    this._Router.navigate(['dashboard/Ads/edit/', id]);
-  }
+
+  addAd(data: any) : void {
+      console.log(data,'in the function')
+      this._adsService.addAd(data).subscribe({
+      error: (err) => {
+        console.log(err);
+        this._ToastrService.error('error!', err.error.message);
+      },
+      complete: () => {
+        this._ToastrService.success('Facility Added succefully ')
+        this.onGetAllAds();
+  }})};
+
+  editAd(data:any){
+    console.log(data,'we are going to http')
+    this._adsService.editAd(data._id,data).subscribe({
+      error: (err) => {
+        console.log(err);
+        this._ToastrService.error('error!', err.error.message);
+      },
+      complete: () => {
+        this._ToastrService.success('Facility Updated succefully ')
+        this.onGetAllAds();
+  }})};
+
+
 
   deleteAd(item: any) {
     this.ref = this.dialogService.open(DeleteComponent, {
       data: item,
-      width: '50%',
+      width: '35%',
       contentStyle: { "max-height": "500px", "overflow": "auto" },
       baseZIndex: 10000
     });
@@ -92,10 +134,7 @@ export class AdsComponent {
   onActionClick(action: string, item: any) {
     switch (action) {
       case 'edit':
-        this.editAd(item._id);
-        break;
-      case 'view':
-        this.viewAd(item._id);
+        this.onAddEditAd(item);
         break;
       case 'delete':
         this.deleteAd(item._id);

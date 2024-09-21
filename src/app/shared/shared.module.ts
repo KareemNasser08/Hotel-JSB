@@ -21,7 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
-import { PrimeIcons } from 'primeng/api';
+
 import { ChartModule } from 'primeng/chart';
 
 // primeng modules
@@ -55,6 +55,10 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TranslateModule } from '@ngx-translate/core';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { FileUploadModule } from 'primeng/fileupload';
+import { GalleriaModule } from 'primeng/galleria';
+import { FieldsetModule } from 'primeng/fieldset';
 
 @NgModule({
   declarations: [
@@ -107,7 +111,11 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     InputNumberModule,
     InputSwitchModule,
     SelectButtonModule,
-
+    BreadcrumbModule,
+    FileUploadModule,
+    MessagesModule,
+    GalleriaModule,
+    FieldsetModule,
     TranslateModule,
 
 
@@ -163,7 +171,11 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     InputNumberModule,
     InputSwitchModule,
     SelectButtonModule,
-
+    BreadcrumbModule,
+    MessagesModule,
+    FileUploadModule,
+    GalleriaModule,
+    FieldsetModule,
     TranslateModule,
   ]
 })

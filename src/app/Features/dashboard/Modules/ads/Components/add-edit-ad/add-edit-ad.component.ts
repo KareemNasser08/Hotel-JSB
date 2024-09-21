@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RoomsService } from '../../../rooms/services/rooms.service';
 import { AdsService } from '../../services/ads.service';
+import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-add-edit-ad',
@@ -11,13 +12,14 @@ import { AdsService } from '../../services/ads.service';
   styleUrls: ['./add-edit-ad.component.scss']
 })
 export class AddEditAdComponent implements OnInit {
-  adId: string = '';
+  // adId: string = '';
   adStatus = [
     { key: 'Active', value: true },
     { key: 'Retire', value: false }
   ];
   roomsDropDown: any[] = [];
-
+  title: string = 'Add new ad';
+  buttonLabel: string = 'Save';
   addEditAdForm = new FormGroup({
     room: new FormControl(null, Validators.required),
     discount: new FormControl(null, Validators.required),
@@ -31,11 +33,13 @@ export class AddEditAdComponent implements OnInit {
     private _adService:AdsService,
     private toastr: ToastrService,
     private _Router: Router,
+    public ref: DynamicDialogRef, public config: DynamicDialogConfig
   ) {
-    this.adId = _Activatedroute.snapshot.params['id'];
-    console.log(this.adId)
-    if (this.adId) {
-      this.getAdById(this.adId)
+    if (this.config.data) {
+      this.getAdById(this.config.data._id)
+      
+      this.title = 'Edit Ad';
+      this.buttonLabel = 'Update';
     }
   }
 
@@ -52,14 +56,19 @@ export class AddEditAdComponent implements OnInit {
     this._adService.getAdDetails(id).subscribe({
       next: (res) => {
         console.log(res, 'ad object');
-        this.adStatus=res.data.ads.room.isActive;
+        this.adStatus=res.data.ads.isActive;
+        console.log(res.data.ads.isActive);
+        
         this.addEditAdForm.patchValue(
           {
             room: res.data.ads.room._id,
             discount: res.data.ads.room.discount,
-            isActive: res.data.ads.room.isActive
+            isActive: res.data.ads.isActive
           }
+       
+          
         );
+        console.log(this.addEditAdForm);
       }, error: () => {
       }, complete: () => {
       }
@@ -67,26 +76,26 @@ export class AddEditAdComponent implements OnInit {
 
   }
 
-  onEditAd(data: FormData): void {
-    this._adService.editAd(this.adId, data).subscribe({
-      complete: () => {
-        this.toastr.success('Success', 'Ad editted successfully');
+  // onEditAd(data: FormData): void {
+  //   this._adService.editAd(this.adId, data).subscribe({
+  //     complete: () => {
+  //       this.toastr.success('Success', 'Ad editted successfully');
 
-        this.navigateToAdsList();
-      },
-    });
-  }
+  //       this.navigateToAdsList();
+  //     },
+  //   });
+  // }
 
-  onAddAd(data: FormData): void {
-    console.log(data,'in the function')
-    this._adService.addAd(data).subscribe({
-      complete: () => {
-        this.toastr.success('Success', 'Ad added successfully');
+  // onAddAd(data: FormData): void {
+  //   console.log(data,'in the function')
+  //   this._adService.addAd(data).subscribe({
+  //     complete: () => {
+  //       this.toastr.success('Success', 'Ad added successfully');
 
-        this.navigateToAdsList();
-      },
-    });
-  }
+  //       this.navigateToAdsList();
+  //     },
+  //   });
+  // }
 
   onGetRooms() {
     let params = {
@@ -105,39 +114,12 @@ export class AddEditAdComponent implements OnInit {
 
 
 
-  onSubmit(data: FormGroup) {
-    data.markAllAsTouched();
-    console.log(data.value, 'before send')
+  onSubmit(): void {
 
-    if (this.addEditAdForm.valid) {
-      debugger
-      const addEditAdFormData: FormData = new FormData();
-      // addEditRoomFormData.append("roomNumber",data.value.roomNumber)
-      for (const key in data.value) {
-        const value = data.value[key];
-
-        if (Array.isArray(value)) {
-          value.forEach((element, index) => {
-            addEditAdFormData.append(`${key}[${index}]`, element);
-          });
-        } else {
-          // If the value is not an array, append it directly
-          addEditAdFormData.append(key, value);
-          // addEditRoomFormData.append("imgs",this.files[0])
-        }
-      }
-
-
-
-      if (this.adId) {
-        this.onEditAd(addEditAdFormData);
-      } else {
-        this.onAddAd(addEditAdFormData);
-      }
-    }
-  }
-
-  navigateToAdsList(): void {
-    this._Router.navigate(['/dashboard/Ads']);
+  if (this.addEditAdForm.valid) {
+    
+    this.ref.close(this.addEditAdForm.value);
   }
 }
+}
+

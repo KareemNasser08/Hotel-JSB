@@ -1,4 +1,7 @@
-<section>
+<section class=" container mt-1">
+  <div class="flex justify-content-center">
+    <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+</div>
   <div class="container-fluid justify-content-center align-items-center p-3 ">
 
     <form class="example-form w-50 mx-auto" [formGroup]="addEditRoomForm">
@@ -8,9 +11,9 @@
           <input type="text" pInputText formControlName="roomNumber" class="d-block w-100 mt-2" name="roomNumber"
             placeholder="Room number" />
 
-          <small class="block p-error" *ngIf="roomNumber.invalid &&
-                         (roomNumber.dirty || roomNumber.touched)">
-            <div *ngIf="roomNumber.errors?.['required']">Room Number is required</div>
+          <small class="block p-error" *ngIf="addEditRoomForm.get('roomNumber')?.invalid &&
+                         (addEditRoomForm.get('roomNumber')?.dirty ||addEditRoomForm.get('roomNumber')?.touched)">
+            <div *ngIf="addEditRoomForm.get('roomNumber')?.errors?.['required']">Room Number is required</div>
           </small>
         </div>
         <div class="row col-md-12">
@@ -20,9 +23,9 @@
             <input type="number" pInputText formControlName="price" class="d-block w-100 mt-2" name="price"
               placeholder="Price" />
 
-            <small class="block p-error" *ngIf="price.invalid &&
-                         (price.dirty || price.touched)">
-              <div *ngIf="price.errors?.['required']"> Price is required</div>
+            <small class="block p-error" *ngIf="addEditRoomForm.get('price')?.invalid &&
+                         (addEditRoomForm.get('price')?.dirty || addEditRoomForm.get('price')?.touched)">
+              <div *ngIf="addEditRoomForm.get('price')?.errors?.['required']"> Price is required</div>
             </small>
           </div>
 
@@ -32,9 +35,9 @@
             <input type="number" pInputText formControlName="capacity" class="d-block w-100 mt-2" name="capacity"
               placeholder="Capacity" />
 
-            <small class="block p-error" *ngIf="capacity.invalid &&
-                         (capacity.dirty || capacity.touched)">
-              <div *ngIf="capacity.errors?.['required']">Capacity is required</div>
+            <small class="block p-error" *ngIf="addEditRoomForm.get('capacity')?.invalid &&
+                         (addEditRoomForm.get('capacity')?.dirty || addEditRoomForm.get('capacity')?.touched)">
+              <div *ngIf="addEditRoomForm.get('capacity')?.errors?.['required']">Capacity is required</div>
             </small>
           </div>
         </div>
@@ -45,24 +48,23 @@
             <input type="number" pInputText formControlName="discount" class="d-block w-100 mt-2" name="discount"
               placeholder="Discount" />
 
-            <small class="block p-error" *ngIf="discount.invalid &&
-                         (discount.dirty || discount.touched)">
-              <div *ngIf="discount.errors?.['required']">Discount is required</div>
-            </small>
+            <!-- <small class="block p-error" *ngIf="addEditRoomForm.get('discount')?.invalid &&
+                         (addEditRoomForm.get('discount')?.dirty || addEditRoomForm.get('discount')?.touched)">
+              <div *ngIf="addEditRoomForm.get('discount')?.errors?.['required']">Discount is required</div>
+            </small> -->
           </div>
 
           <div class="mt-4 col-md-6 d-flex flex-column justify-content-center">
 
             <label for="facilities">Facilities</label>
-            <p-multiSelect [options]="facilitiesDropDown" formControlName="facilities" placeholder="Facilities"
-              optionLabel="name" optionValue="_id" display="chip" [showClear]="true"></p-multiSelect>
-            <small class="block p-error" *ngIf="facilities.invalid &&
-                         (facilities.dirty || facilities.touched)">
-              <div *ngIf="facilities.errors?.['required']">Facilities is required</div>
+            <p-multiSelect [style]="{width: '100%', backgroundColor: '#f7f7f7', border: 'none' }" class="mt-2" [options]="facilitiesDropDown" formControlName="facilities" placeholder="Facilities" optionLabel="name" optionValue="_id" display="chip" [showClear]="true"></p-multiSelect>
+            <small class="block p-error" *ngIf="addEditRoomForm.get('facilities')?.invalid &&
+                         (addEditRoomForm.get('facilities')?.dirty || addEditRoomForm.get('facilities')?.touched)">
+              <div *ngIf="addEditRoomForm.get('facilities')?.errors?.['required']">Facilities is required</div>
             </small>
           </div>
         </div>
-        <ngx-dropzone (change)="selectImage($event)" class="mt-5">
+        <!-- <ngx-dropzone (change)="selectImage($event)" class="mt-5">
           <ngx-dropzone-label>
             <i class="pi pi-camera" style="color: green"></i>
             <br />
@@ -70,8 +72,18 @@
           <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
             [removable]="true" (removed)="removeImage(f)">
           </ngx-dropzone-image-preview>
-        </ngx-dropzone>
+        </ngx-dropzone> -->
 
+        <div class="flex justify-content-center mt-4">
+          <p-toast></p-toast>
+          <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" >
+              <ng-template pTemplate="content">
+                  <ul *ngIf="uploadedFiles.length">
+                      <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                  </ul>
+              </ng-template>
+          </p-fileUpload>
+      </div>
       </div>
 
 

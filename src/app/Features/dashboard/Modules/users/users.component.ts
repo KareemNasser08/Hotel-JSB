@@ -5,6 +5,7 @@ import { TableColumn } from 'src/app/shared/Components/shared-table/interface/ta
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
 import { ToastrService } from 'ngx-toastr';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-users',
@@ -14,6 +15,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsersComponent implements OnInit {
   tableData: any;
+  items: MenuItem[] | undefined;
+
+  home: MenuItem | undefined;
   ref: DynamicDialogRef | undefined;
 
   columns :TableColumn[] = [
@@ -41,6 +45,9 @@ export class UsersComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
+
+    this.items = [{ label: 'Users' }];
+    this.home = { icon: 'pi pi-home', routerLink: '/dashboard/home' };
     this.onGetAllUsers();
   }
 
@@ -68,7 +75,7 @@ export class UsersComponent implements OnInit {
   deleteUser(item: any) {
     this.ref = this.dialogService.open(DeleteComponent, {
       data: item,
-      width: '50%',
+      width: '35%',
       contentStyle: { "max-height": "500px", "overflow": "auto" },
       baseZIndex: 10000
     });

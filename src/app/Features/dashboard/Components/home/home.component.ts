@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DashServiceService } from '../../dashservice/dash-service.service';
 import { Ichart } from '../../interfaces/dashboard';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { Ichart } from '../../interfaces/dashboard';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
+  home: MenuItem | undefined;
   // declerations
   charData!: Ichart | any;
   bookingChartData: any[] = [];
@@ -35,6 +36,7 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.GetCharts();
+    this.home = { icon: 'pi pi-home', routerLink: '/dashboard/home' };
   }
 
   constructor(
