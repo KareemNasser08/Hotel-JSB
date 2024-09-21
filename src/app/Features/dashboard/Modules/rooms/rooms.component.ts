@@ -6,6 +6,7 @@ import { TableColumn } from 'src/app/shared/Components/shared-table/interface/ta
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
+import { MenuItem } from 'primeng/api';
 
 
 @Component({
@@ -17,7 +18,8 @@ import { DeleteComponent } from 'src/app/shared/Components/delete/delete.compone
 export class RoomsComponent implements OnInit {
   tableData: any;
   ref: DynamicDialogRef | undefined;
-
+  items: MenuItem[] | undefined;
+  home: MenuItem | undefined;
   columns: TableColumn[] = [
     { headerTitle: 'Room Number', fieldKey: 'roomNumber', type: 'string', },
     { headerTitle: 'Price', fieldKey: 'price', type: 'string' },
@@ -45,6 +47,8 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.onGetAllRooms();
+    this.items = [{ label: 'Rooms' }];
+    this.home = { icon: 'pi pi-home', routerLink: '/dashboard/home' };
   }
 
   onGetAllRooms() {
@@ -72,7 +76,7 @@ export class RoomsComponent implements OnInit {
   deleteRoom(item: any) {
     this.ref = this.dialogService.open(DeleteComponent, {
       data: item,
-      width: '50%',
+      width: '35%',
       contentStyle: { "max-height": "500px", "overflow": "auto" },
       baseZIndex: 10000
     });

@@ -22,8 +22,6 @@ export class LandingHeadComponent implements OnInit {
     private _router: Router,
     private _ToastrService: ToastrService,
     public translate:TranslateService) { 
-
-      translate.setDefaultLang('en');
     }
     
 
@@ -38,15 +36,6 @@ export class LandingHeadComponent implements OnInit {
     date: new FormControl(null),
 
   })
-
-
-  translateToEng(){
-    this.translate.use('en');
-
-  }
-  translateToAr(){
-    this.translate.use('ar');
-  }
 
 
 

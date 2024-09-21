@@ -1,13 +1,11 @@
-<section>
-    <div class="container vh-100">
+<section class="mt-1">
+    <div class="container">
+        <div class="flex justify-content-center">
+            <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+        </div>
         <div class="row justify-content-center">
-            <span class="shadow-sm bg-body-tertiary m-2 p-2 ">
-                <a routerLink="/dashboard/Rooms" class="pointer text-decoration-none">
-                    <i class="fa-solid fa-chevron-left" style="color: #146ebe;"></i> Back to room list!
-                </a>
-            </span>
             <div class="col-md-6">
-                <div class="card border-0 rounded-2 shadow-lg m-3"
+                <!-- <div class="card border-0 rounded-2 shadow-lg m-3"
                     *ngIf="roomDetails?.room?.images.length > 0; else noImages">
                     <owl-carousel-o [options]="customOptions">
                         <ng-container *ngFor="let slide of roomDetails?.room?.images">
@@ -16,7 +14,22 @@
                             </ng-template>
                         </ng-container>
                     </owl-carousel-o>
+                </div> -->
+
+                <div class="card">
+                    <p-galleria [value]="roomDetails?.room?.images"  [containerStyle]="{ 'max-width': '640px' }" [numVisible]="3">
+                        <ng-template pTemplate="item" let-item>
+                            <img [src]="item" style="width: 100%; height: 350px;" />
+                        </ng-template>
+                        <ng-template pTemplate="thumbnail" let-item>
+                            <div class=" d-flex grid grid-nogutter justify-content-center">
+                                <img [src]="item" style="width: 20%;"  />
+                                
+                            </div>
+                        </ng-template>
+                    </p-galleria>
                 </div>
+                
 
                 <ng-template #noImages>
                     <div class="card border-0 shadow-lg m-3">
@@ -25,28 +38,31 @@
                 </ng-template>
             </div>
             <div class="col-md-6 my-5">
-                <div class="d-flex justify-content-between align-items-center">
-                    <p>Room name:</p>
-                    <p class="my-3 fw-bolder fs-2">{{roomDetails?.room?.roomNumber}}</p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p>Room price:</p>
-                    <p class="text-primary fs-2 fw-bold my-3">{{roomDetails?.room?.price | currency:
+                <p-fieldset>
+                    <ng-template pTemplate="header">
+                        <div class="flex align-items-center text-primary">
+                            <span class="pi pi-building me-2"></span>
+                            <span class="font-bold text-lg">{{roomDetails?.room?.roomNumber}}</span>
+                        </div>
+                    </ng-template>
+                    <div class="d-flex  align-items-center">
+                        <p class=" fw-bolder fs-6">Room price :</p>
+                        <p class="ms-3 fs-6">{{roomDetails?.room?.price | currency:
                         'EGP':'symbol':'1.0-0'}}</p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p>Available discount:</p>
-                    <div class="alert alert-danger bg-opacity-50 fs-4 mx-2">{{roomDetails?.room?.discount}}%</div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p>Room capacity:</p>
-                    <p class="text-success"><span class="fs-2 fw-bold">{{roomDetails?.room?.capacity}}</span> members
-                    </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p class="my-3">Created by:</p>
-                    <p class="fs-2 fw-bold">{{roomDetails?.room?.createdBy?.userName}}</p>
-                </div>
+                    </div>
+                    <div class="d-flex  align-items-center">
+                        <p class=" fw-bolder fs-6">Room discount :</p>
+                        <p class="ms-3 fs-6">{{roomDetails?.room?.discount}}%</p>
+                    </div>
+                    <div class="d-flex  align-items-center">
+                        <p class=" fw-bolder fs-6">Room capacity :</p>
+                        <p class="ms-3 fs-6">{{roomDetails?.room?.capacity}} Persons</p>
+                    </div>
+                    <div class="d-flex  align-items-center">
+                        <p class=" fw-bolder fs-6">Created by :</p>
+                        <p class="ms-3 fs-6">{{roomDetails?.room?.createdBy?.userName}}</p>
+                    </div>
+                </p-fieldset>
                 <p-divider type="dashed"></p-divider>
                 <div>
                     <div>Room facilities:

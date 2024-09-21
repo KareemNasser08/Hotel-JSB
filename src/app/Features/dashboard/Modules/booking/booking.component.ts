@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { TableColumn } from 'src/app/shared/Components/shared-table/interface/table-column';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DeleteComponent } from 'src/app/shared/Components/delete/delete.component';
+import { MenuItem } from 'primeng/api';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class BookingComponent implements OnInit {
 
   tableData: any;
   ref: DynamicDialogRef | undefined;
-
+  items: MenuItem[] | undefined;
+  home: MenuItem | undefined;
   columns: TableColumn[] = [
     { headerTitle: 'Room Number', fieldKey: 'room.roomNumber', type: 'string' },
     { headerTitle: 'User Name', fieldKey: 'user.userName', type: 'string' },
@@ -47,6 +49,8 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllBooking();
+    this.items = [{ label: 'Bookings' }];
+    this.home = { icon: 'pi pi-home', routerLink: '/dashboard/home' };
   }
 
 

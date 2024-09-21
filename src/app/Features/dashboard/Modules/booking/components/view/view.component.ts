@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 import { BookingService } from '../../services/booking.service';
+import { MenuItem } from 'primeng/api';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class ViewComponent implements OnInit {
   // declerations
   bookingDetails: Booking | any;
   bookingId: number = 0;
-
+  items: MenuItem[] | undefined;
+  home: MenuItem | undefined;
 
   constructor(
 
@@ -43,7 +45,10 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.items = [{ label: 'Bookings', routerLink: ['/dashboard/Booking'] },
+    { label: 'Booking details' }];
 
+    this.home = { icon: 'pi pi-home', routerLink: '/dashboard/home' };
 
   }
 

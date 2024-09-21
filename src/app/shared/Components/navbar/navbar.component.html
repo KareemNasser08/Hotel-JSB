@@ -70,7 +70,7 @@
                 <div *ngIf="isAuthenticated && role === 'admin'">
                     <!-- Show this div if user is authenticated and the role is 'admin' -->
                     <div class="d-flex flex-row justify-content-center align-items-center">
-                        <div>
+                        <p-selectButton class="me-4" [options]="availableLanguages" [(ngModel)]="currentLanguage" optionLabel="label" optionValue="value" (onChange)="changeLanguage($event.value)"></p-selectButton>                        <div>
                             <img src="./assets/Images/Avatar.png" class="w-100 rounded">
                         </div>
                         <li class="nav-item">
@@ -78,16 +78,19 @@
                                 <i class="pi pi-angle-down" style="font-size: 1rem"></i>
                             </button>
                             <mat-menu #adminMenu="matMenu">
-                                <button mat-menu-item class="d-flex align-items-center" (click)="signOut()">
-                                    <span class="me-3">Sign out</span>
-                                    <i class="pi pi-sign-out" style="font-size: 1rem"></i>
-                                </button>
                                 <button mat-menu-item>
-                                    <mat-icon>supervised_user_circle</mat-icon>
+                                    <i class="pi pi-cog me-2" style="font-size: 1rem"></i>
                                     <span>Manage Users</span>
                                 </button>
+
+                                <button mat-menu-item class="d-flex align-items-center" (click)="signOut()">
+                                    <i class="pi pi-sign-out me-2" style="font-size: 1rem"></i>
+                                    <span class="me-3">Sign out</span>   
+                                </button>
+
                             </mat-menu>
                         </li>
+                        
                     </div>
                 </div>
             </ul>

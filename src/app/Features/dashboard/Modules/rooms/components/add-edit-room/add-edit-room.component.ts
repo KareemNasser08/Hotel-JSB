@@ -4,24 +4,30 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RoomFacilities } from '../../interfaces/room-facilities';
 import { RoomsService } from '../../services/rooms.service';
 import { ToastrService } from 'ngx-toastr';
+import { MenuItem, MessageService } from 'primeng/api';
 
+// interface UploadEvent {
+//   originalEvent: Event;
+//   files: File[];
+// }
 @Component({
   selector: 'app-add-edit-room',
   templateUrl: './add-edit-room.component.html',
-  styleUrls: ['./add-edit-room.component.scss']
+  styleUrls: ['./add-edit-room.component.scss'],
+  providers: [MessageService]
 })
 export class AddEditRoomComponent implements OnInit {
   roomId: string = '';
-
-  files: File[] = [];
-
+  uploadedFiles: any[] = [];
   facilitiesDropDown: RoomFacilities[] = [];
+  items: MenuItem[] | undefined;
+  home: MenuItem | undefined;
 
   addEditRoomForm = new FormGroup({
     roomNumber: new FormControl(null, Validators.required),
     price: new FormControl(null, Validators.required),
     capacity: new FormControl(null, Validators.required),
-    discount: new FormControl(null, Validators.required),
+    discount: new FormControl(null),
     facilities: new FormControl(null, Validators.required),
     // imgs:new FormControl(null), 
   });
@@ -42,26 +48,30 @@ export class AddEditRoomComponent implements OnInit {
 
   ngOnInit(): void {
     this.onGetFacilities();
+    this.items = [{ label: 'Rooms', routerLink: ['/dashboard/Rooms'] },
+    { label: 'Add new room' }];
+
+    this.home = { icon: 'pi pi-home', routerLink: '/dashboard/home' };
 
   }
 
-  // getters
+  // // getters
 
-  get roomNumber() {
-    return this.addEditRoomForm.controls['roomNumber'];
-  }
-  get price() {
-    return this.addEditRoomForm.controls['price'];
-  }
-  get capacity() {
-    return this.addEditRoomForm.controls['capacity'];
-  }
-  get discount() {
-    return this.addEditRoomForm.controls['discount'];
-  }
-  get facilities() {
-    return this.addEditRoomForm.controls['facilities'];
-  }
+  // get roomNumber() {
+  //   return this.addEditRoomForm.controls['roomNumber'];
+  // }
+  // get price() {
+  //   return this.addEditRoomForm.controls['price'];
+  // }
+  // get capacity() {
+  //   return this.addEditRoomForm.controls['capacity'];
+  // }
+  // get discount() {
+  //   return this.addEditRoomForm.controls['discount'];
+  // }
+  // get facilities() {
+  //   return this.addEditRoomForm.controls['facilities'];
+  // }
 
 
   // methods 
@@ -81,6 +91,27 @@ export class AddEditRoomComponent implements OnInit {
             facilities: res.data.room.facilities.map((c: any) => c._id),
           }
         );
+        // for (const imageUrl of res.data.room.images) {
+        //   const mockFile = new File([new Blob()], imageUrl.split('/').pop(), { type: 'image/jpeg' }); // Adjust type based on actual image format
+        //   // mockFile.objectURL = imageUrl;
+        //   // this.uploadedFiles.push(mockFile);
+        //   const objectURL = URL.createObjectURL(mockFile);
+        //   this.uploadedFiles.push({ ...mockFile, objectURL });
+        //   console.log(mockFile);
+        //   console.log(this.uploadedFiles);
+          
+        // }
+        for (const imageUrl of res.data.room.images) {
+        const blob = new Blob([new Uint8Array(imageUrl)], { type: 'image/jpeg' });
+
+        // Create File with ObjectURL
+        const file = new File([blob], imageUrl.split('/').pop(), { type: 'image/jpeg' });
+        const objectURL = URL.createObjectURL(file);
+
+        // Push mockFile with objectURL to uploadedFiles
+        this.uploadedFiles.push({ ...file, objectURL });
+        }
+    
       }, error: () => {
       }, complete: () => {
       }
@@ -119,12 +150,13 @@ export class AddEditRoomComponent implements OnInit {
     })
   }
 
-  selectImage(e: any) {
-    this.files = [...e.addedFiles];
-  }
+  onUpload(event:any) {
+    for(let file of event.files) {
+      console.log(file,'hello');
+      
+        this.uploadedFiles.push(file);
+    }
 
-  removeImage(e: any) {
-    this.files = [];
   }
 
   onSubmit(data: FormGroup) {

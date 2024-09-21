@@ -1,61 +1,39 @@
-<section>
-    <div class="container vh-100">
-        <div class="row justify-content-center">
-            <span class="shadow-sm bg-body-tertiary m-2 p-2 ">
-                <a routerLink="/dashboard/users" class="pointer text-decoration-none">
-                    <i class="fa-solid fa-chevron-left" style="color: #146ebe;"></i> Back to users list!
-                </a>
-            </span>
-            <div class="col-md-4 my-5">
-                <img src="{{userDetails?.user?.profileImage}}" class="img-fluid" alt="">
+<section class="mt-1">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="flex justify-content-center">
+                <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
             </div>
-            <div class="col-md-6 my-5">
-                <div class=" d-flex justify-content-between align-items-center">
-                    <p>User name:</p>
-                    <p class="text-primary my-3">{{userDetails?.user?.userName}}</p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p>Email :</p>
-                    <p class="text-primary my-3">{{userDetails?.user?.email}}</p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p>Phone number :</p>
-                    <p class="text-primary my-3">{{userDetails?.user?.phoneNumber}}</p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p>Country :</p>
-                    <p class="text-primary my-3">{{userDetails?.user?.country}}</p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p>Role :</p>
-                    <p class="text-primary my-3">{{userDetails?.user?.role}}</p>
-                </div>
-                
-                <!-- <div class="d-flex justify-content-between align-items-center">
-                    <p>Available discount:</p>
-                    <div class="alert alert-danger bg-opacity-50 fs-4 mx-2">{{userDetails?.user?.discount}}%</div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p>user capacity:</p>
-                    <p class="text-success"><span class="fs-2 fw-bold">{{userDetails?.user?.capacity}}</span> members
-                    </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p class="my-3">Created by:</p>
-                    <p class="fs-2 fw-bold">{{userDetails?.user?.createdBy?.userName}}</p>
-                </div>
-                <p-divider type="dashed"></p-divider>
-                <div>
-                    <div>user facilities:
-                        <div class="my-3">
-                            <span class="mx-3 badge text-bg-primary px-3 py-2 h6"
-                                *ngFor="let item of userDetails?.user?.facilities">
-                                {{item.name}}
-                            </span>
-                        </div>
+            <div class="row">
+                <div class="profile-card ">
+                  <div class="profile-card__img">
+                    <img src="{{userDetails?.user?.profileImage}}" alt="">
+                  </div>
+              
+                  <div class="profile-card__cnt js-profile-cnt">
+                    <div class="profile-card__name">{{userDetails?.user?.userName}}</div>
+                    <div class="profile-card__txt">{{userDetails?.user?.email}}</div>              
+                    <div class="profile-card-inf mb-4">
+                      <div class="profile-card-inf__item">
+                        <i class="pi pi-phone fs-3 mb-2 fw-bold" style="color: 'var(--main-color)'"></i>
+                        <div class="profile-card-inf__txt fs-5">{{userDetails?.user?.phoneNumber}}</div>
+                      </div>
+                      <div class="profile-card-inf__item">
+                        <i class="pi pi-flag-fill fs-3 mb-2 fw-bold" style="color: 'var(--main-color)'"></i>
+                        <div class="profile-card-inf__txt fs-5">{{userDetails?.user?.country}}</div>
+                      </div>
+                      <div class="profile-card-inf__item">
+                        <i class="pi pi-user fs-3 mb-2 fw-bold" style="color: 'var(--main-color)'"></i>
+                        <div class="profile-card-inf__txt fs-5">{{userDetails?.user?.role}}</div>
+                      </div>
                     </div>
-                </div> -->
+              
+                  </div>
+              
+                </div>
             </div>
         </div>
     </div>
+
+      
 </section>

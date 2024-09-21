@@ -9,7 +9,9 @@ import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 export class AddEditFacilityComponent implements OnInit {
 
   // decleration
-  id!: number;
+  title: string = 'Add Facility';
+  buttonLabel: string = 'Save';
+  id?: number;
   name: string = '';
 
 
@@ -22,18 +24,29 @@ export class AddEditFacilityComponent implements OnInit {
     if (this.config.data) {
       this.id = this.config.data?._id;
       this.name = this.config.data?.name;
+      this.title = 'Edit Facility';
+      this.buttonLabel = 'Update';
     }
   }
 
   
-  onClose(): void {
+  // onClose(): void {
    
-  }
+  // }
 
   onSubmit(): void {
-    console.log(this.config.data);
+      const data = { name: this.name };
+      this.ref.close({ ...data, id: this.id }); 
+  }
     
-    this.ref.close({ name: this.name, id: this.id });
+    //  data = {:{name: this.name ,fId:this.id}}
+    // console.log(this.config.data);
+    // const data = { name: this.name ,fId:this.id};
+    // // this.ref.close({ ...data, id: this.id }); 
+    // if (this.id) {
+    //   data.fId = this.id;
+    // }
+    // this.ref.close({ ...data, id: this.id});
   }
 
-}
+

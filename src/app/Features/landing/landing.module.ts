@@ -10,6 +10,7 @@ import { Ads1Component } from './components/ads-1/ads-1.component';
 import { Ads2Component } from './components/ads-2/ads-2.component';
 import { Ads3Component } from './components/ads-3/ads-3.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LandingSlideComponent } from './components/landingSlide/landing-slide/landing-slide.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
     LandingComponent,
     LandingAdsComponent,
     LandingHeadComponent,
+    LandingSlideComponent,
     Ads1Component,
     Ads2Component,
     Ads3Component,
